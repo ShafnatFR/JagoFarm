@@ -1,0 +1,6 @@
+{
+  "name": "JagoFarm",
+  "description": "High-converting, modern, and adaptive landing page for JagoFarm agritech startup integrating circular economy farming and turnkey B2B IoT smart farming installations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

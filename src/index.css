@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --primary: #0F2A4A;       /* Biru Tua (Primary headings, main CTA, dark sections) */
+  --secondary: #F0F7FF;     /* Biru Muda (Subtle alternating background & shadow) */
+  --accent: #0284C7;        /* Biru Langit (Hover states, indicators, highlights) */
+  --accent-hover: #0369A1;  /* Deeper Sky Blue for hover states */
+  --bg-white: #FFFFFF;      /* Putih Bersih (Main background, base cards) */
+}
+
+.dark {
+  --primary: #F0F7FF;       /* High-contrast light blue/white headings & text */
+  --secondary: #132742;     /* Darker blue-gray for cards and sections */
+  --accent: #38BDF8;        /* Brighter sky blue for accessible highlights */
+  --accent-hover: #7DD3FC;  /* Lighter sky blue for active hover states */
+  --bg-white: #0A192F;      /* Rich dark navy background */
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Palette mapped to CSS custom variables for dynamic theming */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-bg-white: var(--bg-white);
+}
+
+/* Custom scrollbar and subtle global visual styles */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-white);
+  color: var(--color-primary);
+  scroll-behavior: smooth;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}

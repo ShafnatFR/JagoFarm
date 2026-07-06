@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Sprout, Cpu, ArrowUpRight, ShieldCheck, HeartPulse, Sparkles, Droplets, Thermometer, Radio } from 'lucide-react';
+import { useJagoFarm } from '../context/JagoFarmContext';
 
 interface HeroProps {
   onOpenConsultation: (interest?: string) => void;
@@ -8,6 +9,15 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenConsultation, onScrollToProducts }: HeroProps) {
+  const { 
+    heroTitle, 
+    heroSubtitle, 
+    heroImageUrl,
+    metricUptime, 
+    metricCircular, 
+    metricEfficiency 
+  } = useJagoFarm();
+
   // Simulated real-time metrics for the interactive farm card
   const [waterTemp, setWaterTemp] = useState(26.4);
   const [oxygen, setOxygen] = useState(6.2);
@@ -71,13 +81,10 @@ export default function Hero({ onOpenConsultation, onScrollToProducts }: HeroPro
               className="space-y-4"
             >
               <h1 id="hero-headline" className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary tracking-tight leading-tight">
-                Revolusi Agrikultur <br />
-                <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                  Cerdas & Sirkular
-                </span>
+                {heroTitle}
               </h1>
               <p id="hero-subheadline" className="text-lg text-slate-600 max-w-xl leading-relaxed">
-                JagoFarm mengintegrasikan budidaya presisi (ikan, ayam, melon) dengan sistem otomasi IoT modular B2B. Zero waste, produktivitas maksimal, dan ketertelusuran penuh.
+                {heroSubtitle}
               </p>
             </motion.div>
 
@@ -115,15 +122,15 @@ export default function Hero({ onOpenConsultation, onScrollToProducts }: HeroPro
               className="pt-6 border-t border-secondary/60 grid grid-cols-3 gap-6"
             >
               <div className="space-y-1">
-                <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">99.8%</p>
+                <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">{metricUptime}</p>
                 <p className="text-xs text-slate-500 font-medium">IoT Sensor Uptime</p>
               </div>
               <div className="space-y-1">
-                <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">Zero</p>
+                <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">{metricCircular}</p>
                 <p className="text-xs text-slate-500 font-medium">Waste (Circular)</p>
               </div>
               <div className="space-y-1">
-                <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">+150%</p>
+                <p className="font-display text-2xl sm:text-3xl font-extrabold text-primary">{metricEfficiency}</p>
                 <p className="text-xs text-slate-500 font-medium">Efisiensi Pakan</p>
               </div>
             </motion.div>
@@ -159,8 +166,26 @@ export default function Hero({ onOpenConsultation, onScrollToProducts }: HeroPro
                 </span>
               </div>
 
-              {/* Graphical Simulation of Both Sectors (Aquaculture & Smart Greenhouse) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              {heroImageUrl ? (
+                <div className="relative h-52 rounded-2xl overflow-hidden border border-secondary mb-4">
+                  <img 
+                    src={heroImageUrl} 
+                    alt="Sistem IoT JagoFarm" 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex flex-col justify-between p-4">
+                    <div className="flex items-center justify-between">
+                      <span className="rounded-md bg-accent px-2.5 py-0.5 text-[8px] font-mono font-bold text-white uppercase">
+                        Sistem IoT JagoFarm
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                    </div>
+                    <p className="text-[10px] font-mono text-white/80 font-bold uppercase tracking-wider">Visual Operasional Lahan Aktif</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                 
                 {/* 1. Smart Aquaculture Pond Section */}
                 <div className="relative h-48 rounded-2xl bg-gradient-to-b from-sky-400/20 via-sky-500/10 to-primary/5 border border-secondary flex flex-col justify-between p-3 overflow-hidden">
@@ -312,6 +337,7 @@ export default function Hero({ onOpenConsultation, onScrollToProducts }: HeroPro
                 </div>
 
               </div>
+              )}
 
               {/* Dynamic Real-time Sensors */}
               <div className="grid grid-cols-3 gap-3 mt-4">

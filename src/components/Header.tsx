@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Landmark, ArrowRight, Activity, Sun, Moon } from 'lucide-react';
+import { Menu, X, Landmark, ArrowRight, Activity, Sun, Moon, Lock } from 'lucide-react';
 
 interface HeaderProps {
   onOpenConsultation: (interest?: string) => void;
   isDark: boolean;
   toggleTheme: () => void;
+  onOpenAdmin: () => void;
 }
 
-export default function Header({ onOpenConsultation, isDark, toggleTheme }: HeaderProps) {
+export default function Header({ onOpenConsultation, isDark, toggleTheme, onOpenAdmin }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -109,6 +110,18 @@ export default function Header({ onOpenConsultation, isDark, toggleTheme }: Head
                 <Moon className="h-4 w-4 text-accent" />
               )}
             </button>
+            
+            {/* Added Lock/Admin Icon Access button */}
+            <button
+              id="admin-panel-toggle"
+              onClick={onOpenAdmin}
+              className="flex items-center gap-2 rounded-full border border-slate-200 hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all cursor-pointer"
+              title="Akses Portal Admin JagoFarm"
+            >
+              <Lock className="h-3.5 w-3.5 text-accent" />
+              <span>Admin CMS</span>
+            </button>
+
             <button
               id="cta-konsultasi-header"
               onClick={() => onOpenConsultation('Smart Farming IoT')}
@@ -187,6 +200,19 @@ export default function Header({ onOpenConsultation, isDark, toggleTheme }: Head
                   )}
                 </button>
               </div>
+
+              {/* Mobile Admin panel CMS access */}
+              <button
+                id="cta-admin-mobile"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenAdmin();
+                }}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-secondary py-3 px-4 text-center text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-secondary transition-colors"
+              >
+                <Lock className="h-4 w-4 text-accent" />
+                <span>Portal Admin & CMS</span>
+              </button>
 
               <button
                 id="cta-konsultasi-mobile"

@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Send, PhoneCall, HelpCircle, CheckCircle2 } from 'lucide-react';
+import { useJagoFarm } from '../context/JagoFarmContext';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface ConsultationModalProps {
 }
 
 export default function ConsultationModal({ isOpen, onClose, initialInterest = 'Smart Farming IoT' }: ConsultationModalProps) {
+  const { addLead } = useJagoFarm();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [farmType, setFarmType] = useState('mixed');
@@ -19,6 +21,15 @@ export default function ConsultationModal({ isOpen, onClose, initialInterest = '
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!name || !phone) return;
+
+    // Add lead to centralized context
+    addLead({
+      name,
+      phone,
+      farmType,
+      interest,
+      message
+    });
 
     // Simulate form submission
     setSubmitted(true);

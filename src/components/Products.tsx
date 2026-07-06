@@ -18,6 +18,7 @@ import {
   User
 } from 'lucide-react';
 import { HarvestProduct, ProductReview } from '../types';
+import { useJagoFarm } from '../context/JagoFarmContext';
 
 interface ProductsProps {
   onOpenConsultation: (interest?: string) => void;
@@ -175,73 +176,7 @@ export default function Products({ onOpenConsultation }: ProductsProps) {
     }, 3000);
   };
 
-  // Fresh Produce (B2C & Wholesale)
-  const freshProducts: HarvestProduct[] = [
-    {
-      id: 'melon',
-      name: 'Melon Golden Inthanon',
-      category: 'Hortikultura Premium',
-      description: 'Melon hidroklimat Jepang yang manis, renyah, dan dipanen segar langsung dari green house sirkular.',
-      image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&q=80&w=600',
-      tags: ['Brix 14-16', 'Pestisida Alami']
-    },
-    {
-      id: 'fish',
-      name: 'Ikan Nila Merah Bioflok',
-      category: 'Aquaculture Cerdas',
-      description: 'Ikan nila padat nutrisi dari kolam bioflok terkelola IoT, menjamin cita rasa daging gurih tanpa aroma lumpur.',
-      image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=600',
-      tags: ['Tinggi Protein', 'Bebas Logam Berat']
-    },
-    {
-      id: 'chicken',
-      name: 'Ayam Sirkular Premium',
-      category: 'Peternakan Organik',
-      description: 'Ayam sehat hasil pakan maggot segar BSF. Daging padat rendah lemak jenuh dan tinggi asam amino esensial.',
-      image: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&q=80&w=600',
-      tags: ['Non-Antibiotik', 'Pakan Organik']
-    },
-    {
-      id: 'watermelon',
-      name: 'Semangka Non-Biji Merah',
-      category: 'Hortikultura Premium',
-      description: 'Semangka manis segar hasil penyaringan irigasi sirkular kolam nila, kaya serat dan hidrasi optimal.',
-      image: 'https://images.unsplash.com/photo-1589984662646-e7b2e4962f18?auto=format&fit=crop&q=80&w=600',
-      tags: ['Bebas Biji', 'Irigasi Nutrisi Ikan']
-    }
-  ];
-
-  // Turnkey IoT Solutions (B2B)
-  const iotModules = [
-    {
-      id: 'feeder',
-      name: 'Smart Autofeeder (Pemberi Pakan)',
-      category: 'Aquaculture IoT',
-      description: 'Sistem pelempar pakan modular bertenaga surya. Dosis pakan presisi otomatis berdasarkan usia & berat ikan.',
-      features: ['Lontaran pakan hingga 10 meter', 'Sensor loadcell berat akurat', 'Konektivitas Wi-Fi & LoRaWAN']
-    },
-    {
-      id: 'water-sensor',
-      name: 'Multi-Sensor Kualitas Air',
-      category: 'Aquaculture IoT',
-      description: 'Probe terintegrasi untuk membaca suhu air, pH, dan oksigen terlarut (Dissolved Oxygen) secara berkelanjutan.',
-      features: ['Kalibrasi otomatis mudah', 'Waterproof IP68 industrial', 'Notifikasi SMS / WhatsApp Instan']
-    },
-    {
-      id: 'dead-fish',
-      name: 'AI Camera Dead Fish Detector',
-      category: 'Computer Vision',
-      description: 'Kamera pintar mendeteksi anomali ikan mati mengambang untuk penanganan cepat mencegah pencemaran air kolam.',
-      features: ['Akurasi deteksi hingga 98.7%', 'Lampu LED infra-merah malam hari', 'Integrasi langsung dashboard IoT']
-    },
-    {
-      id: 'greenhouse-controller',
-      name: 'Greenhouse Soil & Climate Unit',
-      category: 'Horticulture IoT',
-      description: 'Pengendali iklim mikro terintegrasi untuk mengatur irigasi tetes, kelembapan tanah, dan kipas angin greenhouse.',
-      features: ['Sistem irigasi tetes otomatis', 'Suhu udara & sensor kelembapan', 'Kontrol pompa jarak jauh']
-    }
-  ];
+  const { freshProducts, iotModules } = useJagoFarm();
 
   return (
     <section

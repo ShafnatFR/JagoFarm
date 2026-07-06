@@ -2,54 +2,22 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Bug, Egg, Fish, Leaf, ArrowRight, RefreshCw, Layers, CheckCircle } from 'lucide-react';
 import { CircularStage } from '../types';
+import { useJagoFarm } from '../context/JagoFarmContext';
 
 export default function CircularEconomy() {
   const [activeStage, setActiveStage] = useState<string>('maggot');
+  const { circularTitle, circularSubtitle, circularStages } = useJagoFarm();
 
-  const stages: CircularStage[] = [
-    {
-      id: 'maggot',
-      name: 'Maggot BSF',
-      emoji: '🐛',
-      description: 'Lalat Tentara Hitam (Black Soldier Fly) mengurai limbah sisa melon dan sisa ayam.',
-      input: 'Limbah Sisa Buah & Lahan',
-      output: 'Pakan Tinggi Protein (42%) & Bio-Pupuk',
-      efficiency: 'Mengurangi limbah organik hingga 90%',
-      details: 'Larva BSF sangat efisien mengurai residu organik dari tanaman melon dan kotoran peternakan. Menghasilkan pakan berkualitas tinggi dengan jejak karbon terendah.'
-    },
-    {
-      id: 'poultry',
-      name: 'Peternakan Ayam',
-      emoji: '🐔',
-      description: 'Ayam pedaging berkualitas tinggi dibudidayakan secara sehat tanpa bahan kimia.',
-      input: 'Maggot BSF Organik Segar',
-      output: 'Daging Ayam Segar & Kotoran Organik',
-      efficiency: 'Pemangkasan biaya pakan konvensional 40%',
-      details: 'Dengan asupan maggot BSF hidup yang kaya asam amino alami, metabolisme ayam meningkat drastis, menjadikannya ayam organik premium yang sehat dan padat gizi.'
-    },
-    {
-      id: 'aquaculture',
-      name: 'Budidaya Ikan',
-      emoji: '🐟',
-      description: 'Ikan air tawar (Nila & Lele) dikembangkan dengan teknologi sirkulasi bioflok.',
-      input: 'Pakan Pelet Maggot JagoFarm',
-      output: 'Ikan Segar & Air Limbah Kaya Nutrisi',
-      efficiency: 'Zero-water waste dengan filtrasi biologis',
-      details: 'Air kolam penyaringan kaya akan amonia alami hasil ekskresi ikan yang diproses bakteri pengurai menjadi nitrat organik yang sangat dibutuhkan tanaman.'
-    },
-    {
-      id: 'horticulture',
-      name: 'Melon & Semangka',
-      emoji: '🍉',
-      description: 'Budidaya melon premium (Inthanon/Kimochi) dan semangka non-biji di dalam greenhouse.',
-      input: 'Nutrisi Air Kolam & Pupuk BSF',
-      output: 'Buah Premium Segar & Sisa Buah Organik',
-      efficiency: 'Hasil panen 2.5x lebih manis & bebas pestisida',
-      details: 'Air sirkulasi kaya nitrat dari kolam dialirkan langsung melalui irigasi tetes ke akar tanaman melon. Daun berguguran dan buah non-standar dikembalikan ke fasilitas maggot.'
-    }
-  ];
-
-  const currentStageData = stages.find(s => s.id === activeStage) || stages[0];
+  const currentStageData = circularStages.find(s => s.id === activeStage) || circularStages[0] || {
+    id: 'maggot',
+    name: 'Maggot BSF',
+    emoji: '🐛',
+    description: '',
+    input: '',
+    output: '',
+    efficiency: '',
+    details: ''
+  };
 
   const getIcon = (id: string) => {
     switch (id) {
@@ -80,10 +48,10 @@ export default function CircularEconomy() {
             <span className="text-xs font-mono font-bold text-accent uppercase tracking-wider">Ekosistem Mandiri</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
-            Siklus Melingkar (Circular Economy) JagoFarm
+            {circularTitle}
           </h2>
           <p className="text-base text-slate-600">
-            Setiap keluaran dari satu elemen adalah masukan berharga bagi elemen lainnya. Kami mengubah limbah menjadi nilai tambah, menciptakan pertanian tanpa sampah.
+            {circularSubtitle}
           </p>
         </div>
 
@@ -93,7 +61,7 @@ export default function CircularEconomy() {
           {/* Interactive Steps Circle (8 cols on big, stack on small) */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {stages.map((stage, idx) => {
+              {circularStages.map((stage, idx) => {
                 const isActive = stage.id === activeStage;
                 return (
                   <button
@@ -162,6 +130,17 @@ export default function CircularEconomy() {
                 <span className="absolute top-6 right-6 text-5xl select-none opacity-20 pointer-events-none">
                   {currentStageData.emoji}
                 </span>
+
+                {currentStageData.imageUrl && (
+                  <div className="rounded-2xl overflow-hidden h-32 w-full border border-secondary/60">
+                    <img 
+                      src={currentStageData.imageUrl} 
+                      alt={currentStageData.name} 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                )}
 
                 <div>
                   <span className="rounded-full bg-primary/5 border border-primary/10 px-2.5 py-1 text-xs font-mono font-semibold text-primary uppercase">

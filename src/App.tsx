@@ -7,9 +7,16 @@ import DashboardShowcase from './components/DashboardShowcase';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
 import ConsultationModal from './components/ConsultationModal';
+import AdminCMS from './components/AdminCMS';
 
 export default function App() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState<'landing' | 'admin'>(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#/admin') {
+      return 'admin';
+    }
+    return 'landing';
+  });
   const [initialInterest, setInitialInterest] = useState('Smart Farming IoT');
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
@@ -18,6 +25,28 @@ export default function App() {
     }
     return false;
   });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#/admin') {
+        setCurrentPage('admin');
+      } else {
+        setCurrentPage('landing');
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigateTo = (page: 'landing' | 'admin') => {
+    setCurrentPage(page);
+    if (page === 'admin') {
+      window.location.hash = '#/admin';
+    } else {
+      window.location.hash = '';
+    }
+    window.scrollTo(0, 0);
+  };
 
   useEffect(() => {
     if (isDark) {
@@ -56,40 +85,50 @@ export default function App() {
 
   return (
     <div id="app-root" className="min-h-screen bg-bg-white flex flex-col antialiased">
-      {/* Section 1: Navigation Bar */}
-      <Header 
-        onOpenConsultation={handleOpenConsultation} 
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-      />
+      {currentPage === 'landing' ? (
+        <>
+          {/* Section 1: Navigation Bar */}
+          <Header 
+            onOpenConsultation={handleOpenConsultation} 
+            isDark={isDark}
+            toggleTheme={toggleTheme}
+            onOpenAdmin={() => navigateTo('admin')}
+          />
 
-      {/* Section 2: Hero Section */}
-      <Hero 
-        onOpenConsultation={handleOpenConsultation} 
-        onScrollToProducts={handleScrollToProducts} 
-      />
+          {/* Section 2: Hero Section */}
+          <Hero 
+            onOpenConsultation={handleOpenConsultation} 
+            onScrollToProducts={handleScrollToProducts} 
+          />
 
-      {/* Section 3: Ekosistem Sirkular (Circular Economy) */}
-      <CircularEconomy />
+          {/* Section 3: Ekosistem Sirkular (Circular Economy) */}
+          <CircularEconomy />
 
-      {/* Section 4: Produk & Solusi (B2B & B2C Division) */}
-      <Products onOpenConsultation={handleOpenConsultation} />
+          {/* Section 4: Produk & Solusi (B2B & B2C Division) */}
+          <Products onOpenConsultation={handleOpenConsultation} />
 
-      {/* Section 5: IoT Dashboard Showcase */}
-      <DashboardShowcase />
+          {/* Section 5: IoT Dashboard Showcase */}
+          <DashboardShowcase />
 
-      {/* Section 6: FAQ (Pertanyaan Umum) */}
-      <Faq />
+          {/* Section 6: FAQ (Pertanyaan Umum) */}
+          <Faq />
 
-      {/* Section 7: Social Proof & Footer */}
-      <Footer onOpenConsultation={handleOpenConsultation} />
+          {/* Section 7: Social Proof & Footer */}
+          <Footer onOpenConsultation={handleOpenConsultation} />
 
-      {/* Centralized Interactive Consultation Popup */}
-      <ConsultationModal 
-        isOpen={isConsultationOpen} 
-        onClose={() => setIsConsultationOpen(false)} 
-        initialInterest={initialInterest}
-      />
+          {/* Centralized Interactive Consultation Popup */}
+          <ConsultationModal 
+            isOpen={isConsultationOpen} 
+            onClose={() => setIsConsultationOpen(false)} 
+            initialInterest={initialInterest}
+          />
+        </>
+      ) : (
+        <AdminCMS 
+          isOpen={currentPage === 'admin'} 
+          onClose={() => navigateTo('landing')} 
+        />
+      )}
     </div>
   );
 }

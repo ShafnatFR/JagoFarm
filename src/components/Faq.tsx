@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, HelpCircle, Cpu, Sprout, Landmark, Zap } from 'lucide-react';
+import { useJagoFarm } from '../context/JagoFarmContext';
 
 interface FaqItem {
   question: string;
@@ -17,69 +18,68 @@ interface FaqItem {
 
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { faqs } = useJagoFarm();
 
-  const faqData: FaqItem[] = [
-    {
-      category: 'Sistem Sirkular',
-      question: 'Bagaimana cara kerja integrasi sirkular (Circular Farming) antara perikanan, peternakan, dan perkebunan di JagoFarm?',
-      answer: 'Kami menghubungkan tiga sektor dalam siklus sirkular nir-limbah (zero-waste). Kolam Bioflok menghasilkan air kaya nutrisi organik dari metabolisme ikan yang disalurkan sebagai irigasi kaya hara untuk tanaman Golden Melon di Smart Greenhouse. Sisa daun melon dikomposkan, sedangkan peternakan ayam menghasilkan limbah organik yang dikonversi menggunakan pakan maggot Black Soldier Fly (BSF) untuk diolah kembali menjadi pakan nila merah segar tinggi protein.',
-      icon: <Sprout className="h-5 w-5" />,
-      theme: {
-        bgNormal: 'bg-emerald-50/40 hover:bg-emerald-50/70 border-emerald-100/80 dark:bg-emerald-950/10 dark:border-emerald-900/50 dark:hover:border-emerald-800/80',
-        bgOpen: 'bg-emerald-50/90 border-emerald-400 dark:bg-emerald-950/30 dark:border-emerald-500 shadow-md shadow-emerald-500/5',
-        iconBg: 'bg-emerald-100/60 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400',
-        badge: 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50'
-      }
-    },
-    {
-      category: 'Teknologi IoT',
-      question: 'Apa keunggulan teknologi IoT (Internet of Things) yang dipasang di lahan JagoFarm?',
-      answer: 'Sistem IoT pintar kami memantau kondisi vital secara real-time 24/7. Di kolam Bioflok, sensor mengukur kadar Oksigen Terlarut (DO), tingkat pH, dan suhu air. Di Smart Greenhouse, sensor mengontrol kelembaban mikro, suhu udara, serta kelembaban tanah untuk mengoptimalkan irigasi tetes otomatis (drip irrigation) yang dipandu algoritma AI presisi.',
-      icon: <Cpu className="h-5 w-5" />,
-      theme: {
-        bgNormal: 'bg-sky-50/40 hover:bg-sky-50/70 border-sky-100/80 dark:bg-sky-950/10 dark:border-sky-900/50 dark:hover:border-sky-800/80',
-        bgOpen: 'bg-sky-50/90 border-sky-400 dark:bg-sky-950/30 dark:border-sky-500 shadow-md shadow-sky-500/5',
-        iconBg: 'bg-sky-100/60 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400',
-        badge: 'bg-sky-100 text-sky-900 dark:bg-sky-950 dark:text-sky-300 border-sky-200 dark:border-sky-900/50'
-      }
-    },
-    {
-      category: 'Mitigasi Risiko',
-      question: 'Bagaimana sistem IoT membantu mencegah kegagalan panen secara otomatis?',
-      answer: 'Sistem kami terhubung dengan Early Warning System (EWS). Jika salah satu parameter kritis (seperti kadar oksigen air di kolam atau suhu ekstrim di dalam greenhouse) melewati batas aman, sistem secara instan mengirim notifikasi darurat ke tim operasional, sekaligus mengaktifkan aktuator fisik cadangan (seperti aerator sekunder atau sistem exhaust mist sprayer) untuk menstabilkan kondisi lingkungan dalam hitungan detik.',
-      icon: <Zap className="h-5 w-5" />,
-      theme: {
-        bgNormal: 'bg-amber-50/40 hover:bg-amber-50/70 border-amber-100/80 dark:bg-amber-950/10 dark:border-amber-900/50 dark:hover:border-amber-800/80',
-        bgOpen: 'bg-amber-50/90 border-amber-400 dark:bg-amber-950/30 dark:border-amber-500 shadow-md shadow-amber-500/5',
-        iconBg: 'bg-amber-100/60 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400',
-        badge: 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 border-amber-200 dark:border-amber-900/50'
-      }
-    },
-    {
-      category: 'Instalasi & Kustomisasi',
-      question: 'Apakah teknologi IoT JagoFarm dapat diintegrasikan pada kolam atau lahan pertanian konvensional milik saya?',
-      answer: 'Tentu saja! Solusi IoT JagoFarm dirancang secara modular dan retrofitable. Tim ahli kami dapat melakukan audit kesiapan lahan, merancang tata letak sensor kustom, melakukan kalibrasi instrumen, hingga menghubungkan kolam bioflok atau greenhouse konvensional Anda ke platform monitoring dashboard cerdas kami tanpa harus mengubah total infrastruktur dasar Anda.',
-      icon: <Landmark className="h-5 w-5" />,
-      theme: {
-        bgNormal: 'bg-purple-50/40 hover:bg-purple-50/70 border-purple-100/80 dark:bg-purple-950/10 dark:border-purple-900/50 dark:hover:border-purple-800/80',
-        bgOpen: 'bg-purple-50/90 border-purple-400 dark:bg-purple-950/30 dark:border-purple-500 shadow-md shadow-purple-500/5',
-        iconBg: 'bg-purple-100/60 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400',
-        badge: 'bg-purple-100 text-purple-900 dark:bg-purple-950 dark:text-purple-300 border-purple-200 dark:border-purple-900/50'
-      }
-    },
-    {
-      category: 'Pemesanan & Layanan',
-      question: 'Bagaimana cara membeli produk hasil panen segar atau menjadwalkan konsultasi pemasangan IoT?',
-      answer: 'Anda dapat memesan hasil panen premium kami (seperti Golden Melon, Nila Merah, atau Ayam Organik) secara langsung dengan menekan tombol "Pesan" di bagian produk hasil panen. Untuk konsultasi implementasi teknologi pintar sirkular di lahan Anda, cukup klik tombol "Konsultasi" pada navigasi atas untuk menjadwalkan diskusi mendalam dan survei lahan gratis bersama teknisi ahli kami.',
-      icon: <HelpCircle className="h-5 w-5" />,
-      theme: {
-        bgNormal: 'bg-rose-50/40 hover:bg-rose-50/70 border-rose-100/80 dark:bg-rose-950/10 dark:border-rose-900/50 dark:hover:border-rose-800/80',
-        bgOpen: 'bg-rose-50/90 border-rose-400 dark:bg-rose-950/30 dark:border-rose-500 shadow-md shadow-rose-500/5',
-        iconBg: 'bg-rose-100/60 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400',
-        badge: 'bg-rose-100 text-rose-900 dark:bg-rose-950 dark:text-rose-300 border-rose-200 dark:border-rose-900/50'
-      }
+  const getFaqTheme = (category: string) => {
+    switch (category) {
+      case 'Sistem Sirkular':
+        return {
+          icon: <Sprout className="h-5 w-5" />,
+          bgNormal: 'bg-emerald-50/40 hover:bg-emerald-50/70 border-emerald-100/80 dark:bg-emerald-950/10 dark:border-emerald-900/50 dark:hover:border-emerald-800/80',
+          bgOpen: 'bg-emerald-50/90 border-emerald-400 dark:bg-emerald-950/30 dark:border-emerald-500 shadow-md shadow-emerald-500/5',
+          iconBg: 'bg-emerald-100/60 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400',
+          badge: 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50'
+        };
+      case 'Teknologi IoT':
+        return {
+          icon: <Cpu className="h-5 w-5" />,
+          bgNormal: 'bg-sky-50/40 hover:bg-sky-50/70 border-sky-100/80 dark:bg-sky-950/10 dark:border-sky-900/50 dark:hover:border-sky-800/80',
+          bgOpen: 'bg-sky-50/90 border-sky-400 dark:bg-sky-950/30 dark:border-sky-500 shadow-md shadow-sky-500/5',
+          iconBg: 'bg-sky-100/60 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400',
+          badge: 'bg-sky-100 text-sky-900 dark:bg-sky-950 dark:text-sky-300 border-sky-200 dark:border-sky-900/50'
+        };
+      case 'Mitigasi Risiko':
+        return {
+          icon: <Zap className="h-5 w-5" />,
+          bgNormal: 'bg-amber-50/40 hover:bg-amber-50/70 border-amber-100/80 dark:bg-amber-950/10 dark:border-amber-900/50 dark:hover:border-amber-800/80',
+          bgOpen: 'bg-amber-50/90 border-amber-400 dark:bg-amber-950/30 dark:border-amber-500 shadow-md shadow-amber-500/5',
+          iconBg: 'bg-amber-100/60 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400',
+          badge: 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300 border-amber-200 dark:border-amber-900/50'
+        };
+      case 'Instalasi & Kustomisasi':
+        return {
+          icon: <Landmark className="h-5 w-5" />,
+          bgNormal: 'bg-purple-50/40 hover:bg-purple-50/70 border-purple-100/80 dark:bg-purple-950/10 dark:border-purple-900/50 dark:hover:border-purple-800/80',
+          bgOpen: 'bg-purple-50/90 border-purple-400 dark:bg-purple-950/30 dark:border-purple-500 shadow-md shadow-purple-500/5',
+          iconBg: 'bg-purple-100/60 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400',
+          badge: 'bg-purple-100 text-purple-900 dark:bg-purple-950 dark:text-purple-300 border-purple-200 dark:border-purple-900/50'
+        };
+      default:
+        return {
+          icon: <HelpCircle className="h-5 w-5" />,
+          bgNormal: 'bg-rose-50/40 hover:bg-rose-50/70 border-rose-100/80 dark:bg-rose-950/10 dark:border-rose-900/50 dark:hover:border-rose-800/80',
+          bgOpen: 'bg-rose-50/90 border-rose-400 dark:bg-rose-950/30 dark:border-rose-500 shadow-md shadow-rose-500/5',
+          iconBg: 'bg-rose-100/60 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400',
+          badge: 'bg-rose-100 text-rose-900 dark:bg-rose-950 dark:text-rose-300 border-rose-200 dark:border-rose-900/50'
+        };
     }
-  ];
+  };
+
+  const faqData: FaqItem[] = faqs.map(f => {
+    const themeInfo = getFaqTheme(f.category);
+    return {
+      category: f.category,
+      question: f.question,
+      answer: f.answer,
+      icon: themeInfo.icon,
+      theme: {
+        bgNormal: themeInfo.bgNormal,
+        bgOpen: themeInfo.bgOpen,
+        iconBg: themeInfo.iconBg,
+        badge: themeInfo.badge
+      }
+    };
+  });
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

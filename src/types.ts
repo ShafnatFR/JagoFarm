@@ -7,6 +7,7 @@ export interface CircularStage {
   output: string;
   efficiency: string;
   details: string;
+  imageUrl?: string;
 }
 
 export interface HarvestProduct {

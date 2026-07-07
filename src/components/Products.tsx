@@ -238,7 +238,7 @@ export default function Products({ onOpenConsultation }: ProductsProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
             >
               {freshProducts.map((p) => (
                 <div
@@ -247,7 +247,7 @@ export default function Products({ onOpenConsultation }: ProductsProps) {
                   className="group flex flex-col rounded-3xl bg-bg-white border border-secondary overflow-hidden shadow-xl shadow-secondary/60 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/35 transition-all duration-300"
                 >
                   {/* Image container */}
-                  <div className="relative h-48 overflow-hidden bg-secondary/30">
+                  <div className="relative h-32 sm:h-48 overflow-hidden bg-secondary/30">
                     <img
                       src={p.image}
                       alt={p.name}
@@ -255,23 +255,23 @@ export default function Products({ onOpenConsultation }: ProductsProps) {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="rounded-full bg-bg-white/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-primary shadow-xs">
+                      <span className="rounded-full bg-bg-white/90 backdrop-blur-xs px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-bold text-primary shadow-xs">
                         {p.category}
                       </span>
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-5 flex-1 flex flex-col justify-between text-left">
+                  <div className="p-3.5 sm:p-5 flex-1 flex flex-col justify-between text-left">
                     <div className="space-y-2">
-                      <h3 className="font-display text-base font-bold text-primary group-hover:text-accent transition-colors">
+                      <h3 className="font-display text-sm sm:text-base font-bold text-primary group-hover:text-accent transition-colors line-clamp-1">
                         {p.name}
                       </h3>
 
                       {/* Interactive Stars and Rating Badge */}
                       <div 
                         onClick={() => handleOpenReviews(p)}
-                        className="flex items-center gap-1.5 cursor-pointer hover:bg-slate-100/80 transition-all bg-slate-50 border border-slate-100 rounded-lg py-1 px-2.5 inline-flex"
+                        className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-1.5 cursor-pointer hover:bg-slate-100/80 transition-all bg-slate-50 border border-slate-100 rounded-lg py-1 px-2 inline-flex"
                         title="Klik untuk melihat ulasan & memberi rating"
                       >
                         <div className="flex items-center text-amber-400">
@@ -280,53 +280,55 @@ export default function Products({ onOpenConsultation }: ProductsProps) {
                             return (
                               <Star
                                 key={i}
-                                className={`h-3 w-3 ${
+                                className={`h-2.5 sm:h-3 w-2.5 sm:w-3 ${
                                   i < Math.round(avg) ? 'fill-amber-400 text-amber-400' : 'text-slate-300'
                                 }`}
                               />
                             );
                           })}
                         </div>
-                        <span className="text-xs font-bold text-slate-700 leading-none">
-                          {getAverageRating(p.id).toFixed(1)}
-                        </span>
-                        <span className="text-[10px] text-slate-500 font-medium leading-none">
-                          ({getProductReviewsCount(p.id)})
-                        </span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[10px] sm:text-xs font-bold text-slate-700 leading-none">
+                            {getAverageRating(p.id).toFixed(1)}
+                          </span>
+                          <span className="text-[8px] sm:text-[10px] text-slate-500 font-medium leading-none">
+                            ({getProductReviewsCount(p.id)})
+                          </span>
+                        </div>
                       </div>
 
-                      <p className="text-xs text-slate-500 leading-relaxed min-h-[48px]">
+                      <p className="text-[10px] sm:text-xs text-slate-500 leading-relaxed line-clamp-2 sm:line-clamp-none min-h-[30px] sm:min-h-[48px]">
                         {p.description}
                       </p>
                     </div>
 
                     {/* Tags and Action */}
-                    <div className="pt-4 border-t border-secondary mt-4 space-y-4">
-                      <div className="flex flex-wrap gap-1.5">
+                    <div className="pt-3 sm:pt-4 border-t border-secondary mt-3 sm:mt-4 space-y-3 sm:space-y-4">
+                      <div className="flex flex-wrap gap-1">
                         {p.tags.map((tag) => (
-                          <span key={tag} className="text-[9px] font-mono font-bold bg-secondary text-accent px-2 py-0.5 rounded-md">
+                          <span key={tag} className="text-[8px] sm:text-[9px] font-mono font-bold bg-secondary text-accent px-1.5 py-0.5 rounded-md">
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2">
                         <button
                           id={`btn-reviews-product-${p.id}`}
                           onClick={() => handleOpenReviews(p)}
-                          className="flex-1 flex items-center justify-center gap-1 rounded-xl bg-secondary hover:bg-slate-200 text-primary py-2 px-2 text-[11px] font-bold transition-all border border-slate-200"
+                          className="flex-1 flex items-center justify-center gap-1 rounded-xl bg-secondary hover:bg-slate-200 text-primary py-1.5 sm:py-2 px-1.5 sm:px-2 text-[10px] sm:text-[11px] font-bold transition-all border border-slate-200"
                         >
-                          <MessageSquare className="h-3.5 w-3.5 text-accent" />
-                          <span>Ulasan ({getProductReviewsCount(p.id)})</span>
+                          <MessageSquare className="h-3 sm:h-3.5 w-3 sm:w-3.5 text-accent flex-shrink-0" />
+                          <span>Ulasan</span>
                         </button>
                         
                         <button
                           id={`btn-order-product-${p.id}`}
                           onClick={() => onOpenConsultation('Hasil Panen Segar')}
-                          className="flex-1 flex items-center justify-center gap-1 rounded-xl bg-accent hover:bg-accent-hover text-bg-white py-2 px-2 text-[11px] font-bold transition-all shadow-md shadow-accent/10"
+                          className="flex-1 flex items-center justify-center gap-1 rounded-xl bg-accent hover:bg-accent-hover text-bg-white py-1.5 sm:py-2 px-1.5 sm:px-2 text-[10px] sm:text-[11px] font-bold transition-all shadow-md shadow-accent/10"
                         >
                           <span>Pesan</span>
-                          <ArrowUpRight className="h-3.5 w-3.5" />
+                          <ArrowUpRight className="h-3 sm:h-3.5 w-3 sm:w-3.5 flex-shrink-0" />
                         </button>
                       </div>
                     </div>
@@ -341,58 +343,58 @@ export default function Products({ onOpenConsultation }: ProductsProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-2 gap-4 sm:gap-6"
             >
               {iotModules.map((m) => (
                 <div
                   key={m.id}
                   id={`iot-module-card-${m.id}`}
-                  className="group rounded-3xl bg-bg-white border border-secondary p-6 sm:p-8 flex flex-col justify-between text-left shadow-xl shadow-secondary/60 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/40 transition-all duration-300 relative overflow-hidden"
+                  className="group rounded-3xl bg-bg-white border border-secondary p-4 sm:p-8 flex flex-col justify-between text-left shadow-xl shadow-secondary/60 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/40 transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {/* Badge */}
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-[10px] font-mono font-bold text-accent">
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="rounded-full bg-accent/10 px-2 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-mono font-bold text-accent">
                         {m.category}
                       </span>
-                      <span className="text-[10px] font-mono text-slate-400 dark:text-sky-300/80 font-bold">READY TO DEPLOY</span>
+                      <span className="text-[8px] sm:text-[10px] font-mono text-slate-400 dark:text-sky-300/80 font-bold leading-none">READY TO DEPLOY</span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display text-lg font-bold text-primary group-hover:text-accent transition-colors">
+                    <h3 className="font-display text-sm sm:text-lg font-bold text-primary group-hover:text-accent transition-colors line-clamp-1">
                       {m.name}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs text-slate-500 dark:text-slate-300 leading-relaxed">
+                    <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-300 leading-relaxed line-clamp-2 sm:line-clamp-none">
                       {m.description}
                     </p>
 
                     {/* Tech Features Bullet points */}
-                    <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-3">
+                    <ul className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2 pt-2 sm:pt-3">
                       {m.features.map((feat) => (
-                        <li key={feat} className="flex items-start gap-1.5 text-[10px] text-slate-600 dark:text-slate-200 bg-secondary/50 dark:bg-sky-950/20 p-2 rounded-lg border border-secondary dark:border-sky-900/30">
-                          <Check className="h-3.5 w-3.5 text-accent flex-shrink-0 mt-0.5" />
-                          <span>{feat}</span>
+                        <li key={feat} className="flex items-start gap-1 sm:gap-1.5 text-[8px] sm:text-[10px] text-slate-600 dark:text-slate-200 bg-secondary/50 dark:bg-sky-950/20 p-1.5 sm:p-2 rounded-lg border border-secondary dark:border-sky-900/30">
+                          <Check className="h-3 sm:h-3.5 w-3 sm:w-3.5 text-accent flex-shrink-0 mt-0.5" />
+                          <span className="line-clamp-2 sm:line-clamp-none">{feat}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Pricing action info */}
-                  <div className="flex items-center justify-between pt-6 border-t border-secondary mt-6 gap-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-4 sm:pt-6 border-t border-secondary mt-4 sm:mt-6 gap-2.5 sm:gap-4">
                     <div className="text-left">
-                      <p className="text-[10px] font-mono text-slate-400 dark:text-sky-300/70 font-bold uppercase">Suku Cadang & Jasa Pasang</p>
-                      <p className="text-sm font-bold text-primary">Termasuk Garansi 1 Tahun</p>
+                      <p className="text-[8px] sm:text-[10px] font-mono text-slate-400 dark:text-sky-300/70 font-bold uppercase leading-none">Suku Cadang & Jasa Pasang</p>
+                      <p className="text-[11px] sm:text-sm font-bold text-primary leading-tight mt-0.5">Termasuk Garansi 1 Tahun</p>
                     </div>
 
                     <button
                       id={`btn-quote-iot-${m.id}`}
                       onClick={() => onOpenConsultation('Smart Farming IoT')}
-                      className="flex items-center gap-1.5 rounded-xl bg-primary dark:bg-accent text-bg-white dark:text-slate-950 hover:bg-accent dark:hover:bg-sky-300 py-2.5 px-4 text-xs font-bold transition-all"
+                      className="w-full sm:w-auto flex items-center justify-center gap-1 rounded-xl bg-primary dark:bg-accent text-bg-white dark:text-slate-950 hover:bg-accent dark:hover:bg-sky-300 py-2 sm:py-2.5 px-3 sm:px-4 text-[10px] sm:text-xs font-bold transition-all flex-shrink-0"
                     >
-                      <span>Minta Penawaran</span>
-                      <ArrowUpRight className="h-4 w-4" />
+                      <span>Hubungi</span>
+                      <ArrowUpRight className="h-3.5 sm:h-4 w-3.5 sm:w-4 flex-shrink-0" />
                     </button>
                   </div>
                 </div>

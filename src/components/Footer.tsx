@@ -115,7 +115,7 @@ export default function Footer({ onOpenConsultation }: FooterProps) {
           </div>
 
           {/* Social feed Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {feedItems.map((item) => (
               <div 
                 key={item.id}
@@ -123,7 +123,7 @@ export default function Footer({ onOpenConsultation }: FooterProps) {
                 className="group relative rounded-2xl overflow-hidden border border-slate-100 bg-bg-white shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
               >
                 {/* Thumbnail container */}
-                <div className="relative h-48 overflow-hidden bg-slate-100">
+                <div className="relative h-32 sm:h-48 overflow-hidden bg-slate-100">
                   <img 
                     src={item.thumbnail} 
                     alt={item.caption}
@@ -131,25 +131,25 @@ export default function Footer({ onOpenConsultation }: FooterProps) {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Hover social metric glass overlay */}
-                  <div className="absolute inset-0 bg-primary/45 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 text-bg-white font-mono text-xs z-10">
-                    <span className="flex items-center gap-1.5 font-bold">
-                      <Heart className="h-4 w-4 text-rose-500 fill-rose-500" />
+                  <div className="absolute inset-0 bg-primary/45 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 sm:gap-4 text-bg-white font-mono text-[10px] sm:text-xs z-10">
+                    <span className="flex items-center gap-1 sm:gap-1.5 font-bold">
+                      <Heart className="h-3 sm:h-4 w-3 sm:w-4 text-rose-500 fill-rose-500" />
                       {item.likes}
                     </span>
-                    <span className="flex items-center gap-1.5 font-bold">
-                      <MessageCircle className="h-4 w-4 text-accent" />
+                    <span className="flex items-center gap-1 sm:gap-1.5 font-bold">
+                      <MessageCircle className="h-3 sm:h-4 w-3 sm:w-4 text-accent" />
                       {item.comments}
                     </span>
                   </div>
                 </div>
 
                 {/* Caption / Text Body */}
-                <div className="p-4 flex-1 flex flex-col justify-between">
-                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
+                  <p className="text-[10px] sm:text-xs text-slate-600 line-clamp-2 leading-relaxed">
                     {item.caption}
                   </p>
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono font-semibold pt-3 mt-3 border-t border-slate-100">
-                    <span>Instagram Feed</span>
+                  <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 font-mono font-semibold pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-slate-100">
+                    <span>Instagram</span>
                     <span className="text-accent">Lihat Post</span>
                   </div>
                 </div>

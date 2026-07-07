@@ -11,12 +11,7 @@ import AdminCMS from './components/AdminCMS';
 
 export default function App() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'landing' | 'admin'>(() => {
-    if (typeof window !== 'undefined' && window.location.hash === '#/admin') {
-      return 'admin';
-    }
-    return 'landing';
-  });
+  const [currentPage, setCurrentPage] = useState<'landing' | 'admin'>('landing');
   const [initialInterest, setInitialInterest] = useState('Smart Farming IoT');
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {

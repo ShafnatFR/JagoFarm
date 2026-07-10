@@ -33,6 +33,12 @@ import productOrnamental from '../assets/product-ornamental.webp'
 import productCatfish from '../assets/product-catfish.webp'
 import productGurame from '../assets/product-gurame.webp'
 import productIot from '../assets/product-iot.webp'
+import floatingFeed from '../assets/floating-feed.png'
+import floatingIot from '../assets/floating-iot.png'
+import floatingLeaves from '../assets/floating-leaves.png'
+import floatingMaggot from '../assets/floating-maggot.png'
+import floatingMelon from '../assets/floating-melon.png'
+import floatingWaterSensor from '../assets/floating-water-sensor.png'
 
 export const icons = {
   ArrowRight,
@@ -53,11 +59,6 @@ export const hero = {
     ['1.2M L', 'Air Didaur Ulang / Hari', Drop],
     ['30%+', 'Peningkatan Produksi', ChartLineUp],
     ['Zero', 'Limbah ke Alam', Recycle],
-  ],
-  callouts: [
-    ['IoT Sensor', 'pH 6.8 | DO 5.2'],
-    ['Smart Greenhouse', 'Suhu 28°C | RH 65%'],
-    ['AI Monitoring', 'Prediksi panen 98%'],
   ],
 }
 
@@ -101,6 +102,15 @@ export const ecosystemSteps = [
 ]
 
 export const benefits = ['Hemat Biaya', 'Ramah Lingkungan', 'Produktivitas Tinggi', 'Kualitas Terjaga']
+
+export const ecosystemFloaters = [
+  { image: floatingMelon, label: 'Melon', className: 'is-melon' },
+  { image: floatingLeaves, label: 'Daun hijau', className: 'is-leaves' },
+  { image: floatingWaterSensor, label: 'Sensor air', className: 'is-water' },
+  { image: floatingMaggot, label: 'Maggot', className: 'is-maggot' },
+  { image: floatingFeed, label: 'Pakan', className: 'is-feed' },
+  { image: floatingIot, label: 'Sensor IoT', className: 'is-iot' },
+]
 
 export const services = [
   {

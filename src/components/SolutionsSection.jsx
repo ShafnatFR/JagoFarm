@@ -1,14 +1,16 @@
-import { services, icons } from '../data/content.js'
+import { services, icons } from "../data/content.js";
 
 export default function SolutionsSection() {
-  const { ArrowRight } = icons
+  const { ArrowRight } = icons;
 
   return (
-    <section className="solutions section-shell" id="solusi">
+    <section className="solutions section-shell motion-section" id="solusi">
       <div className="section-heading">
-        <span className="section-label">Solusi Terintegrasi</span>
-        <h2>Solusi & Layanan Kami</h2>
-        <p>Teknologi terdepan dan layanan terintegrasi untuk mendukung setiap aspek pertanian dan peternakan modern.</p>
+        <h2 className="motion-item">Solusi & Layanan Kami</h2>
+        <p className="motion-item">
+          Teknologi terdepan dan layanan terintegrasi untuk mendukung setiap
+          aspek pertanian dan peternakan modern.
+        </p>
       </div>
       <div className="service-grid">
         {services.map(({ title, description, image, Icon }) => (
@@ -29,5 +31,5 @@ export default function SolutionsSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }

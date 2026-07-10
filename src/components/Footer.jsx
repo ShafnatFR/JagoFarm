@@ -3,43 +3,41 @@ import logo from '../assets/jagofarm-logo.svg'
 const links = [
   ['Beranda', '#beranda'],
   ['Solusi', '#solusi'],
-  ['Produk', '#produk'],
-  ['Tentang Kami', '#tentang'],
+  ['Produk', '/katalog'],
+  ['Tentang Kami', '/tentang-kami'],
 ]
 const productLinks = ['Melon', 'Sayuran', 'Ikan', 'Ayam Petelur', 'Perangkat IoT']
 const companyLinks = ['Tentang Kami', 'Karir', 'Mitra', 'Artikel', 'Kebijakan Privasi']
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   return (
     <footer className="footer section-shell" id="kontak">
       <div className="footer-brand">
         <img src={logo} alt="Jago Farm" />
-        <p>
-          Membangun ekosistem pertanian dan peternakan cerdas berbasis AI & IoT untuk masa depan yang berkelanjutan.
-        </p>
+        <p>Membangun ekosistem pertanian dan peternakan cerdas berbasis AI & IoT untuk masa depan yang berkelanjutan.</p>
       </div>
       <nav className="footer-links" aria-label="Navigasi footer utama">
         <h3>Navigasi</h3>
-        {links.map(([label, href]) => (
-          <a href={href} key={label}>
+        {links.map(([label, target]) => (
+          <button onClick={() => onNavigate(target)} type="button" key={label}>
             {label}
-          </a>
+          </button>
         ))}
       </nav>
       <nav className="footer-links" aria-label="Produk footer">
         <h3>Produk</h3>
         {productLinks.map((label) => (
-          <a href="#katalog" key={label}>
+          <button onClick={() => onNavigate('/katalog')} type="button" key={label}>
             {label}
-          </a>
+          </button>
         ))}
       </nav>
       <nav className="footer-links" aria-label="Perusahaan footer">
         <h3>Perusahaan</h3>
         {companyLinks.map((label) => (
-          <a href="#tentang" key={label}>
+          <button onClick={() => onNavigate('/tentang-kami')} type="button" key={label}>
             {label}
-          </a>
+          </button>
         ))}
       </nav>
       <div className="footer-contact">
@@ -48,7 +46,7 @@ export default function Footer() {
         <a href="tel:+6281234567890">+62 812-3456-7890</a>
         <a href="mailto:info@jagofarm.id">info@jagofarm.id</a>
         <a href="https://www.jagofarm.id">www.jagofarm.id</a>
-        <small>© 2024 Jago Farm. Semua Hak Dilindungi.</small>
+        <small>(c) 2024 Jago Farm. Semua Hak Dilindungi.</small>
       </div>
     </footer>
   )

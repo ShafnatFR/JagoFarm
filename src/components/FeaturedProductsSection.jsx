@@ -1,17 +1,34 @@
-import { useState } from 'react'
-import { featuredProducts, icons } from '../data/content.js'
+import { useState } from "react";
+import { featuredProducts, icons } from "../data/content.js";
 
-export default function FeaturedProductsSection() {
-  const [active, setActive] = useState(0)
-  const product = featuredProducts[active]
-  const { CheckCircle } = icons
+export default function FeaturedProductsSection({ onNavigate }) {
+  const [active, setActive] = useState(0);
+  const product = featuredProducts[active];
+  const { CheckCircle } = icons;
 
   return (
-    <section className="featured-products section-shell" id="produk">
-      <div className="featured-card">
+    <section
+      className="featured-products section-shell motion-section"
+      id="produk"
+    >
+      <div className="section-heading featured-heading">
+        <h2 className="motion-item">
+          Produk tumbuh dari alur yang sama, bukan etalase terpisah.
+        </h2>
+        <p className="motion-item">
+          Setiap produk membawa jejak ekosistem: limbah menjadi pakan, air
+          kembali dimanfaatkan, data membantu menjaga kualitas.
+        </p>
+      </div>
+      <div className="featured-card motion-item">
         <div className="product-tabs" aria-label="Kategori produk unggulan">
           {featuredProducts.map((item, index) => (
-            <button className={active === index ? 'is-active' : ''} key={item.key} onClick={() => setActive(index)} type="button">
+            <button
+              className={active === index ? "is-active" : ""}
+              key={item.key}
+              onClick={() => setActive(index)}
+              type="button"
+            >
               <img src={item.image} alt="" />
               {item.title}
             </button>
@@ -30,15 +47,15 @@ export default function FeaturedProductsSection() {
           </div>
         </div>
         <div className="featured-copy">
-          <span className="section-label">Produk Berkualitas</span>
-          <h2>Produk Berkualitas dari Ekosistem Sirkular</h2>
+          <span className="section-label">{product.category}</span>
+          <h2>{product.title}</h2>
           <p>{product.description}</p>
           <ul>
             {[
-              'Dibudidayakan dengan teknologi presisi',
-              'Ramah lingkungan & tanpa limbah',
-              'Didukung data real-time & AI',
-              'Kualitas terjaga dari hulu ke hilir',
+              "Dibudidayakan dengan teknologi presisi",
+              "Ramah lingkungan & tanpa limbah",
+              "Didukung data real-time & AI",
+              "Kualitas terjaga dari hulu ke hilir",
             ].map((item) => (
               <li key={item}>
                 <CheckCircle size={19} weight="fill" />
@@ -46,8 +63,15 @@ export default function FeaturedProductsSection() {
               </li>
             ))}
           </ul>
+          <button
+            className="button button-primary"
+            onClick={() => onNavigate("/katalog")}
+            type="button"
+          >
+            Buka katalog lengkap
+          </button>
         </div>
       </div>
     </section>
-  )
+  );
 }

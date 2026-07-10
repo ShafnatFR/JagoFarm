@@ -7,12 +7,6 @@ export default function IntroAnimation() {
   const ref = useRef(null)
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) {
-      setVisible(false)
-      return undefined
-    }
-
     const mark = ref.current.querySelector('.intro-mark')
     const line = ref.current.querySelectorAll('.intro-line')
     const markAnimation = animate(mark, {

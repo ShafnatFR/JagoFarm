@@ -10,6 +10,7 @@ import Navbar from './components/Navbar.jsx'
 import ProductCatalog from './components/ProductCatalog.jsx'
 import SolutionsSection from './components/SolutionsSection.jsx'
 import AboutPage from './components/AboutPage.jsx'
+import ContactSection from './components/ContactSection.jsx'
 import './styles.css'
 
 const routes = {
@@ -66,6 +67,12 @@ export default function App() {
     return () => cancelAnimationFrame(frame)
   }, [page, pendingTarget])
 
+  useEffect(() => {
+    if (page !== 'home' || pendingTarget || !window.location.hash) return undefined
+    const timer = window.setTimeout(() => scrollToTarget(window.location.hash), 240)
+    return () => window.clearTimeout(timer)
+  }, [page, pendingTarget])
+
   const navigate = (target) => {
     if (target.startsWith('#')) {
       if (page !== 'home') {
@@ -99,6 +106,7 @@ export default function App() {
       )}
       {page === 'catalog' && <ProductCatalog />}
       {page === 'about' && <AboutPage />}
+      <ContactSection onNavigate={navigate} />
       <Footer onNavigate={navigate} />
     </>
   )

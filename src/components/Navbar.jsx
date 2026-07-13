@@ -21,7 +21,7 @@ export default function Navbar({ page, onNavigate }) {
     const shell = shellRef.current
     if (!shell) return undefined
 
-    const trigger = ScrollTrigger.create({
+    const blendTrigger = ScrollTrigger.create({
       trigger: document.documentElement,
       start: 'top -36',
       end: 'bottom bottom',
@@ -32,8 +32,29 @@ export default function Navbar({ page, onNavigate }) {
       },
     })
 
-    return () => trigger.kill()
-  }, [])
+    const contact = document.querySelector('#hubungi-kami')
+    const observer = contact
+      ? new IntersectionObserver(
+          ([entry]) => {
+            shell.classList.toggle('is-contact', entry.isIntersecting)
+            shell.classList.toggle('is-contact-merged', entry.intersectionRatio > 0.38)
+          },
+          {
+            rootMargin: '-18% 0px -36% 0px',
+            threshold: [0, 0.38],
+          },
+        )
+      : null
+
+    observer?.observe(contact)
+
+    window.setTimeout(() => ScrollTrigger.refresh(), 120)
+
+    return () => {
+      blendTrigger.kill()
+      observer?.disconnect()
+    }
+  }, [page])
 
   const go = (target) => {
     setOpen(false)
@@ -54,14 +75,16 @@ export default function Navbar({ page, onNavigate }) {
             </button>
           ))}
         </div>
-        <button className="nav-contact" onClick={() => go('#kontak')} type="button">
+        <button className="nav-contact" onClick={() => go('#hubungi-kami')} type="button" aria-label="Hubungi Kami">
           <PhoneCall size={16} weight="bold" />
-          Hubungi Kami
         </button>
         <button className="nav-menu" onClick={() => setOpen((value) => !value)} type="button" aria-label="Buka menu">
           {open ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
         </button>
       </nav>
+      <button className="nav-floating-phone" onClick={() => go('#hubungi-kami')} type="button" aria-label="Hubungi Jago Farm">
+        <PhoneCall size={25} weight="bold" />
+      </button>
     </header>
   )
 }

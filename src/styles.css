@@ -130,7 +130,7 @@ img {
   box-shadow: 0 18px 54px rgb(6 85 46 / 0.1);
   backdrop-filter: blur(18px);
   transform: translateX(-50%);
-  transition: width 220ms ease, background 220ms ease, border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  transition: width 320ms ease, height 320ms ease, opacity 260ms ease, background 320ms ease, border-color 320ms ease, box-shadow 320ms ease, transform 320ms ease;
 }
 
 .nav-shell.is-blended {
@@ -151,6 +151,50 @@ img {
   box-shadow: none;
 }
 
+.nav-shell.is-contact {
+  width: 74px;
+  height: 74px;
+  border-color: rgb(137 207 112 / 0.48);
+  background: rgb(6 34 20 / 0.74);
+  box-shadow:
+    0 0 0 10px rgb(137 207 112 / 0.08),
+    0 0 58px rgb(137 207 112 / 0.42);
+  transform: translateX(-50%) translateY(8px);
+}
+
+.nav-shell.is-contact-merged {
+  opacity: 0;
+  transform: translateX(-50%) translateY(128px) scale(0.54);
+  pointer-events: none;
+}
+
+.nav-shell.is-contact .nav {
+  opacity: 0;
+  transform: scale(0.82);
+  pointer-events: none;
+}
+
+.nav-floating-phone {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #e9ffe2;
+  opacity: 0;
+  transform: scale(0.42) rotate(-18deg);
+  pointer-events: none;
+  transition: opacity 260ms ease, transform 360ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.nav-shell.is-contact .nav-floating-phone {
+  opacity: 1;
+  color: #e9ffe2;
+  transform: scale(1) rotate(0deg);
+  pointer-events: auto;
+}
+
 .nav {
   height: 64px;
   display: grid;
@@ -159,6 +203,7 @@ img {
   gap: 24px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4.6vw, 72px);
+  transition: opacity 220ms ease, transform 280ms ease;
 }
 
 .brand,
@@ -229,13 +274,21 @@ img {
 
 .nav-contact {
   justify-self: end;
-  gap: 9px;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
   min-height: 46px;
-  border-radius: 14px;
-  padding: 0 20px;
-  color: #ffffff;
-  background: var(--forest);
+  border-radius: 999px;
+  padding: 0;
+  color: #0d1710;
+  background: #89cf70;
   box-shadow: 0 14px 34px rgb(6 85 46 / 0.22);
+}
+
+.nav-contact svg {
+  width: 16px;
+  height: 16px;
 }
 
 .nav-menu {
@@ -258,7 +311,7 @@ img {
   grid-template-columns: minmax(430px, 0.78fr) minmax(620px, 1.22fr);
   align-items: center;
   gap: clamp(24px, 4vw, 64px);
-  padding-top: clamp(54px, 6vw, 92px);
+  padding-top: clamp(78px, 7vw, 122px);
   padding-bottom: clamp(66px, 6vw, 96px);
   overflow: hidden;
 }
@@ -497,7 +550,7 @@ img {
   align-items: center;
   padding-top: clamp(44px, 5.4vw, 78px);
   padding-bottom: clamp(44px, 5.4vw, 78px);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .ecosystem::before {
@@ -510,6 +563,8 @@ img {
 }
 
 .ecosystem-copy {
+  position: relative;
+  z-index: 6;
   display: grid;
   gap: 18px;
 }
@@ -575,15 +630,17 @@ img {
 
 .ecosystem-stage {
   position: relative;
+  z-index: 2;
   min-height: min(74dvh, 720px);
   display: grid;
   place-items: center;
+  margin-left: 0;
 }
 
 .step-stack {
   position: relative;
   z-index: 2;
-  width: 100%;
+  width: calc(100% - clamp(108px, 14vw, 180px));
   min-height: min(68dvh, 660px);
   display: grid;
   place-items: center;
@@ -593,13 +650,13 @@ img {
   position: absolute;
   inset: 0;
   display: block;
-  border: 1px solid rgb(255 255 255 / 0.82);
-  border-radius: 28px;
+  border: 0;
+  border-radius: 0;
   padding: 0;
-  background: rgb(255 255 255 / 0.9);
-  box-shadow: 0 26px 80px rgb(6 85 46 / 0.15);
-  backdrop-filter: blur(16px);
-  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  overflow: visible;
   will-change: transform, opacity, visibility;
   pointer-events: none;
 }
@@ -609,7 +666,7 @@ img {
 }
 
 .ecosystem.is-interacting .step-scene.is-active {
-  border-color: rgb(106 168 79 / 0.38);
+  filter: saturate(1.04) contrast(1.02);
 }
 
 .active-step-image {
@@ -617,7 +674,8 @@ img {
   height: 100%;
   min-height: inherit;
   overflow: hidden;
-  border-radius: inherit;
+  border-radius: 30px;
+  box-shadow: 0 26px 80px rgb(6 85 46 / 0.14);
 }
 
 .active-step-image img {
@@ -630,51 +688,52 @@ img {
 
 .floating-assets {
   position: absolute;
-  inset: -8% -7% -6% -6%;
-  z-index: 4;
+  inset: 0;
+  z-index: 3;
   pointer-events: none;
 }
 
 .floating-asset {
   position: absolute;
-  width: clamp(64px, 8vw, 116px);
-  filter: drop-shadow(0 18px 28px rgb(6 85 46 / 0.18));
+  width: clamp(42px, 4.8vw, 68px);
+  opacity: 0.78;
+  filter: drop-shadow(0 16px 24px rgb(6 85 46 / 0.14));
   transform-origin: center;
   will-change: transform;
 }
 
 .floating-asset.is-melon {
-  top: 6%;
-  left: 0;
-  width: clamp(74px, 9.6vw, 138px);
+  top: 9%;
+  left: 1%;
+  width: clamp(48px, 5.2vw, 76px);
 }
 
 .floating-asset.is-leaves {
-  top: -1%;
-  right: 18%;
+  top: 8%;
+  right: 1%;
 }
 
 .floating-asset.is-water {
-  top: 23%;
-  right: -1%;
-  width: clamp(58px, 7vw, 98px);
+  top: 42%;
+  right: 1%;
+  width: clamp(38px, 4.4vw, 62px);
 }
 
 .floating-asset.is-maggot {
-  left: 3%;
-  bottom: 10%;
+  left: 1%;
+  bottom: 11%;
 }
 
 .floating-asset.is-feed {
-  right: 12%;
-  bottom: -2%;
-  width: clamp(78px, 9.2vw, 132px);
+  right: 3%;
+  bottom: 7%;
+  width: clamp(50px, 5.4vw, 78px);
 }
 
 .floating-asset.is-iot {
-  right: -2%;
-  bottom: 25%;
-  width: clamp(62px, 7.4vw, 104px);
+  left: 2%;
+  bottom: 36%;
+  width: clamp(38px, 4.6vw, 64px);
 }
 
 .step-scene p,
@@ -1152,6 +1211,186 @@ img {
   color: var(--muted);
 }
 
+.contact-cta {
+  --contact-shift: 0;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: none;
+  min-height: min(82dvh, 760px);
+  display: grid;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(320px, 0.52fr) minmax(240px, 0.42fr);
+  align-items: center;
+  gap: clamp(22px, 4vw, 70px);
+  margin: 0 auto;
+  padding-inline: max(24px, calc((100vw - 1296px) / 2));
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  color: #f0faec;
+  background:
+    linear-gradient(180deg, var(--bg) 0%, #0b2014 18%, #04160d 76%, #021a0f 100%);
+  box-shadow: none;
+}
+
+.contact-copy,
+.contact-card,
+.contact-visual {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-copy {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-copy > span,
+.contact-card > span {
+  width: fit-content;
+  border: 1px solid rgb(137 207 112 / 0.28);
+  border-radius: 999px;
+  padding: 6px 11px;
+  color: #a8ef8a;
+  background: rgb(137 207 112 / 0.09);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.contact-copy h2 {
+  max-width: 11ch;
+  margin: 0;
+  color: #f4fff0;
+  font-size: clamp(2.7rem, 5.6vw, 6.1rem);
+  line-height: 0.94;
+}
+
+.contact-copy h2 span,
+.contact-copy strong {
+  color: #89cf70;
+}
+
+.contact-copy p {
+  max-width: 58ch;
+  margin: 0;
+  color: rgb(240 250 236 / 0.76);
+  line-height: 1.72;
+}
+
+.contact-actions,
+.contact-promises {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.contact-actions .button-primary {
+  color: #0d1710;
+  background: #89cf70;
+  box-shadow: 0 18px 38px rgb(137 207 112 / 0.2);
+}
+
+.contact-actions .button-secondary {
+  color: #eaffdf;
+  border-color: rgb(137 207 112 / 0.3);
+  background: rgb(255 255 255 / 0.06);
+}
+
+.contact-promises span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgb(240 250 236 / 0.72);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.contact-card {
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgb(137 207 112 / 0.22);
+  border-radius: 20px;
+  padding: 20px;
+  background: rgb(255 255 255 / 0.06);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 22px 58px rgb(0 0 0 / 0.2);
+  backdrop-filter: blur(12px);
+  transform: translateY(calc(var(--contact-shift) * -18px));
+}
+
+.contact-card a {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgb(137 207 112 / 0.12);
+  border-radius: 14px;
+  padding: 12px;
+  color: #f4fff0;
+  background: rgb(137 207 112 / 0.08);
+}
+
+.contact-card a > svg {
+  color: #89cf70;
+}
+
+.contact-card small {
+  display: block;
+  margin-bottom: 3px;
+  color: rgb(240 250 236 / 0.58);
+  font-size: 0.76rem;
+}
+
+.contact-visual {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  transform: translateY(calc(var(--contact-shift) * 28px));
+}
+
+.contact-phone-orbit {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(142px, 15vw, 220px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  color: #eaffdf;
+  background: radial-gradient(circle, rgb(137 207 112 / 0.26), rgb(137 207 112 / 0.06) 58%, transparent 68%);
+  box-shadow:
+    inset 0 0 0 1px rgb(137 207 112 / 0.38),
+    0 0 0 18px rgb(137 207 112 / 0.07),
+    0 0 76px rgb(137 207 112 / 0.38);
+  will-change: transform, opacity;
+}
+
+.contact-phone-orbit::before,
+.contact-phone-orbit::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border: 1px solid rgb(137 207 112 / 0.24);
+  border-radius: inherit;
+}
+
+.contact-phone-orbit::after {
+  inset: -42px;
+  border-style: dashed;
+  opacity: 0.52;
+}
+
+.contact-seedling {
+  position: absolute;
+  right: 8%;
+  bottom: 12%;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  color: #89cf70;
+  border-bottom: 2px solid rgb(137 207 112 / 0.36);
+}
+
 .footer {
   width: 100%;
   max-width: none;
@@ -1160,9 +1399,7 @@ img {
   gap: 34px;
   padding-inline: max(24px, calc((100vw - 1296px) / 2));
   color: #ffffff;
-  background:
-    radial-gradient(circle at 92% 18%, rgb(106 168 79 / 0.18), transparent 24rem),
-    linear-gradient(135deg, #05361f, #021a0f);
+  background: #021a0f;
 }
 
 .footer-brand,
@@ -1244,7 +1481,6 @@ img {
   .button-secondary,
   .step-nav button.is-active,
   .step-nav button:hover,
-  .step-scene,
   .featured-card,
   .product-tabs button,
   .search-box,
@@ -1267,6 +1503,10 @@ img {
   .nav-links.is-open {
     background: rgb(13 23 16 / 0.96);
   }
+
+  .step-scene {
+    background: transparent;
+  }
 }
 
 @media (max-width: 1180px) {
@@ -1283,6 +1523,10 @@ img {
   .hero-photo {
     height: auto;
     min-height: 0;
+  }
+
+  .ecosystem-stage {
+    margin-left: 0;
   }
 
   .nametag-3d {
@@ -1317,6 +1561,15 @@ img {
 
   .featured-card {
     grid-template-columns: 1fr;
+  }
+
+  .contact-cta {
+    grid-template-columns: 1fr 0.86fr;
+  }
+
+  .contact-visual {
+    grid-column: 1 / -1;
+    min-height: 260px;
   }
 
   .product-tabs {
@@ -1364,6 +1617,27 @@ img {
     border-radius: 18px;
     margin-bottom: 12px;
   }
+
+  .contact-cta {
+    width: 100%;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    margin-top: 0;
+    padding-inline: 20px;
+  }
+
+  .contact-copy h2 {
+    max-width: 9.8ch;
+  }
+
+  .contact-card {
+    transform: none;
+  }
+
+  .contact-visual {
+    min-height: 240px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1374,6 +1648,11 @@ img {
   .nav {
     height: 68px;
     grid-template-columns: auto 1fr auto;
+  }
+
+  .nav-shell.is-contact {
+    width: 68px;
+    height: 68px;
   }
 
   .nav-contact {
@@ -1414,7 +1693,7 @@ img {
 
   .hero {
     min-height: auto;
-    padding-top: 28px;
+    padding-top: 56px;
   }
 
   .nametag-3d {
@@ -1439,10 +1718,21 @@ img {
   .service-grid,
   .catalog-grid,
   .catalog-toolbar,
+  .contact-actions,
+  .contact-promises,
   .footer,
   .team-grid,
   .team-lanyards {
     grid-template-columns: 1fr;
+  }
+
+  .contact-actions,
+  .contact-promises {
+    display: grid;
+  }
+
+  .contact-card a {
+    grid-template-columns: 36px 1fr;
   }
 
   .team-lanyard {

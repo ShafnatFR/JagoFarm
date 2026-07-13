@@ -97,11 +97,11 @@ export default function EcosystemPinnedScroll() {
         trigger: sectionRef.current,
         start: "top top",
         end: () =>
-          `+=${window.innerHeight * (ecosystemSteps.length - 1) * 0.82}`,
+          `+=${window.innerHeight * (ecosystemSteps.length - 1) * 1.05}`,
         pin: pinRef.current,
         pinSpacing: true,
         anticipatePin: 1,
-        scrub: 1.25,
+        scrub: 1.65,
         invalidateOnRefresh: true,
         onUpdate: (self) => renderProgress(self.progress),
         onRefresh: (self) => renderProgress(self.progress),

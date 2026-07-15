@@ -1482,6 +1482,34 @@ img {
 .about-page {
   overflow: visible;
   background: linear-gradient(180deg, #ffffff 0%, #fdfaf3 30%, #efeedc 100%);
+  position: relative;
+}
+
+/* Subtle decorative leaf accent di hero */
+.about-page::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: min(600px, 50vw);
+  height: min(600px, 50vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(106, 168, 79, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-page::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: -8%;
+  width: min(400px, 35vw);
+  height: min(400px, 35vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(12, 107, 59, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1494,6 +1522,8 @@ img {
 .about-hero {
   display: grid;
   margin-bottom: 42px;
+  position: relative;
+  z-index: 1;
 }
 
 .catalog-hero {
@@ -1548,6 +1578,21 @@ img {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: clamp(12px, 1.5vw, 18px);
+  border-radius: 16px;
+  transition: background 260ms ease, transform 260ms ease, box-shadow 260ms ease;
+  margin: -4px;
+}
+
+.stat-item:hover {
+  background: var(--leaf-soft);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgb(6 85 46 / 0.08);
+}
+
+[data-theme='dark'] .stat-item:hover {
+  background: rgba(12, 94, 54, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .stat-value {
@@ -2746,6 +2791,27 @@ img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(16px, 2.5vw, 28px);
   margin-top: clamp(28px, 5vw, 48px);
+  position: relative;
+}
+
+/* Garis penghubung horizontal antar timeline card */
+.story-timeline::before {
+  content: '';
+  position: absolute;
+  top: clamp(32px, 4vw, 48px);
+  left: calc(clamp(16px, 2.5vw, 28px) / 2);
+  right: calc(clamp(16px, 2.5vw, 28px) / 2);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--story-accent) 12%,
+    var(--story-accent) 88%,
+    transparent 100%
+  );
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .timeline-card {

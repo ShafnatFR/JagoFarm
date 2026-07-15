@@ -84,7 +84,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
     return () => {
       blendTrigger.kill()
       heroTrigger?.kill()
-      sectionObserver?.disconnect()
+      if (sectionObserver && typeof sectionObserver.disconnect === 'function') sectionObserver.disconnect()
       observer?.disconnect()
     }
   }, [page])

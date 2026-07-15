@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Component, useEffect, useState } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ReactLenis } from 'lenis/react'
 import 'lenis/dist/lenis.css'
@@ -15,6 +15,22 @@ import SolutionsSection from './components/SolutionsSection.jsx'
 import AboutPage from './components/AboutPage.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import './styles.css'
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+  componentDidCatch(error, info) {
+    console.error('ErrorBoundary caught:', error, info)
+  }
+  render() {
+    return this.state.hasError ? null : this.props.children
+  }
+}
 
 const routes = {
   '/': 'home',
@@ -84,6 +100,11 @@ export default function App() {
   }, [page])
 
   const navigate = (target) => {
+    // Kill all GSAP ScrollTriggers BEFORE React reconciliation
+    // to prevent DOM mismatch from ScrollTrigger's pin-spacer
+    ScrollTrigger.getAll().forEach((t) => t.kill())
+    ScrollTrigger.clearScrollMemory()
+
     if (target.startsWith('#')) {
       if (page !== 'home') {
         window.history.pushState(null, '', `/${target}`)
@@ -106,18 +127,20 @@ export default function App() {
       <IntroAnimation />
       <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
       <GlobalMotion page={page} />
-      {page === 'home' && (
-        <>
-          <HeroSection theme={theme} onToggleTheme={toggleTheme} />
-          <EcosystemPinnedScroll />
-          <SolutionsSection />
-          <FeaturedProductsSection />
-          <LatestArticle />
-        </>
-      )}
-      {page === 'catalog' && <ProductCatalog />}
-      {page === 'about' && <AboutPage onNavigate={navigate} />}
-      {page === 'contact' && <ContactSection onNavigate={navigate} />}
+      <ErrorBoundary key={page}>
+        {page === 'home' && (
+          <>
+            <HeroSection theme={theme} onToggleTheme={toggleTheme} />
+            <EcosystemPinnedScroll />
+            <SolutionsSection />
+            <FeaturedProductsSection />
+            <LatestArticle />
+          </>
+        )}
+        {page === 'catalog' && <ProductCatalog />}
+        {page === 'about' && <AboutPage onNavigate={navigate} />}
+        {page === 'contact' && <ContactSection onNavigate={navigate} />}
+      </ErrorBoundary>
       <Footer onNavigate={navigate} />
     </ReactLenis>
   )

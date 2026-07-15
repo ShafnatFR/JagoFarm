@@ -2963,8 +2963,7 @@ img {
 .team-lanyard-card {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  position: relative;
+  gap: 20px;
 }
 
 .team-member-info {
@@ -2979,9 +2978,6 @@ img {
   transition: transform 260ms ease, box-shadow 260ms ease;
   min-height: 220px;
   justify-content: space-between;
-  position: relative;
-  z-index: 1;
-  margin-top: -80px;
 }
 
 .team-member-info:hover {

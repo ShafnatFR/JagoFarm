@@ -313,8 +313,8 @@ export function LanyardCanvas({
   lineWidth = 0.34,
   cameraPosition = [0, 0, 13],
   fov = 29,
-  spotIntensity = 68.8,
-  fillIntensity = 1.35,
+  spotIntensity = 120.0,
+  fillIntensity = 3.5,
 }) {
   return (
     <div className={className} aria-label={ariaLabel}>

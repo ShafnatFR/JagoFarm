@@ -8,6 +8,7 @@ import Footer from './components/Footer.jsx'
 import GlobalMotion from './components/GlobalMotion.jsx'
 import HeroSection from './components/HeroSection.jsx'
 import IntroAnimation from './components/IntroAnimation.jsx'
+import LatestArticle from './components/LatestArticle.jsx'
 import Navbar from './components/Navbar.jsx'
 import ProductCatalog from './components/ProductCatalog.jsx'
 import SolutionsSection from './components/SolutionsSection.jsx'
@@ -106,7 +107,8 @@ export default function App() {
           <HeroSection theme={theme} onToggleTheme={toggleTheme} />
           <EcosystemPinnedScroll />
           <SolutionsSection />
-          <FeaturedProductsSection onNavigate={navigate} />
+          <FeaturedProductsSection />
+          <LatestArticle />
         </>
       )}
       {page === 'catalog' && <ProductCatalog />}

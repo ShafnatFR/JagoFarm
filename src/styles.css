@@ -1502,7 +1502,7 @@ img {
   margin-left: calc(-1 * clamp(260px, 23vw, 430px));
   overflow: hidden;
   border-radius: 48px;
-  background: var(--skeleton-bg);
+  background: rgba(12, 94, 54, 0.06);
 }
 
 /* Skeleton placeholder for team lanyard 3D */
@@ -1511,7 +1511,13 @@ img {
   inset: 0;
   overflow: hidden;
   border-radius: 28px;
-  background: var(--skeleton-bg);
+  background: rgba(12, 94, 54, 0.06);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.lanyard-placeholder.is-leaving {
+  opacity: 0;
+  transform: scale(0.92);
 }
 
 .lanyard-shimmer,

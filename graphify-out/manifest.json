@@ -10,13 +10,13 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1784088576.189599,
-    "ast_hash": "fbd9eb99684ff9bb29ca3583ede0bdae",
+    "mtime": 1784096139.4122555,
+    "ast_hash": "77db826d22432a735004298eb2454cb4",
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
-    "mtime": 1783669156.1848395,
-    "ast_hash": "a995abd1e0970d138d0b8f3c080fae39",
+    "mtime": 1784096139.4132564,
+    "ast_hash": "13dbd3263002872a29c62579da5b0005",
     "semantic_hash": ""
   },
   "src/components/ContactSection.jsx": {
@@ -25,8 +25,8 @@
     "semantic_hash": ""
   },
   "src/components/EcosystemPinnedScroll.jsx": {
-    "mtime": 1784091412.8294568,
-    "ast_hash": "51f0b549ee78d03ea6e08cf33adea483",
+    "mtime": 1784096217.9123442,
+    "ast_hash": "6fb7b36a968f1f52594e8235a433d5bb",
     "semantic_hash": ""
   },
   "src/components/FeaturedProductsSection.jsx": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "src/components/Nametag3D.jsx": {
-    "mtime": 1784083329.4522607,
-    "ast_hash": "36d2b3a10d25bdb313c97fde26d19862",
+    "mtime": 1784096139.4142563,
+    "ast_hash": "91896cebe6a5df0717e39281042d26cd",
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "src/components/TeamLanyards.jsx": {
-    "mtime": 1784083329.4532526,
-    "ast_hash": "23ba01637421bb8f1ea534e54e07ff11",
+    "mtime": 1784096139.415257,
+    "ast_hash": "e948c36bb0e6a224fddb6611d0b0b5b9",
     "semantic_hash": ""
   },
   "src/data/content.js": {
@@ -277,6 +277,11 @@
   "src/assets/jagofarm-ecosystem-scrub-250ms.mp4": {
     "mtime": 1784088606.9967134,
     "ast_hash": "c266594aae8dbd5ae53c3381f16e4aff",
+    "semantic_hash": ""
+  },
+  "src/data/aboutContent.js": {
+    "mtime": 1784096139.416258,
+    "ast_hash": "66ec13ed1a782ecd45d6b84ff036b499",
     "semantic_hash": ""
   }
 }

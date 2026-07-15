@@ -505,41 +505,41 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_aboutpage",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
       "norm_label": "aboutpage.jsx"
     },
     {
       "label": "Nametag3D",
       "file_type": "code",
       "source_file": "src/components/AboutPage.jsx",
-      "source_location": "L3",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_aboutpage_nametag3d",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
       "norm_label": "nametag3d"
     },
     {
       "label": "TeamLanyards",
       "file_type": "code",
       "source_file": "src/components/AboutPage.jsx",
-      "source_location": "L4",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "src_components_aboutpage_teamlanyards",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
       "norm_label": "teamlanyards"
     },
     {
       "label": "AboutPage()",
       "file_type": "code",
       "source_file": "src/components/AboutPage.jsx",
-      "source_location": "L6",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_aboutpage_aboutpage",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
       "norm_label": "aboutpage()"
     },
     {
@@ -821,7 +821,7 @@
       "label": "Nametag3D()",
       "file_type": "code",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L354",
+      "source_location": "L356",
       "_origin": "ast",
       "id": "src_components_nametag3d_nametag3d",
       "community": 3,
@@ -928,21 +928,10 @@
       "norm_label": "teamlanyards.jsx"
     },
     {
-      "label": "members",
-      "file_type": "code",
-      "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "src_components_teamlanyards_members",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
-      "norm_label": "members"
-    },
-    {
       "label": "TeamLanyard()",
       "file_type": "code",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L13",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_teamlanyards_teamlanyard",
       "community": 3,
@@ -953,12 +942,89 @@
       "label": "TeamLanyards()",
       "file_type": "code",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L54",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "src_components_teamlanyards_teamlanyards",
       "community": 3,
       "community_name": "Nametag3D.jsx",
       "norm_label": "teamlanyards()"
+    },
+    {
+      "label": "aboutContent.js",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "aboutcontent.js"
+    },
+    {
+      "label": "aboutHeroText",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent_aboutherotext",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "aboutherotext"
+    },
+    {
+      "label": "aboutStats",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent_aboutstats",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "aboutstats"
+    },
+    {
+      "label": "storyTimeline",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent_storytimeline",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "storytimeline"
+    },
+    {
+      "label": "coreValues",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent_corevalues",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "corevalues"
+    },
+    {
+      "label": "teamMembersDetailed",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent_teammembersdetailed",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "teammembersdetailed"
+    },
+    {
+      "label": "galleryItems",
+      "file_type": "code",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "src_data_aboutcontent_galleryitems",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "galleryitems"
     },
     {
       "label": "content.js",
@@ -1946,8 +2012,8 @@
       "source_location": "L1510",
       "_origin": "ast",
       "id": "prd_template_full_9_logging_monitoring_error_handling",
-      "community": 5,
-      "community_name": "AboutPage.jsx",
+      "community": 17,
+      "community_name": "9. Logging, Monitoring & Error Handling",
       "norm_label": "9. logging, monitoring & error handling"
     },
     {
@@ -1957,8 +2023,8 @@
       "source_location": "L1512",
       "_origin": "ast",
       "id": "prd_template_full_9_1_log_levels",
-      "community": 5,
-      "community_name": "AboutPage.jsx",
+      "community": 17,
+      "community_name": "9. Logging, Monitoring & Error Handling",
       "norm_label": "9.1 log levels"
     },
     {
@@ -1968,8 +2034,8 @@
       "source_location": "L1522",
       "_origin": "ast",
       "id": "prd_template_full_9_2_log_format_structured_json",
-      "community": 5,
-      "community_name": "AboutPage.jsx",
+      "community": 17,
+      "community_name": "9. Logging, Monitoring & Error Handling",
       "norm_label": "9.2 log format (structured json)"
     },
     {
@@ -1979,8 +2045,8 @@
       "source_location": "L1540",
       "_origin": "ast",
       "id": "prd_template_full_9_3_yang_wajib_di_log",
-      "community": 5,
-      "community_name": "AboutPage.jsx",
+      "community": 17,
+      "community_name": "9. Logging, Monitoring & Error Handling",
       "norm_label": "9.3 yang wajib di-log"
     },
     {
@@ -1990,8 +2056,8 @@
       "source_location": "L1554",
       "_origin": "ast",
       "id": "prd_template_full_9_4_error_handling_pattern",
-      "community": 5,
-      "community_name": "AboutPage.jsx",
+      "community": 17,
+      "community_name": "9. Logging, Monitoring & Error Handling",
       "norm_label": "9.4 error handling pattern"
     },
     {
@@ -2001,8 +2067,8 @@
       "source_location": "L1586",
       "_origin": "ast",
       "id": "prd_template_full_9_5_monitoring_alerting",
-      "community": 5,
-      "community_name": "AboutPage.jsx",
+      "community": 17,
+      "community_name": "9. Logging, Monitoring & Error Handling",
       "norm_label": "9.5 monitoring & alerting"
     },
     {
@@ -3062,7 +3128,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AboutPage.jsx",
-      "source_location": "L6",
+      "source_location": "L14",
       "weight": 1.0,
       "source": "src_components_aboutpage",
       "target": "src_components_aboutpage_aboutpage",
@@ -3072,7 +3138,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AboutPage.jsx",
-      "source_location": "L3",
+      "source_location": "L11",
       "weight": 1.0,
       "source": "src_components_aboutpage",
       "target": "src_components_aboutpage_nametag3d",
@@ -3082,10 +3148,76 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/AboutPage.jsx",
-      "source_location": "L4",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "src_components_aboutpage",
       "target": "src_components_aboutpage_teamlanyards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AboutPage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_components_aboutpage",
+      "target": "src_data_aboutcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AboutPage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_components_aboutpage",
+      "target": "src_data_aboutcontent_aboutherotext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AboutPage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_components_aboutpage",
+      "target": "src_data_aboutcontent_aboutstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AboutPage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_components_aboutpage",
+      "target": "src_data_aboutcontent_corevalues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AboutPage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_components_aboutpage",
+      "target": "src_data_aboutcontent_galleryitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/AboutPage.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_components_aboutpage",
+      "target": "src_data_aboutcontent_storytimeline",
       "confidence_score": 1.0
     },
     {
@@ -3274,7 +3406,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L354",
+      "source_location": "L356",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag3d_nametag3d",
@@ -3436,16 +3568,6 @@
       "source_location": "L6",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
-      "target": "src_components_teamlanyards_members",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "src_components_teamlanyards",
       "target": "src_components_teamlanyards_teamlanyard",
       "confidence_score": 1.0
     },
@@ -3453,10 +3575,92 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L54",
+      "source_location": "L80",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
       "target": "src_components_teamlanyards_teamlanyards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TeamLanyards.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_components_teamlanyards",
+      "target": "src_data_aboutcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TeamLanyards.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_components_teamlanyards",
+      "target": "src_data_aboutcontent_teammembersdetailed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "src_data_aboutcontent",
+      "target": "src_data_aboutcontent_aboutherotext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_data_aboutcontent",
+      "target": "src_data_aboutcontent_aboutstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "src_data_aboutcontent",
+      "target": "src_data_aboutcontent_corevalues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "src_data_aboutcontent",
+      "target": "src_data_aboutcontent_galleryitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_data_aboutcontent",
+      "target": "src_data_aboutcontent_storytimeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/data/aboutContent.js",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "src_data_aboutcontent",
+      "target": "src_data_aboutcontent_teammembersdetailed",
       "confidence_score": 1.0
     },
     {
@@ -4651,5 +4855,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "da4b7b8a3427ded5c09979df31a89a2a207e5bd9"
+  "built_at_commit": "753abf0608c66ea02694e86e9cca6e0e8bf602b8"
 }

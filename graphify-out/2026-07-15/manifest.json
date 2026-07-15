@@ -25,13 +25,13 @@
     "semantic_hash": ""
   },
   "src/components/EcosystemPinnedScroll.jsx": {
-    "mtime": 1784088576.1865964,
-    "ast_hash": "870a08ef3fef27fa42c289aafdbb9007",
+    "mtime": 1784091412.8294568,
+    "ast_hash": "51f0b549ee78d03ea6e08cf33adea483",
     "semantic_hash": ""
   },
   "src/components/FeaturedProductsSection.jsx": {
-    "mtime": 1784088576.183596,
-    "ast_hash": "3b7f5c758dfaae4a30c6b49502e95257",
+    "mtime": 1784091414.6518092,
+    "ast_hash": "519defd75a44e879830d4bebeb8d4ab4",
     "semantic_hash": ""
   },
   "src/components/Footer.jsx": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
-    "mtime": 1784033483.699345,
-    "ast_hash": "b84d28e0ae649dba418db731175361cc",
+    "mtime": 1784091605.8732624,
+    "ast_hash": "6f494862e2b7fc588561206c0d1231ee",
     "semantic_hash": ""
   },
   "src/components/ProductCatalog.jsx": {

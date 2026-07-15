@@ -2655,122 +2655,71 @@ img {
   box-shadow: 0 20px 48px rgba(12, 94, 54, 0.12);
 }
 
-/* Video-led ecosystem story. The copy sits above the media rather than over it. */
+/* Scroll-scrubbed ecosystem video. */
 .ecosystem-video-pin {
   position: relative;
   isolation: isolate;
-  background: #f4f8ee;
-  color: #12301e;
+  height: 100dvh;
+  overflow: hidden;
+  background: #102616;
 }
 
 .ecosystem-video-layout {
-  min-height: 100dvh;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  align-content: center;
-  gap: clamp(26px, 3vw, 42px);
-  padding-top: clamp(112px, 11vw, 154px);
-  padding-bottom: clamp(56px, 7vw, 96px);
-}
-
-.ecosystem-video-intro {
-  max-width: 820px;
-  display: grid;
-  gap: 16px;
-}
-
-.ecosystem-video-intro h2 {
-  max-width: 18ch;
-  margin: 0;
-  color: var(--ink);
-  font-size: clamp(2.35rem, 5.2vw, 5.8rem);
-  line-height: .96;
-  letter-spacing: -.065em;
-  text-wrap: balance;
-}
-
-.ecosystem-video-intro p {
-  max-width: 63ch;
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(1rem, 1.28vw, 1.2rem);
-  line-height: 1.65;
-}
-
-.ecosystem-scroll-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--forest);
-  font-size: .84rem;
-  font-weight: 750;
-}
-
-.ecosystem-scroll-cue i {
-  font-size: 1.25rem;
-  font-style: normal;
-}
-
-.ecosystem-video-frame {
-  min-height: min(51dvh, 560px);
+  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  border: 1px solid rgb(32 89 46 / .28);
-  border-radius: clamp(22px, 3vw, 40px);
-  background: #163820;
-  box-shadow: 0 28px 75px rgb(12 65 30 / .18);
 }
 
-.ecosystem-video-frame video {
+.ecosystem-video-media {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  min-height: inherit;
   object-fit: cover;
 }
 
-[data-theme='dark'] .ecosystem-video-pin {
-  background: #07150d;
-  color: #f1faef;
+.ecosystem-video-copy {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
 }
 
-[data-theme='dark'] .ecosystem-video-intro h2 {
-  color: #f5faef;
+.ecosystem-video-headline {
+  position: absolute;
+  top: 50%;
+  width: min(46vw, 680px);
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.6rem, 5.6vw, 6.7rem);
+  font-weight: 800;
+  letter-spacing: -.07em;
+  line-height: .93;
+  text-shadow: 0 3px 20px rgb(0 0 0 / .46), 0 14px 46px rgb(0 0 0 / .28);
+  transform: translateY(calc(-50% + 120dvh));
+  transition: transform 640ms cubic-bezier(.22, .8, .2, 1);
 }
 
-[data-theme='dark'] .ecosystem-video-intro p {
-  color: rgb(232 244 226 / .72);
-}
-
-[data-theme='dark'] .ecosystem-video-frame {
-  border-color: rgb(178 229 141 / .25);
-  box-shadow: 0 34px 88px rgb(0 0 0 / .35);
-}
+.ecosystem-video-headline.is-left { left: clamp(24px, 7vw, 120px); }
+.ecosystem-video-headline.is-right { right: clamp(24px, 7vw, 120px); text-align: right; }
+.ecosystem-video-headline.is-active { transform: translateY(-50%); }
+.ecosystem-video-headline.is-past { transform: translateY(calc(-50% - 120dvh)); }
 
 @media (max-width: 899px) {
-  .ecosystem-video-layout {
-    min-height: auto;
-    gap: 24px;
-    padding-top: 106px;
-    padding-bottom: 66px;
+  .ecosystem-video-headline {
+    top: auto;
+    bottom: clamp(86px, 14vh, 136px);
+    width: min(78vw, 510px);
+    font-size: clamp(2.35rem, 12vw, 4.6rem);
+    transform: translateY(120dvh);
   }
 
-  .ecosystem-video-intro h2 {
-    max-width: 15ch;
-  }
-
-  .ecosystem-scroll-cue {
-    display: none;
-  }
-
-  .ecosystem-video-frame {
-    min-height: 0;
-    aspect-ratio: 9 / 16;
-    border-radius: 24px;
-  }
-
-  .ecosystem-video-frame video {
-    min-height: 0;
-  }
+  .ecosystem-video-headline.is-active { transform: translateY(0); }
+  .ecosystem-video-headline.is-past { transform: translateY(-120dvh); }
+  .ecosystem-video-headline.is-left { left: 24px; }
+  .ecosystem-video-headline.is-right { right: 24px; }
 }
 
 [data-theme='dark'] .facebook-embed-card:hover {

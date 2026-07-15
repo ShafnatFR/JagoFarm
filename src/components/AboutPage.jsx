@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import {
   aboutHeroText,
+  aboutStats,
   coreValues,
   galleryItems,
   storyTimeline,
@@ -10,7 +11,7 @@ import { ArrowRight, Sparkle } from "@phosphor-icons/react";
 const Nametag3D = lazy(() => import("./Nametag3D.jsx"));
 const TeamLanyards = lazy(() => import("./TeamLanyards.jsx"));
 
-export default function AboutPage() {
+export default function AboutPage({ onNavigate }) {
   return (
     <main className="about-page page-shell motion-section">
       {/* 1. Hero Section */}
@@ -22,8 +23,18 @@ export default function AboutPage() {
           </span>
           <h1 className="motion-item">{aboutHeroText.title}</h1>
           <p className="motion-item">{aboutHeroText.description}</p>
+          <div className="about-stats motion-item">
+            {aboutStats.map(({ value, label }) => (
+              <div className="stat-item" key={label}>
+                <span className="stat-value">{value}</span>
+                <span className="stat-label">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <Suspense fallback={<div className="nametag-3d" aria-hidden="true" />}>
+        <Suspense fallback={<div className="nametag-skeleton" aria-hidden="true">
+          <div className="nametag-shimmer" />
+        </div>}>
           <Nametag3D />
         </Suspense>
       </section>
@@ -62,9 +73,9 @@ export default function AboutPage() {
           </p>
         </div>
         <div className="values-grid">
-          {coreValues.map(({ title, description, Icon }) => (
+          {coreValues.map(({ title, description, Icon, color }) => (
             <article className="value-card motion-item" key={title}>
-              <div className="value-icon-wrapper">
+              <div className="value-icon-wrapper" style={{ background: `${color}1a`, color }}>
                 <Icon size={36} weight="duotone" />
               </div>
               <h3>{title}</h3>
@@ -117,13 +128,13 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="cta-actions">
-            <a href="/#kontak" className="cta-btn-primary">
+            <button className="cta-btn-primary" onClick={() => onNavigate('/kontak')} type="button">
               Hubungi Tim Kami
               <ArrowRight size={20} weight="bold" />
-            </a>
-            <a href="/#solusi" className="cta-btn-secondary">
+            </button>
+            <button className="cta-btn-secondary" onClick={() => onNavigate('#solusi')} type="button">
               Lihat Solusi IoT
-            </a>
+            </button>
           </div>
         </div>
       </section>

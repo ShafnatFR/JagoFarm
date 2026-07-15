@@ -44,10 +44,22 @@ function TeamLanyard({ member, index }) {
             ambientIntensity={1.25}
           />
         )}
+        {!active && (
+          <div className="lanyard-placeholder" aria-hidden="true">
+            <div className="lanyard-shimmer" />
+          </div>
+        )}
       </div>
       <div className="team-member-info">
         <span className="team-role-badge">{member.role}</span>
         <h3>{member.name}</h3>
+        {member.roles && (
+          <div className="team-member-roles">
+            {member.roles.map((r) => (
+              <span className="team-role-tag" key={r}>{r}</span>
+            ))}
+          </div>
+        )}
         <p className="team-member-bio">{member.bio}</p>
         <div className="team-member-socials">
           <a href={member.socials.linkedin} target="_blank" rel="noreferrer" aria-label={`LinkedIn ${member.name}`}>

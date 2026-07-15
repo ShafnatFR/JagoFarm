@@ -22,6 +22,7 @@ import ecoFeed from '../assets/eco-feed.webp'
 import ecoWater from '../assets/eco-water.webp'
 import ecoMaggot from '../assets/eco-maggot.webp'
 import ecoWaste from '../assets/eco-waste.webp'
+import ecoFertilizer from '../assets/eco-fertilizer.webp'
 import heroDay from '../assets/hero-farm-day.png'
 import andiCard from '../assets/new-id-card-kolab.png'
 import shafnatCard from '../assets/new-id-card-kolab-shafnat.png'
@@ -31,6 +32,13 @@ export const aboutHeroText = {
   description:
     'Kami memadukan budidaya peternakan, perikanan, pertanian, dan pengolahan limbah organik dalam satu rantai ekosistem tertutup berbasis AI dan IoT. Kami percaya bahwa ketahanan pangan masa depan lahir dari kolaborasi teknologi dan sirkularitas alam.',
 }
+
+export const aboutStats = [
+  { value: '100+', label: 'Mitra Peternak & Petani' },
+  { value: '5+', label: 'Ton Pakan Organik/Bln' },
+  { value: 'Zero', label: 'Target Limbah Produksi' },
+  { value: '24/7', label: 'Pemantauan IoT Real-time' },
+]
 
 export const storyTimeline = [
   {
@@ -92,10 +100,11 @@ export const coreValues = [
 
 export const teamMembersDetailed = [
   {
-    id: 'andi-1',
+    id: 'andi',
     name: 'Andi Rayu H.',
     role: 'Founder & CEO',
-    bio: 'Penggerak utama visi sirkularitas Jago Farm. Berpengalaman dalam manajemen ekosistem pertanian terpadu dan kemitraan strategis.',
+    roles: ['Founder & CEO', 'Agronomy Lead'],
+    bio: 'Penggerak utama visi sirkularitas Jago Farm. Berpengalaman dalam manajemen ekosistem pertanian terpadu — dari biokonversi maggot BSF hingga kemitraan strategis dengan peternak dan petani lokal.',
     image: andiCard,
     originX: -0.9,
     socials: {
@@ -105,38 +114,13 @@ export const teamMembersDetailed = [
     },
   },
   {
-    id: 'shafnat-1',
+    id: 'shafnat',
     name: 'Shafnat Fuaini R.',
     role: 'Co-Founder & Lead Engineer',
-    bio: 'Arsitek di balik sistem IoT cerdas, sensor kualitas air otomatis, dan otomasi pakan Jago Farm. Fokus pada rekayasa perangkat lunak dan data presisi.',
+    roles: ['Co-Founder & Lead Engineer', 'Smart Hardware Lead'],
+    bio: 'Arsitek sistem IoT cerdas, sensor kualitas air otomatis, dan otomasi pakan. Fokus pada rekayasa perangkat keras tahan cuaca, algoritma pemantauan PH/DO, dan data presisi untuk meminimalisir mortalitas ikan.',
     image: shafnatCard,
     originX: -0.3,
-    socials: {
-      linkedin: '#',
-      github: '#',
-      instagram: '#',
-    },
-  },
-  {
-    id: 'andi-2',
-    name: 'Andi Rayu H.',
-    role: 'Agronomy Lead',
-    bio: 'Memastikan siklus biokonversi limbah organik oleh maggot BSF berjalan dengan efisiensi konversi optimal untuk pasokan protein ternak dan tanaman.',
-    image: andiCard,
-    originX: 0.3,
-    socials: {
-      linkedin: '#',
-      github: '#',
-      instagram: '#',
-    },
-  },
-  {
-    id: 'shafnat-2',
-    name: 'Shafnat Fuaini R.',
-    role: 'Smart Hardware Lead',
-    bio: 'Mengembangkan kontroler mikrokontroler tahan cuaca dan algoritma pemantauan PH/DO kolam untuk meminimalisir angka mortalitas ikan secara proaktif.',
-    image: shafnatCard,
-    originX: 0.9,
     socials: {
       linkedin: '#',
       github: '#',
@@ -179,6 +163,13 @@ export const galleryItems = [
     category: 'Zero-Waste Cycle',
     image: ecoMaggot,
     colSpan: 'span 2',
+    rowSpan: 'span 1',
+  },
+  {
+    title: 'Pupuk Organik Cair Hasil Samping',
+    category: 'Zero-Waste Product',
+    image: ecoFertilizer,
+    colSpan: 'span 1',
     rowSpan: 'span 1',
   },
 ]

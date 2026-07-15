@@ -1107,7 +1107,7 @@ img {
 
 .team-lanyard-3d {
   position: absolute;
-  inset: -120px -70px -50px;
+  inset: -120px -180px -100px;
   z-index: 2;
   overflow: visible;
   touch-action: none;

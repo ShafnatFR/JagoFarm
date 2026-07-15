@@ -1,0 +1,20 @@
+{
+  "0": "App.jsx",
+  "1": "content.js",
+  "2": "package.json",
+  "3": "Nametag3D.jsx",
+  "4": "dependencies",
+  "5": "AboutPage.jsx",
+  "6": "AGENTS.md",
+  "7": "@fontsource/outfit",
+  "8": "gsap",
+  "9": "@gsap/react",
+  "10": "lenis",
+  "11": "lottie-react",
+  "12": "meshline",
+  "13": "@phosphor-icons/react",
+  "14": "react-dom",
+  "15": "@react-three/drei",
+  "16": "@react-three/fiber",
+  "21": "vite.config.js"
+}

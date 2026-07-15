@@ -15,6 +15,7 @@ const links = [
 
 export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
   const [open, setOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
   const shellRef = useRef(null)
 
   useEffect(() => {
@@ -31,6 +32,31 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
         shell.classList.toggle('is-blended', self.scroll() > 36)
       },
     })
+
+    const hero = document.querySelector('#beranda')
+    const heroTrigger = hero && ScrollTrigger.create({
+      trigger: hero,
+      start: 'top top',
+      end: 'bottom top',
+      onToggle: ({ isActive }) => shell.classList.toggle('is-on-hero', isActive),
+    })
+
+    const sectionObserver = page === 'home' && new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting)
+        if (visible.some((entry) => entry.target.id === 'solusi')) setActiveSection('solutions')
+        else if (visible.length) setActiveSection('home')
+      },
+      { rootMargin: '-35% 0px -45% 0px', threshold: 0 },
+    )
+    if (sectionObserver) {
+      ['#beranda', '#tentang', '#solusi'].forEach((selector) => {
+        const section = document.querySelector(selector)
+        if (section) sectionObserver.observe(section)
+      })
+    } else {
+      setActiveSection('home')
+    }
 
     let observer = null
     if (page === 'contact') {
@@ -57,6 +83,8 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
 
     return () => {
       blendTrigger.kill()
+      heroTrigger?.kill()
+      sectionObserver?.disconnect()
       observer?.disconnect()
     }
   }, [page])
@@ -74,7 +102,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
         </button>
         <div className={`nav-links ${open ? 'is-open' : ''}`}>
           {links.map(([label, target]) => (
-            <button className={(page === 'catalog' && target === '/katalog') || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
+            <button className={(target === '#beranda' && page === 'home' && activeSection === 'home') || (target === '#solusi' && page === 'home' && activeSection === 'solutions') || (page === 'catalog' && target === '/katalog') || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
               {label}
             </button>
           ))}

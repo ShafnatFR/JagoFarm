@@ -1,0 +1,272 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1784001932.7954426,
+    "ast_hash": "c60219da9ff8e14df6990aca650dfdec",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1783940407.9234567,
+    "ast_hash": "9996ba8266090cbcb0ef90fb449d9ab4",
+    "semantic_hash": ""
+  },
+  "src/App.jsx": {
+    "mtime": 1784014330.3735552,
+    "ast_hash": "9ae2d0bc2bb797b500be61e6cc166c62",
+    "semantic_hash": ""
+  },
+  "src/components/AboutPage.jsx": {
+    "mtime": 1783669156.1848395,
+    "ast_hash": "a995abd1e0970d138d0b8f3c080fae39",
+    "semantic_hash": ""
+  },
+  "src/components/ContactSection.jsx": {
+    "mtime": 1783672607.736693,
+    "ast_hash": "d478b0eb5ffed0cccb383f5548b0e234",
+    "semantic_hash": ""
+  },
+  "src/components/EcosystemPinnedScroll.jsx": {
+    "mtime": 1784033483.7073486,
+    "ast_hash": "dd3db3b5f0950245eb74aeedf7585622",
+    "semantic_hash": ""
+  },
+  "src/components/FeaturedProductsSection.jsx": {
+    "mtime": 1783668211.313639,
+    "ast_hash": "641c6ccab6d3d610e278f95d6edc7292",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.jsx": {
+    "mtime": 1783614143.4505005,
+    "ast_hash": "bea6c8666ac5cdc7ade9109770ac38b1",
+    "semantic_hash": ""
+  },
+  "src/components/GlobalMotion.jsx": {
+    "mtime": 1783652617.9646049,
+    "ast_hash": "7dc65769f3a8b6bcf0cd569b03c0c726",
+    "semantic_hash": ""
+  },
+  "src/components/HeroSection.jsx": {
+    "mtime": 1784014981.568256,
+    "ast_hash": "abd8df0a9d6a8732168c4e8c0d2f3478",
+    "semantic_hash": ""
+  },
+  "src/components/IntroAnimation.jsx": {
+    "mtime": 1783652617.9595966,
+    "ast_hash": "35a4ea6c98cc154abf383e324c6e133b",
+    "semantic_hash": ""
+  },
+  "src/components/Nametag3D.jsx": {
+    "mtime": 1783664580.0501163,
+    "ast_hash": "0a650c8a37807d053d6ee8b34eddf52b",
+    "semantic_hash": ""
+  },
+  "src/components/Navbar.jsx": {
+    "mtime": 1784033483.699345,
+    "ast_hash": "b84d28e0ae649dba418db731175361cc",
+    "semantic_hash": ""
+  },
+  "src/components/ProductCatalog.jsx": {
+    "mtime": 1783668143.9193926,
+    "ast_hash": "b5c2ea776548a1f6e4bec4c4d278876f",
+    "semantic_hash": ""
+  },
+  "src/components/SolutionsSection.jsx": {
+    "mtime": 1783668190.6854422,
+    "ast_hash": "b70d955f3c8bb7ee1f6112f31341dff6",
+    "semantic_hash": ""
+  },
+  "src/components/TeamLanyards.jsx": {
+    "mtime": 1783664599.5195477,
+    "ast_hash": "b5a96db76e34afc487676a76d38900de",
+    "semantic_hash": ""
+  },
+  "src/data/content.js": {
+    "mtime": 1784033483.705348,
+    "ast_hash": "48d6e5cc2d36051801f84b574352d0ff",
+    "semantic_hash": ""
+  },
+  "src/main.jsx": {
+    "mtime": 1783606725.9916205,
+    "ast_hash": "167a83cdd7bb987d9885eda3f4012521",
+    "semantic_hash": ""
+  },
+  "vite.config.js": {
+    "mtime": 1783571250.6382215,
+    "ast_hash": "9bf09b6d97edba4eebf0fe93baaad662",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1784001932.7859228,
+    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1783571250.6326938,
+    "ast_hash": "99358b394c281c90d0f55d670074a7e3",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-feed.webp": {
+    "mtime": 1783606430.6545143,
+    "ast_hash": "1e53b1ba183d893c13cd3ae7cac8c94e",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-fertilizer.webp": {
+    "mtime": 1783606431.4785712,
+    "ast_hash": "3d0fc7eb17aa7a60638db1bdd52d5060",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-maggot.webp": {
+    "mtime": 1783606430.244872,
+    "ast_hash": "640a436876eed15daafa8004bcd8dea1",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-smart.webp": {
+    "mtime": 1783606432.1245804,
+    "ast_hash": "3749306dca70dec326a28545c9e9a854",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-waste.webp": {
+    "mtime": 1783606429.8318548,
+    "ast_hash": "19b72353169b74a89dc4ba4a1e17bc05",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-water.webp": {
+    "mtime": 1783606431.049978,
+    "ast_hash": "b9eef019249b06715985adc3f98461a5",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-ecosystem-sheet.png": {
+    "mtime": 1783671109.5273507,
+    "ast_hash": "78c17bc76484fc5ff8c47496ddcd3a25",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-feed.png": {
+    "mtime": 1783671103.8946958,
+    "ast_hash": "065a3665233bfb1afe5bf5acdfc443db",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-iot.png": {
+    "mtime": 1783671104.1225803,
+    "ast_hash": "dddf4944c2294e31ed0d0582bc66053c",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-leaves.png": {
+    "mtime": 1783671103.453599,
+    "ast_hash": "de790dd6451ff8da87b9316802e082bb",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-maggot.png": {
+    "mtime": 1783671103.7721725,
+    "ast_hash": "52f41b8a81c229a7f4a7b98240f59d7d",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-melon.png": {
+    "mtime": 1783671103.2057865,
+    "ast_hash": "a19d297b1b5c047e0bab10e11dc28c32",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-organic-source.png": {
+    "mtime": 1783670786.4017062,
+    "ast_hash": "9d436db6392feb10f1127e5b66bfb649",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-organic.png": {
+    "mtime": 1783671114.1783614,
+    "ast_hash": "b7a0276bcffdc201bef9a6f566072566",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-tech-source.png": {
+    "mtime": 1783670707.8887954,
+    "ast_hash": "9875e1dae0f4ce2243d14a3cb551fa0a",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-tech.png": {
+    "mtime": 1783671118.5782988,
+    "ast_hash": "fc59bc6c5bd185908e46577d36e7d08f",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-water-sensor.png": {
+    "mtime": 1783671103.6061232,
+    "ast_hash": "2333202b890cc8b01be1e62eae35ddfa",
+    "semantic_hash": ""
+  },
+  "src/assets/hero-ecosystem.webp": {
+    "mtime": 1783606429.5273428,
+    "ast_hash": "1757ce0a28f6bfc592d94e2602f7ca98",
+    "semantic_hash": ""
+  },
+  "src/assets/hero-farm-day.png": {
+    "mtime": 1784014027.19966,
+    "ast_hash": "786ebdf3afe8a42d3a53c54ad8f69f93",
+    "semantic_hash": ""
+  },
+  "src/assets/hero-farm-night.png": {
+    "mtime": 1784014201.4609692,
+    "ast_hash": "de089c074a3b367fb1f2ed0bd135f7cb",
+    "semantic_hash": ""
+  },
+  "src/assets/jagofarm-logo.svg": {
+    "mtime": 1783572112.2286744,
+    "ast_hash": "28838b93a2e4d554ecde867bfabe8d90",
+    "semantic_hash": ""
+  },
+  "src/assets/new-id-card-kolab-shafnat.png": {
+    "mtime": 1783664158.4284625,
+    "ast_hash": "a3e98c965dae95c97aa4144fdc346800",
+    "semantic_hash": ""
+  },
+  "src/assets/new-id-card-kolab.png": {
+    "mtime": 1783656249.686586,
+    "ast_hash": "2ac6fa3600dddee43e0c282bc735d1e2",
+    "semantic_hash": ""
+  },
+  "src/assets/product-catfish.webp": {
+    "mtime": 1783606434.2521217,
+    "ast_hash": "e92b3393ef30fc5c89bedec2390046ee",
+    "semantic_hash": ""
+  },
+  "src/assets/product-eggs.webp": {
+    "mtime": 1783606433.5434058,
+    "ast_hash": "4c5bb21ba49a1c020b45b18aeacf30f9",
+    "semantic_hash": ""
+  },
+  "src/assets/product-greens.webp": {
+    "mtime": 1783606433.1419897,
+    "ast_hash": "8dafae75fb292fd3d53b216375ab21a2",
+    "semantic_hash": ""
+  },
+  "src/assets/product-gurame.webp": {
+    "mtime": 1783606434.5898316,
+    "ast_hash": "6ca294260d36ceca7f15d88c8f31c8d2",
+    "semantic_hash": ""
+  },
+  "src/assets/product-iot.webp": {
+    "mtime": 1783606434.9333103,
+    "ast_hash": "ff068e719b11c908d4c8254824659455",
+    "semantic_hash": ""
+  },
+  "src/assets/product-melon.webp": {
+    "mtime": 1783606432.7751477,
+    "ast_hash": "781374f3b0f8c1c4b681196e6d1224a4",
+    "semantic_hash": ""
+  },
+  "src/assets/product-ornamental.webp": {
+    "mtime": 1783606433.898636,
+    "ast_hash": "45cfcd6f78531ef4c463584dbfe3a927",
+    "semantic_hash": ""
+  },
+  "tmp/qa/ecosystem-desktop.png": {
+    "mtime": 1784033778.332737,
+    "ast_hash": "ae6d5a5e72ad6bec1e75e58a54947e57",
+    "semantic_hash": ""
+  },
+  "tmp/qa/ecosystem-mobile.png": {
+    "mtime": 1784033799.943009,
+    "ast_hash": "3b8f67fbe9b03ba5fbcf31c4faf7ed19",
+    "semantic_hash": ""
+  },
+  "tmp/qa/ecosystem-step-2.png": {
+    "mtime": 1784033833.9666395,
+    "ast_hash": "90af61c1c4f496376ac68d9ad71c094d",
+    "semantic_hash": ""
+  }
+}

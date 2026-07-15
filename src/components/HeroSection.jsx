@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react";
 import { animate } from "animejs";
-import { hero, icons } from "../data/content.js";
-import logo from "../assets/jagofarm-logo.svg";
+import dayHero from '../assets/hero-farm-day.png'
+import nightHero from '../assets/hero-farm-night.png'
 
-export default function HeroSection({ onNavigate }) {
-  const { ArrowRight } = icons;
+export default function HeroSection({ theme, onToggleTheme }) {
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -34,68 +33,56 @@ export default function HeroSection({ onNavigate }) {
   }, []);
 
   return (
-    <main
-      className="hero section-shell motion-section"
-      id="beranda"
-      ref={heroRef}
-    >
-      <section className="hero-copy" aria-labelledby="hero-title">
-      
-        <h1 className="hero-animate motion-item" id="hero-title">
-          Satu farm. Banyak siklus. Nol limbah.
-        </h1>
-        <p className="hero-animate motion-item">
-          Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor
-          lapangan menjadi sistem pangan yang terukur dari input sampai panen.
-        </p>
-        <div
-          className="hero-badges hero-animate"
-          aria-label="Keunggulan Jago Farm"
-        >
-          {hero.badges.map(([label, Icon]) => (
-            <span key={label}>
-              <Icon size={18} weight="duotone" />
-              {label}
-            </span>
-          ))}
-        </div>
-        <div className="hero-actions hero-animate">
-          <button
-            className="button button-primary"
-            onClick={() => onNavigate("#tentang")}
-            type="button"
-          >
-            Lihat Alur Sirkular
-            <ArrowRight size={18} weight="bold" />
-          </button>
-          <button
-            className="button button-secondary"
-            onClick={() => onNavigate("/katalog")}
-            type="button"
-          >
-            Buka Katalog
-          </button>
-        </div>
-        <div className="hero-metrics hero-animate">
-          {hero.metrics.map(([value, label, Icon]) => (
-            <article key={label}>
-              <Icon size={22} weight="duotone" />
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section
-        className="hero-media hero-scene"
-        aria-label="Smart farming Jago Farm"
+    <>
+      <main
+        className="hero motion-section"
+        id="beranda"
+        ref={heroRef}
       >
-        <img
-          className="hero-photo"
-          src={hero.image}
-          alt="Ekosistem Jago Farm dengan greenhouse, melon, ayam, ikan, sensor IoT, dan pemantauan AI"
+        <div className="hero-scene" aria-hidden="true">
+          <img className="hero-photo hero-photo-day" src={dayHero} alt="" />
+          <img className="hero-photo hero-photo-night" src={nightHero} alt="" />
+        </div>
+        <div className="hero-shade" aria-hidden="true" />
+        <section className="hero-copy" aria-labelledby="hero-title">
+          <span className="hero-eyebrow hero-animate">Sistem pangan terintegrasi</span>
+          <h1 className="hero-animate motion-item" id="hero-title">
+            Satu farm. Banyak siklus. Nol limbah.
+          </h1>
+          <p className="hero-animate motion-item">
+            Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor
+            lapangan menjadi sistem pangan yang terukur dari input sampai panen.
+          </p>
+        </section>
+        <button
+          className="hero-sky-toggle hero-animate"
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={theme === 'dark' ? 'Aktifkan mode terang' : 'Aktifkan mode malam'}
+          title={theme === 'dark' ? 'Aktifkan mode terang' : 'Aktifkan mode malam'}
         />
+      </main>
+
+      <section className="latest-article section-shell motion-section" id="artikel">
+        <div className="article-container">
+          <span className="section-label motion-item">Artikel Terbaru</span>
+          <h2 className="motion-item">Kabar terkini dari <strong>JagoFarm</strong></h2>
+          <p className="article-subtitle motion-item">
+            Temukan insight seputar agritech dan perkembangan terbaru startup kami.
+          </p>
+          <div className="facebook-embed-card motion-item">
+            <iframe
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02LLx6nmc1pSRzpMmfY5AiLGKMFUgLdmEoD79At19QXNkkq9Ag7TPEbKpBWfL3N76sl%26id%3D61591492453217&show_text=true&width=500"
+              style={{ border: "none", overflow: "hidden", width: "100%", height: "500px" }}
+              scrolling="no"
+              frameBorder="0"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="JagoFarm Facebook Post"
+            />
+          </div>
+        </div>
       </section>
-    </main>
+    </>
   );
 }

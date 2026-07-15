@@ -79,6 +79,10 @@ export default function App() {
     return () => window.clearTimeout(timer)
   }, [page, pendingTarget])
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [page])
+
   const navigate = (target) => {
     if (target.startsWith('#')) {
       if (page !== 'home') {
@@ -94,7 +98,7 @@ export default function App() {
 
     window.history.pushState(null, '', target)
     setPage(routes[target] ?? 'home')
-    window.scrollTo({ top: 0 })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
   return (

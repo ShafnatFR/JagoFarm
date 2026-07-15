@@ -13,9 +13,9 @@ const TeamLanyards = lazy(() => import("./TeamLanyards.jsx"));
 
 export default function AboutPage({ onNavigate }) {
   return (
-    <main className="about-page page-shell motion-section">
+    <main className="about-page page-shell">
       {/* 1. Hero Section */}
-      <section className="about-hero">
+      <section className="about-hero motion-section">
         <div className="about-copy">
           <span className="section-badge motion-item">
             <Sparkle size={18} weight="fill" />

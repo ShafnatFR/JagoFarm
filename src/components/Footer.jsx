@@ -3,7 +3,7 @@ import logo from '../assets/jagofarm-logo.svg'
 const links = [
   ['Beranda', '#beranda'],
   ['Solusi', '#solusi'],
-  ['Produk', '/katalog'],
+  ['Produk', '/produk'],
   ['Tentang Kami', '/tentang-kami'],
 ]
 const productLinks = ['Melon', 'Sayuran', 'Ikan', 'Ayam Petelur', 'Perangkat IoT']
@@ -27,7 +27,7 @@ export default function Footer({ onNavigate }) {
       <nav className="footer-links" aria-label="Produk footer">
         <h3>Produk</h3>
         {productLinks.map((label) => (
-          <button onClick={() => onNavigate('/katalog')} type="button" key={label}>
+          <button onClick={() => onNavigate('/produk')} type="button" key={label}>
             {label}
           </button>
         ))}

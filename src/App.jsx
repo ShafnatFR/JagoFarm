@@ -34,6 +34,7 @@ class ErrorBoundary extends Component {
 
 const routes = {
   '/': 'home',
+  '/produk': 'catalog',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
   '/kontak': 'contact',

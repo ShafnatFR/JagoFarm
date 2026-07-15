@@ -112,7 +112,7 @@ export default function App() {
         </>
       )}
       {page === 'catalog' && <ProductCatalog />}
-      {page === 'about' && <AboutPage />}
+      {page === 'about' && <AboutPage onNavigate={navigate} />}
       {page === 'contact' && <ContactSection onNavigate={navigate} />}
       <Footer onNavigate={navigate} />
     </ReactLenis>

@@ -44,7 +44,8 @@ function TeamLanyard({ member, index }) {
           cameraPosition={[0, 0, 15]}
           fov={28}
           spotIntensity={90}
-          fillIntensity={3.2}
+          fillIntensity={5.0}
+          ambientIntensity={1.25}
         />
       )}
     </article>

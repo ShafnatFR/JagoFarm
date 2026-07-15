@@ -1430,7 +1430,7 @@ img {
   margin: 0;
   max-width: 12ch;
   color: var(--ink);
-  font-size: clamp(3.4rem, 7vw, 7rem);
+  font-size: clamp(2.6rem, 5vw, 5rem);
   line-height: 0.92;
 }
 
@@ -1603,7 +1603,7 @@ img {
 
 .team-lanyard-3d {
   position: absolute;
-  inset: -120px -180px -100px;
+  inset: -120px -70px -50px;
   z-index: 2;
   overflow: visible;
   touch-action: none;

@@ -314,7 +314,8 @@ export function LanyardCanvas({
   cameraPosition = [0, 0, 13],
   fov = 29,
   spotIntensity = 120.0,
-  fillIntensity = 3.5,
+  fillIntensity = 6.0,
+  ambientIntensity = 1.25,
 }) {
   return (
     <div className={className} aria-label={ariaLabel}>
@@ -323,6 +324,7 @@ export function LanyardCanvas({
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
       >
+        <ambientLight intensity={ambientIntensity} />
         <spotLight
           position={[3.2, 5.8, 6]}
           angle={0.5}

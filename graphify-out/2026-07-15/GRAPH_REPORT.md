@@ -1,7 +1,7 @@
 # Graph Report - JagoFarm  (2026-07-15)
 
 ## Corpus Check
-- 22 files · ~569,536 words
+- 22 files · ~569,626 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -118,7 +118,7 @@ Cohesion: 0.40
 Nodes (5): 10.1 Data Inventory, 10.2 User Rights (UU PDP), 10.3 Data Security Checklist, 10.4 Privacy Policy & Terms of Service, 10. Data Privacy & Compliance
 
 ## Knowledge Gaps
-- **126 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+121 more)
+- **127 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+122 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -132,7 +132,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `6.4 API Contract` connect `gsap` to `@fontsource/outfit`?**
   _High betweenness centrality (0.048) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _126 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _127 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.jsx` be split into smaller, more focused modules?**
   _Cohesion score 0.0896551724137931 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**

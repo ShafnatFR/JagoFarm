@@ -22,6 +22,8 @@ export default function EcosystemPinnedScroll() {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const activeStageRef = useRef(0);
+  const seekFrameRef = useRef(0);
+  const targetTimeRef = useRef(0);
   const [activeStage, setActiveStage] = useState(0);
 
   // Lenis owns scroll interpolation; explicitly forward each Lenis frame to GSAP.
@@ -42,8 +44,14 @@ export default function EcosystemPinnedScroll() {
         Math.floor(progress * storyStages.length),
       );
 
-      if (Math.abs(video.currentTime - targetTime) > 0.025) {
-        video.currentTime = targetTime;
+      targetTimeRef.current = targetTime;
+      if (!seekFrameRef.current) {
+        seekFrameRef.current = window.requestAnimationFrame(() => {
+          seekFrameRef.current = 0;
+          if (Math.abs(video.currentTime - targetTimeRef.current) > 0.025) {
+            video.currentTime = targetTimeRef.current;
+          }
+        });
       }
       if (nextStage !== activeStageRef.current) {
         activeStageRef.current = nextStage;
@@ -78,6 +86,7 @@ export default function EcosystemPinnedScroll() {
 
     return () => {
       trigger?.kill();
+      if (seekFrameRef.current) window.cancelAnimationFrame(seekFrameRef.current);
       video.removeEventListener("loadedmetadata", createTrigger);
     };
   }, []);

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ReactLenis } from 'lenis/react'
+import 'lenis/dist/lenis.css'
 import EcosystemPinnedScroll from './components/EcosystemPinnedScroll.jsx'
 import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
 import Footer from './components/Footer.jsx'
@@ -17,11 +19,28 @@ const routes = {
   '/': 'home',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
+  '/kontak': 'contact',
 }
 
 export default function App() {
   const [page, setPage] = useState(() => routes[window.location.pathname] ?? 'home')
   const [pendingTarget, setPendingTarget] = useState(null)
+
+  // Global Theme State
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    if (saved) return saved
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }
 
   useEffect(() => {
     const syncRoute = () => setPage(routes[window.location.pathname] ?? 'home')
@@ -33,27 +52,13 @@ export default function App() {
     ScrollTrigger.refresh()
     const element = document.querySelector(target)
     if (!element) return
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const navOffset = 96
     const start = window.scrollY
     const end = element.getBoundingClientRect().top + start - navOffset
 
-    if (reduce) {
-      window.scrollTo(0, end)
-      return
-    }
-
-    const duration = 980
-    const started = performance.now()
-    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - ((-2 * t + 2) ** 3) / 2)
-
-    const tick = (now) => {
-      const progress = Math.min(1, (now - started) / duration)
-      window.scrollTo(0, start + (end - start) * ease(progress))
-      if (progress < 1) requestAnimationFrame(tick)
-    }
-
-    requestAnimationFrame(tick)
+    // Since Lenis is handling smooth scrolling globally, we can set the scroll position
+    // and let Lenis interpolate it smoothly.
+    window.scrollTo({ top: end })
   }
 
   useEffect(() => {
@@ -88,17 +93,17 @@ export default function App() {
 
     window.history.pushState(null, '', target)
     setPage(routes[target] ?? 'home')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0 })
   }
 
   return (
-    <>
+    <ReactLenis root>
       <IntroAnimation />
-      <Navbar page={page} onNavigate={navigate} />
+      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
       <GlobalMotion page={page} />
       {page === 'home' && (
         <>
-          <HeroSection onNavigate={navigate} />
+          <HeroSection theme={theme} onToggleTheme={toggleTheme} />
           <EcosystemPinnedScroll />
           <SolutionsSection />
           <FeaturedProductsSection onNavigate={navigate} />
@@ -106,8 +111,8 @@ export default function App() {
       )}
       {page === 'catalog' && <ProductCatalog />}
       {page === 'about' && <AboutPage />}
-      <ContactSection onNavigate={navigate} />
+      {page === 'contact' && <ContactSection onNavigate={navigate} />}
       <Footer onNavigate={navigate} />
-    </>
+    </ReactLenis>
   )
 }

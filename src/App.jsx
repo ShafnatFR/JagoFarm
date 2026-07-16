@@ -175,7 +175,7 @@ export default function App() {
           <>
             <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} />
             <EcosystemPinnedScroll stages={findBlocksByType(findPageBySlug(cms.pages, 'beranda'), 'ecosystem-stage')} />
-            <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} />
+            <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} pageData={findPageBySlug(cms.pages, 'beranda')} posts={cms.posts} />
             <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
             <LatestArticle posts={cms.posts} onNavigate={navigate} />
           </>

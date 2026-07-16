@@ -53,7 +53,7 @@ export default function HeroSection({ theme, onToggleTheme, data = {} }) {
         </div>
         <div className="hero-shade" aria-hidden="true" />
         <section className="hero-copy" aria-labelledby="hero-title">
-          <span className="hero-eyebrow hero-animate">{data.eyebrow || 'Sistem pangan terintegrasi'}</span>
+          <span className="hero-eyebrow hero-animate">{data.eyebrow || data.tagline || (Array.isArray(data.labels) && data.labels.length ? data.labels.join(' • ') : 'Sistem pangan terintegrasi')}</span>
           <h1 className="hero-animate motion-item" id="hero-title">
             {data.headline || 'Satu farm. Banyak siklus. Nol limbah.'}
           </h1>
@@ -70,7 +70,6 @@ export default function HeroSection({ theme, onToggleTheme, data = {} }) {
           title={theme === 'dark' ? 'Aktifkan mode terang' : 'Aktifkan mode malam'}
         />
       </main>
-
     </>
   );
 }

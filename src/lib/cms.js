@@ -27,6 +27,7 @@ export const getSettings = () => fetchFromCMS('/api/v1/public/settings')
 export const getNavigation = () => fetchFromCMS('/api/v1/public/navigation')
 export const getPosts = () => fetchFromCMS('/api/v1/public/posts')
 export const getPostCategories = () => fetchFromCMS('/api/v1/public/post-categories')
+export const getPages = () => fetchFromCMS('/api/v1/public/pages')
 
 export async function submitInquiry(payload) {
   return fetchFromCMS('/api/v1/inquiries', {

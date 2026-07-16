@@ -14,7 +14,7 @@ import {
   Sparkle, 
   User 
 } from '@phosphor-icons/react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { submitInquiry } from '../lib/cms.js'
@@ -48,8 +48,13 @@ const faqItems = [
   }
 ]
 
-export default function ContactSection({ onNavigate, data = {} }) {
+export default function ContactSection({ onNavigate, data = {}, pageData = null }) {
   const sectionRef = useRef(null)
+  
+  // Extract contacts block from hubungi-kami page
+  const contactsBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'contacts') : null, [pageData])
+  const heroContact = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'hero') : null, [pageData])
+  const cmsContacts = contactsBlock?.data || {}
   
   // Form state
   const [formData, setFormData] = useState({
@@ -62,10 +67,10 @@ export default function ContactSection({ onNavigate, data = {} }) {
   const [statusMsg, setStatusMsg] = useState('')
   const [activeFaq, setActiveFaq] = useState(0)
 
-  // Computed contact info combining CMS dynamic data with real defaults
-  const phone = data?.phone || (Array.isArray(data?.phone_numbers) && data.phone_numbers[0] ? data.phone_numbers[0] : '+62 852-1537-6975')
-  const email = data?.email || (Array.isArray(data?.emails) && data.emails[0] ? data.emails[0] : 'jagofarm.corporation@gmail.com')
-  const address = data?.alamat_lengkap || data?.alamat || data?.full_address || data?.address || (Array.isArray(data?.addresses) && data.addresses[0] ? data.addresses[0] : '2JGM+Q4 Sukapura, Kabupaten Bandung, Jawa Barat, Indonesia')
+  // Computed contact info: pageData > settings > defaults
+  const phone = cmsContacts?.phone_numbers?.[0] || data?.phone || (Array.isArray(data?.phone_numbers) && data.phone_numbers[0] ? data.phone_numbers[0] : '+62 852-1537-6975')
+  const email = cmsContacts?.emails?.[0] || data?.email || (Array.isArray(data?.emails) && data.emails[0] ? data.emails[0] : 'jagofarm.corporation@gmail.com')
+  const address = cmsContacts?.addresses?.[0] || data?.alamat_lengkap || data?.alamat || data?.full_address || data?.address || (Array.isArray(data?.addresses) && data.addresses[0] ? data.addresses[0] : '2JGM+Q4 Sukapura, Kabupaten Bandung, Jawa Barat, Indonesia')
 
   useEffect(() => {
     const root = sectionRef.current

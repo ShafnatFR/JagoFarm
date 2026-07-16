@@ -1,7 +1,17 @@
-import { services, icons } from "../data/content.js";
+import { services as defaultServices, icons } from "../data/content.js";
 
-export default function SolutionsSection() {
+export default function SolutionsSection({ data }) {
   const { ArrowRight } = icons;
+
+  // Support CMS data override: data.items array or fallback to static
+  const services = Array.isArray(data?.items) && data.items.length > 0
+    ? data.items.map((item) => ({
+        title: item.title || '',
+        description: item.description || '',
+        image: item.image || '',
+        Icon: null, // CMS items won't have Phosphor icons — use a placeholder or image
+      }))
+    : defaultServices
 
   return (
     <section className="solutions section-shell motion-section" id="solusi">

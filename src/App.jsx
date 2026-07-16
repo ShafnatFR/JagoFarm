@@ -14,7 +14,7 @@ import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
 import LatestArticle from './components/LatestArticle.jsx'
 import ArticleDetail from './components/ArticleDetail.jsx'
 import SolutionsSection from './components/SolutionsSection.jsx'
-import { cmsConfigured, getNavigation, getPostCategories, getPosts, getSettings } from './lib/cms.js'
+import { cmsConfigured, getNavigation, getPostCategories, getPosts, getSettings, getPages } from './lib/cms.js'
 import './styles.css'
 
 class ErrorBoundary extends Component {
@@ -45,6 +45,10 @@ const routes = {
 const resolveRoute = (path) => path.startsWith('/artikel/') ? 'article' : routes[path] ?? 'home'
 const articleSlugFromPath = (path) => path.startsWith('/artikel/') ? decodeURIComponent(path.slice('/artikel/'.length)) : ''
 
+const findPageBySlug = (pages, slug) => Array.isArray(pages) ? pages.find((p) => p?.slug === slug) : null
+const findBlocksByType = (page, type) => Array.isArray(page?.content) ? page.content.filter((b) => b?.type === type) : []
+const findFirstBlockByType = (page, type) => Array.isArray(page?.content) ? page.content.find((b) => b?.type === type) : null
+
 export default function App() {
   const [page, setPage] = useState(() => {
     const path = window.location.hash === '#hubungi-kami' ? '/hubungi-kami' : window.location.pathname
@@ -52,7 +56,7 @@ export default function App() {
   })
   const [articleSlug, setArticleSlug] = useState(() => articleSlugFromPath(window.location.pathname))
   const [pendingTarget, setPendingTarget] = useState(null)
-  const [cms, setCms] = useState({ posts: [], categories: [], settings: null, navigation: null })
+  const [cms, setCms] = useState({ posts: [], categories: [], settings: null, navigation: null, pages: [] })
 
   // Global Theme State
   const [theme, setTheme] = useState(() => {
@@ -64,14 +68,15 @@ export default function App() {
   useEffect(() => {
     if (!cmsConfigured) return undefined
     let cancelled = false
-    Promise.allSettled([getPosts(), getPostCategories(), getSettings(), getNavigation()]).then((results) => {
+    Promise.allSettled([getPosts(), getPostCategories(), getSettings(), getNavigation(), getPages()]).then((results) => {
       if (cancelled) return
-      const [postsResult, categoriesResult, settingsResult, navigationResult] = results
+      const [postsResult, categoriesResult, settingsResult, navigationResult, pagesResult] = results
       setCms({
         posts: postsResult.status === 'fulfilled' ? postsResult.value?.data || postsResult.value || [] : [],
         categories: categoriesResult.status === 'fulfilled' ? categoriesResult.value?.data || categoriesResult.value || [] : [],
         settings: settingsResult.status === 'fulfilled' ? settingsResult.value?.data || settingsResult.value || null : null,
         navigation: navigationResult.status === 'fulfilled' ? navigationResult.value?.data || navigationResult.value || null : null,
+        pages: pagesResult.status === 'fulfilled' ? pagesResult.value?.data || pagesResult.value || [] : [],
       })
     })
     return () => { cancelled = true }
@@ -168,17 +173,17 @@ export default function App() {
       <ErrorBoundary key={page}>
         {page === 'home' && (
           <>
-            <HeroSection theme={theme} onToggleTheme={toggleTheme} />
-            <EcosystemPinnedScroll />
-            <SolutionsSection />
+            <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} />
+            <EcosystemPinnedScroll stages={findBlocksByType(findPageBySlug(cms.pages, 'beranda'), 'ecosystem-stage')} />
+            <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} />
             <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
             <LatestArticle posts={cms.posts} onNavigate={navigate} />
           </>
         )}
         {page === 'catalog' && <ProductCatalog posts={cms.posts} categories={cms.categories} />}
         {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
-        {page === 'about' && <AboutPage onNavigate={navigate} />}
-        {page === 'contact' && <ContactSection onNavigate={navigate} data={cms.settings || {}} />}
+        {page === 'about' && <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />}
+        {page === 'contact' && <ContactSection onNavigate={navigate} data={cms.settings || {}} pageData={findPageBySlug(cms.pages, 'hubungi-kami')} />}
       </ErrorBoundary>
       <Footer onNavigate={navigate} settings={cms.settings} navigation={cms.navigation} />
     </ReactLenis>

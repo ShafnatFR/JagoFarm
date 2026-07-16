@@ -7,6 +7,13 @@ import { validImageUrl } from '../lib/cms.js'
 export default function HeroSection({ theme, onToggleTheme, data = {} }) {
   const heroRef = useRef(null);
 
+  // Normalize CMS data — support both `stats_list` and `stats` arrays
+  const statsList = Array.isArray(data.stats_list)
+    ? data.stats_list
+    : Array.isArray(data.stats)
+      ? data.stats.map((s) => (typeof s === 'object' && s !== null ? { value: s.value || '', label: s.label || '' } : { value: '', label: '' }))
+      : []
+
   useEffect(() => {
     const root = heroRef.current;
     if (!root) return undefined;
@@ -53,7 +60,7 @@ export default function HeroSection({ theme, onToggleTheme, data = {} }) {
           <p className="hero-animate motion-item">
             {data.sub_headline || 'Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor lapangan menjadi sistem pangan yang terukur dari input sampai panen.'}
           </p>
-          {Array.isArray(data.stats_list) && <div className="hero-metrics">{data.stats_list.map((stat, index) => <article key={index}><strong>{stat?.value || ''}</strong><span>{stat?.label || ''}</span></article>)}</div>}
+          {statsList.length > 0 && <div className="hero-metrics">{statsList.map((stat, index) => <article key={index}><strong>{stat?.value || ''}</strong><span>{stat?.label || ''}</span></article>)}</div>}
         </section>
         <button
           className="hero-sky-toggle hero-animate"

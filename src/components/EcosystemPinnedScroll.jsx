@@ -6,7 +6,7 @@ import ecosystemVideo from "../assets/jagofarm-ecosystem-scrub-250ms.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const storyStages = [
+const defaultStages = [
   {
     headline: "Ekosistem JagoFarm Revolusi Circular Economy & Smart Farming.",
     side: "left",
@@ -18,7 +18,13 @@ const storyStages = [
   { headline: "Data IoT menjaga setiap keputusan tetap tepat.", side: "left" },
 ];
 
-export default function EcosystemPinnedScroll() {
+export default function EcosystemPinnedScroll({ stages: propStages }) {
+  const storyStages = Array.isArray(propStages) && propStages.length > 0
+    ? propStages.map((s) => ({
+        headline: s?.data?.headline || s?.headline || '',
+        side: s?.data?.side || s?.side || (Math.random() > 0.5 ? 'left' : 'right'),
+      }))
+    : defaultStages
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const activeStageRef = useRef(0);

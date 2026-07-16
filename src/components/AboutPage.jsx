@@ -16,6 +16,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
   const heroBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'hero') : null, [pageData]);
   const featuresBlocks = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.filter((b) => b?.type === 'features') : [], [pageData]);
   const galleryBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'gallery') : null, [pageData]);
+  const teamBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'team') : null, [pageData]);
   const ctaBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.slice().reverse().find((b) => b?.type === 'hero' && b?.data?.cta_buttons?.length) : null, [pageData]);
 
   // Hero section data
@@ -140,7 +141,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
       <Suspense
         fallback={<section className="team-lanyards-container section-shell" aria-hidden="true" />}
       >
-        <TeamLanyards />
+        <TeamLanyards data={teamBlock?.data} />
       </Suspense>
 
       {/* 5. Galeri Di Balik Layar */}

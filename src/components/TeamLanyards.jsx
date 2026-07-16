@@ -88,17 +88,33 @@ function TeamLanyard({ member, index }) {
   );
 }
 
-export default function TeamLanyards() {
+export default function TeamLanyards({ data }) {
+  const title = data?.title || "Kepemimpinan & Tim Inti";
+  const subtitle = data?.subtitle || "Kolaborasi pemikir agronomi, rekayasawan perangkat lunak, dan praktisi IoT yang mendedikasikan diri untuk merombak masa depan pangan sirkular.";
+  const members = Array.isArray(data?.members) && data.members.length > 0
+    ? data.members.map((m, idx) => ({
+        id: m.id || idx,
+        name: m.name || '',
+        role: m.role || '',
+        bio: m.bio || '',
+        image: m.image_url || m.image || '',
+        socials: {
+          linkedin: m.linkedin || '#',
+          github: m.github || '#',
+          instagram: m.instagram || '#',
+        },
+        originX: idx % 2 === 0 ? -1.8 : 1.8,
+      }))
+    : teamMembersDetailed;
+
   return (
     <section className="team-lanyards-container section-shell motion-section">
       <div className="section-heading">
-        <h2 className="motion-item">Kepemimpinan & Tim Inti</h2>
-        <p className="motion-item">
-          Kolaborasi pemikir agronomi, rekayasawan perangkat lunak, dan praktisi IoT yang mendedikasikan diri untuk merombak masa depan pangan sirkular.
-        </p>
+        <h2 className="motion-item">{title}</h2>
+        <p className="motion-item">{subtitle}</p>
       </div>
       <div className="team-lanyards" aria-label="Anggota startup">
-        {teamMembersDetailed.map((member, index) => (
+        {members.map((member, index) => (
           <TeamLanyard member={member} index={index} key={member.id} />
         ))}
       </div>

@@ -2967,22 +2967,35 @@ html:not([data-theme='light']) .subject-pill {
   }
 
   html:not([data-theme='light']) .nav-contact,
-  html:not([data-theme='light']) .button-primary,
-  html:not([data-theme='light']) .filter-chips button.is-active {
+  html:not([data-theme='light']) .button-primary {
     color: #0d1710;
   }
 
   html:not([data-theme='light']) .hero-badges span,
   html:not([data-theme='light']) .hero-metrics article,
   html:not([data-theme='light']) .button-secondary,
-  html:not([data-theme='light']) .step-nav button.is-active,
   html:not([data-theme='light']) .step-nav button:hover,
   html:not([data-theme='light']) .featured-card,
-  html:not([data-theme='light']) .product-tabs button,
   html:not([data-theme='light']) .search-box,
-  html:not([data-theme='light']) .filter-chips button,
   html:not([data-theme='light']) .team-slot {
     background: rgb(18 32 24 / 0.86);
+  }
+
+  html:not([data-theme='light']) .filter-chips button:not(.is-active),
+  html:not([data-theme='light']) .product-tabs button:not(.is-active),
+  html:not([data-theme='light']) .step-nav button:not(.is-active) {
+    background: rgb(18 32 24 / 0.86);
+    color: var(--text);
+    border-color: var(--line);
+  }
+
+  html:not([data-theme='light']) .filter-chips button.is-active,
+  html:not([data-theme='light']) .product-tabs button.is-active,
+  html:not([data-theme='light']) .step-nav button.is-active {
+    background: var(--forest) !important;
+    color: #06110a !important;
+    border-color: var(--forest) !important;
+    box-shadow: 0 4px 16px rgba(137, 207, 112, 0.4);
   }
 
   html:not([data-theme='light']) .hero-media::before {
@@ -3015,22 +3028,35 @@ html:not([data-theme='light']) .subject-pill {
 }
 
 [data-theme='dark'] .nav-contact,
-[data-theme='dark'] .button-primary,
-[data-theme='dark'] .filter-chips button.is-active {
+[data-theme='dark'] .button-primary {
   color: #0d1710;
 }
 
 [data-theme='dark'] .hero-badges span,
 [data-theme='dark'] .hero-metrics article,
 [data-theme='dark'] .button-secondary,
-[data-theme='dark'] .step-nav button.is-active,
 [data-theme='dark'] .step-nav button:hover,
 [data-theme='dark'] .featured-card,
-[data-theme='dark'] .product-tabs button,
 [data-theme='dark'] .search-box,
-[data-theme='dark'] .filter-chips button,
 [data-theme='dark'] .team-slot {
   background: rgb(18 32 24 / 0.86);
+}
+
+[data-theme='dark'] .filter-chips button:not(.is-active),
+[data-theme='dark'] .product-tabs button:not(.is-active),
+[data-theme='dark'] .step-nav button:not(.is-active) {
+  background: rgb(18 32 24 / 0.86);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+[data-theme='dark'] .filter-chips button.is-active,
+[data-theme='dark'] .product-tabs button.is-active,
+[data-theme='dark'] .step-nav button.is-active {
+  background: var(--forest) !important;
+  color: #06110a !important;
+  border-color: var(--forest) !important;
+  box-shadow: 0 4px 16px rgba(137, 207, 112, 0.4);
 }
 
 [data-theme='dark'] .hero-media::before {

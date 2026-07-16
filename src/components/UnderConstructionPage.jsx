@@ -1,6 +1,6 @@
 import React from 'react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
-import { ArrowLeft, Compass, Sparkle, Wrench, ShieldCheck, ClockClockwise } from '@phosphor-icons/react'
+import { ArrowRight, Compass, Sparkle, Wrench, ShieldCheck, ClockClockwise } from '@phosphor-icons/react'
 
 export default function UnderConstructionPage({ page = 'home', onNavigate, pages = [], cmsLoaded = false }) {
   // Helper to resolve dynamic details based on targeted page
@@ -11,7 +11,7 @@ export default function UnderConstructionPage({ page = 'home', onNavigate, pages
           badge: 'Sistem Beranda Dinonaktifkan Sementara',
           title: 'Beranda Dalam Tahap Konstruksi & Peningkatan',
           subtitle: 'Pembaruan Ekosistem & Visualisasi Utama',
-          description: 'Tim teknis kami saat ini sedang melakukan pembaruan menyeluruh pada struktur halaman Beranda JagoFarm. Seluruh siklus circular economy, pemantauan data sensor IoT, dan sajian visualisasi interaktif sedang disempurnakan demi menghadirkan standar masa depan pangan terintegrasi yang lebih canggih.',
+          description: 'Tim teknis kami saat ini sedang melakukan pembaruan menyeluruh langsung pada struktur halaman Beranda JagoFarm. Seluruh siklus circular economy, pemantauan data sensor IoT, dan sajian visualisasi interaktif sedang disempurnakan demi menghadirkan standar masa depan pangan terintegrasi yang lebih canggih.',
           targetName: 'Beranda Utama',
         }
       case 'catalog':
@@ -19,7 +19,7 @@ export default function UnderConstructionPage({ page = 'home', onNavigate, pages
           badge: 'Katalog Produk Dinonaktifkan Sementara',
           title: 'Etalase Produk Sedang Dalam Kurasi',
           subtitle: 'Penyegaran Inventaris & Hasil Panen Sirkular',
-          description: 'Halaman Katalog Produk JagoFarm (mulai dari ayam probiotik super, telur omega presisi, gurame & lele sirkular, hingga pupuk cair organik dan maggot BSF) saat ini sedang diperbarui dengan spesifikasi terbaru langsung dari pusat farm kami.',
+          description: 'Halaman Katalog Produk JagoFarm (mulai dari ayam probiotik super, telur omega presisi, gurame & lele sirkular, hingga pupuk cair organik dan maggot BSF) saat ini sedang diperbarui dengan kurasi dan spesifikasi terbaru langsung dari pusat farm kami.',
           targetName: 'Katalog Produk',
         }
       case 'about':
@@ -51,199 +51,279 @@ export default function UnderConstructionPage({ page = 'home', onNavigate, pages
 
   const meta = getPageMeta(page)
 
-  // Identify which pages ARE published right now so user isn't stranded
+  // Identify which pages ARE published right now
   const activeLinks = []
   if (!cmsLoaded || (Array.isArray(pages) && pages.some((p) => p?.slug === 'beranda' || p?.slug === 'home'))) {
-    if (page !== 'home') activeLinks.push({ label: 'Beranda', target: '#beranda', desc: 'Kembali ke halaman utama ekosistem' })
+    if (page !== 'home') activeLinks.push({ label: 'Beranda Utama', target: '#beranda', desc: 'Kembali ke halaman utama ekosistem JagoFarm' })
   }
   if (!cmsLoaded || (Array.isArray(pages) && pages.some((p) => p?.slug === 'produk' || p?.slug === 'katalog'))) {
-    if (page !== 'catalog') activeLinks.push({ label: 'Katalog Produk', target: '/produk', desc: 'Jelajahi hasil panen & teknologi sirkular' })
+    if (page !== 'catalog') activeLinks.push({ label: 'Katalog Produk', target: '/produk', desc: 'Jelajahi hasil panen organik & teknologi sirkular' })
   }
   if (!cmsLoaded || (Array.isArray(pages) && pages.some((p) => p?.slug === 'tentang-kami' || p?.slug === 'about'))) {
-    if (page !== 'about') activeLinks.push({ label: 'Tentang Kami', target: '/tentang-kami', desc: 'Kenali visi, misi, dan tim pemikir JagoFarm' })
+    if (page !== 'about') activeLinks.push({ label: 'Tentang Kami', target: '/tentang-kami', desc: 'Kenali visi, misi, dan jajaran tim pemikir JagoFarm' })
   }
   if (!cmsLoaded || (Array.isArray(pages) && pages.some((p) => p?.slug === 'hubungi-kami' || p?.slug === 'kontak'))) {
-    if (page !== 'contact') activeLinks.push({ label: 'Hubungi Kami', target: '/hubungi-kami', desc: 'Konsultasi kolaborasi & pertanyaan umum' })
+    if (page !== 'contact') activeLinks.push({ label: 'Hubungi Kami', target: '/hubungi-kami', desc: 'Konsultasi kolaborasi, kunjungan farm, & layanan cepat' })
   }
 
   return (
-    <main className="under-construction-shell motion-section" style={{ minHeight: '88vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '120px 20px 80px' }}>
-      <div className="section-shell" style={{ maxWidth: '1180px', width: '100%' }}>
-        <div className="under-construction-card" style={{
-          background: 'var(--surface)',
-          border: '1px solid var(--line)',
-          borderRadius: '32px',
-          padding: 'clamp(36px, 6vw, 64px)',
-          boxShadow: 'var(--shadow)',
-          position: 'relative',
-          overflow: 'hidden',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '48px',
-          alignItems: 'center'
-        }}>
-          {/* Subtle glowing accent background */}
-          <div style={{
-            position: 'absolute',
-            top: '-20%',
-            left: '-10%',
-            width: '400px',
-            height: '400px',
-            background: 'var(--forest)',
-            filter: 'blur(160px)',
-            opacity: 0.08,
-            pointerEvents: 'none',
-            zIndex: 0
-          }} />
+    <main
+      className="under-construction-hero motion-section"
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        padding: 'clamp(140px, 14vh, 180px) clamp(24px, 6vw, 96px) clamp(80px, 10vh, 140px)',
+        overflow: 'hidden'
+      }}
+    >
+      {/* Background ambient radial lighting */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '15%',
+          right: '8%',
+          width: '600px',
+          height: '600px',
+          background: 'var(--forest)',
+          filter: 'blur(200px)',
+          opacity: 0.12,
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '10%',
+          left: '5%',
+          width: '500px',
+          height: '500px',
+          background: 'var(--leaf)',
+          filter: 'blur(220px)',
+          opacity: 0.08,
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
 
-          {/* Left Column: Lottie Animation Container */}
-          <div className="lottie-showcase" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{
-              width: '100%',
-              maxWidth: '420px',
-              aspectRatio: '1/1',
-              borderRadius: '28px',
-              background: 'var(--surface-soft)',
-              border: '1px solid var(--line)',
-              display: 'flex',
+      {/* Full-bleed responsive 2-column layout */}
+      <div
+        style={{
+          width: 'min(100%, 1640px)',
+          margin: '0 auto',
+          position: 'relative',
+          zIndex: 1,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 520px), 1fr))',
+          gap: 'clamp(48px, 6vw, 96px)',
+          alignItems: 'center'
+        }}
+      >
+        {/* Left Column: Full Page Explanations & Active Destinations */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          {/* Badge */}
+          <div
+            style={{
+              display: 'inline-flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              padding: '24px',
-              position: 'relative',
-              boxShadow: 'inset 0 2px 20px rgba(0,0,0,0.03)'
-            }}>
-              <DotLottieReact
-                src="https://lottie.host/a7c50805-5120-41fb-af12-c86a7e110c0e/F3gNV6EH4g.json"
-                loop
-                autoplay
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-              />
-              <div style={{
-                position: 'absolute',
-                bottom: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'var(--surface)',
-                border: '1px solid var(--line)',
-                padding: '6px 14px',
-                borderRadius: '999px',
-                fontSize: '0.82rem',
+              gap: '10px',
+              background: 'var(--leaf-soft)',
+              border: '1px solid var(--forest)',
+              padding: '8px 20px',
+              borderRadius: '999px',
+              width: 'fit-content',
+              boxShadow: '0 4px 20px rgba(12, 94, 54, 0.08)'
+            }}
+          >
+            <Sparkle size={18} weight="fill" style={{ color: 'var(--forest)' }} />
+            <span style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--forest)', letterSpacing: '0.02em', textTransform: 'uppercase' }}>
+              {meta.badge}
+            </span>
+          </div>
+
+          {/* Huge Hero Headline */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h1
+              style={{
+                fontSize: 'clamp(2.5rem, 5vw, 4.4rem)',
+                fontWeight: 800,
+                color: 'var(--ink)',
+                lineHeight: 1.12,
+                letterSpacing: '-0.02em',
+                margin: 0
+              }}
+            >
+              {meta.title}
+            </h1>
+            <div
+              style={{
+                fontSize: 'clamp(1.2rem, 2.2vw, 1.6rem)',
                 fontWeight: 600,
                 color: 'var(--forest)',
-                boxShadow: '0 4px 14px rgba(0,0,0,0.05)'
-              }}>
-                <Wrench size={16} weight="bold" className="motion-spin-slow" />
-                <span>Under Construction</span>
-              </div>
-            </div>
-            
-            {/* Quick Status Bar below lottie */}
-            <div style={{ display: 'flex', gap: '16px', marginTop: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: 'var(--muted)' }}>
-                <ClockClockwise size={16} weight="bold" style={{ color: 'var(--forest)' }} />
-                <span>Pembaruan Berkala</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: 'var(--muted)' }}>
-                <ShieldCheck size={16} weight="bold" style={{ color: 'var(--leaf)' }} />
-                <span>Data Aman & Tersinkron</span>
-              </div>
+                lineHeight: 1.4
+              }}
+            >
+              {meta.subtitle}
             </div>
           </div>
 
-          {/* Right Column: Dynamic Explanations & Active Destinations */}
-          <div className="construction-content" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'var(--leaf-soft)', border: '1px solid var(--forest)', padding: '6px 16px', borderRadius: '999px', width: 'fit-content' }}>
-              <Sparkle size={16} weight="fill" style={{ color: 'var(--forest)' }} />
-              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--forest)', letterSpacing: '0.02em' }}>
-                {meta.badge}
+          {/* Expansive Description */}
+          <p
+            style={{
+              fontSize: 'clamp(1.08rem, 1.3vw, 1.25rem)',
+              lineHeight: 1.8,
+              color: 'var(--text)',
+              margin: 0,
+              maxWidth: '680px',
+              opacity: 0.92
+            }}
+          >
+            {meta.description}
+          </p>
+
+          {/* Status indicators */}
+          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', paddingTop: '4px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.92rem', fontWeight: 600, color: 'var(--muted)' }}>
+              <ClockClockwise size={20} weight="bold" style={{ color: 'var(--forest)' }} />
+              <span>Sistem Pemantauan Berkala</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.92rem', fontWeight: 600, color: 'var(--muted)' }}>
+              <ShieldCheck size={20} weight="bold" style={{ color: 'var(--leaf)' }} />
+              <span>Data Aman & Terproteksi 100%</span>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div style={{ height: '1px', background: 'var(--line)', margin: '12px 0 4px', maxWidth: '680px' }} />
+
+          {/* Active Destinations Full-width Section */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '720px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Compass size={22} weight="bold" style={{ color: 'var(--forest)' }} />
+              <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Halaman Pilihan Yang Aktif Saat Ini:
               </span>
             </div>
 
-            <h1 style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', fontWeight: 800, color: 'var(--ink)', lineHeight: 1.2, margin: 0 }}>
-              {meta.title}
-            </h1>
-
-            <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--forest)', margin: '-4px 0 0' }}>
-              {meta.subtitle}
-            </div>
-
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text)', margin: 0, opacity: 0.9 }}>
-              {meta.description}
-            </p>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'var(--line)', margin: '8px 0' }} />
-
-            {/* Active Pages Section */}
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-                <Compass size={18} weight="bold" style={{ color: 'var(--forest)' }} />
-                <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Halaman Alternatif Yang Aktif Saat Ini:
-                </span>
+            {activeLinks.length > 0 ? (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+                {activeLinks.map((link) => (
+                  <button
+                    key={link.target}
+                    onClick={() => onNavigate(link.target)}
+                    type="button"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      textAlign: 'left',
+                      padding: '20px 24px',
+                      borderRadius: '22px',
+                      background: 'var(--surface)',
+                      border: '1px solid var(--line)',
+                      transition: 'all 300ms cubic-bezier(0.2, 0.8, 0.2, 1)',
+                      cursor: 'pointer',
+                      boxShadow: '0 8px 30px rgba(0,0,0,0.02)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--forest)'
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 16px 40px rgba(12, 94, 54, 0.12)'
+                      e.currentTarget.style.background = 'var(--surface-soft)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--line)'
+                      e.currentTarget.style.transform = 'none'
+                      e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.02)'
+                      e.currentTarget.style.background = 'var(--surface)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                      <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--ink)' }}>{link.label}</span>
+                      <span style={{ fontSize: '0.86rem', color: 'var(--muted)', lineHeight: 1.4 }}>{link.desc}</span>
+                    </div>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      background: 'var(--leaf-soft)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--forest)',
+                      flexShrink: 0
+                    }}>
+                      <ArrowRight size={20} weight="bold" />
+                    </div>
+                  </button>
+                ))}
               </div>
+            ) : (
+              <div style={{ padding: '24px', borderRadius: '20px', background: 'var(--surface)', border: '1px dashed var(--line)', textAlign: 'center' }}>
+                <p style={{ margin: 0, fontSize: '0.96rem', color: 'var(--muted)' }}>Seluruh halaman sedang dalam pemeliharaan sistem JagoFarm.</p>
+              </div>
+            )}
+          </div>
+        </div>
 
-              {activeLinks.length > 0 ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
-                  {activeLinks.map((link) => (
-                    <button
-                      key={link.target}
-                      onClick={() => onNavigate(link.target)}
-                      type="button"
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        textAlign: 'left',
-                        padding: '14px 18px',
-                        borderRadius: '16px',
-                        background: 'var(--surface-soft)',
-                        border: '1px solid var(--line)',
-                        transition: 'all 260ms ease',
-                        cursor: 'pointer'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--forest)'
-                        e.currentTarget.style.transform = 'translateY(-2px)'
-                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(12, 94, 54, 0.08)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = 'var(--line)'
-                        e.currentTarget.style.transform = 'none'
-                        e.currentTarget.style.boxShadow = 'none'
-                      }}
-                    >
-                      <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--ink)' }}>{link.label}</span>
-                      <span style={{ fontSize: '0.8rem', color: 'var(--muted)', marginTop: '4px', lineHeight: 1.4 }}>{link.desc}</span>
-                    </button>
-                  ))}
-                </div>
-              ) : (
-                <div style={{ padding: '16px', borderRadius: '16px', background: 'var(--surface-soft)', border: '1px dashed var(--line)', textAlign: 'center' }}>
-                  <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--muted)' }}>Seluruh halaman sedang dalam pemeliharaan sistem.</p>
-                </div>
-              )}
-            </div>
+        {/* Right Column: Expansive, Free-floating Lottie Animation */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative',
+            width: '100%',
+            minHeight: 'clamp(380px, 50vw, 640px)'
+          }}
+        >
+          {/* Subtle glowing pedestal underneath animation */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '80%',
+              height: '380px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, var(--leaf-soft) 0%, transparent 70%)',
+              filter: 'blur(36px)',
+              zIndex: 0
+            }}
+          />
 
-            {/* Back button */}
-            <div style={{ marginTop: '6px' }}>
-              <button
-                onClick={() => {
-                  if (activeLinks.length > 0) {
-                    onNavigate(activeLinks[0].target)
-                  } else {
-                    window.location.reload()
-                  }
-                }}
-                className="button-primary"
-                type="button"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '999px', fontWeight: 700 }}
-              >
-                <ArrowLeft size={18} weight="bold" />
-                <span>Kembali ke {activeLinks.length > 0 ? activeLinks[0].label : 'Halaman Sebelumnya'}</span>
-              </button>
-            </div>
+          <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '620px', aspectRatio: '1/1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <DotLottieReact
+              src="https://lottie.host/a7c50805-5120-41fb-af12-c86a7e110c0e/F3gNV6EH4g.json"
+              loop
+              autoplay
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            />
+          </div>
+
+          {/* Floating badge below animation */}
+          <div
+            style={{
+              position: 'relative',
+              zIndex: 2,
+              marginTop: '-24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              background: 'var(--surface)',
+              border: '1px solid var(--line)',
+              padding: '10px 22px',
+              borderRadius: '999px',
+              fontSize: '0.92rem',
+              fontWeight: 700,
+              color: 'var(--forest)',
+              boxShadow: '0 12px 36px rgba(0,0,0,0.08)'
+            }}
+          >
+            <Wrench size={20} weight="bold" className="motion-spin-slow" />
+            <span>Under Construction • JagoFarm Tech Suite</span>
           </div>
         </div>
       </div>

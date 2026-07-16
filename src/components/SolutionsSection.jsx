@@ -1,7 +1,7 @@
 import { services as defaultServices, icons } from "../data/content.js";
 import { postImage } from "../lib/cms.js";
 
-export default function SolutionsSection({ data, pageData, posts = [] }) {
+export default function SolutionsSection({ data, pageData, posts = [], pageExists = false }) {
   const { ArrowRight } = icons;
 
   // 1. Detect Heading & Sub-heading dynamically
@@ -40,6 +40,10 @@ export default function SolutionsSection({ data, pageData, posts = [] }) {
         }))
       }
     }
+  }
+
+  if (pageExists && services === defaultServices && (!data || Object.keys(data).length === 0)) {
+    return null;
   }
 
   return (

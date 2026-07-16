@@ -57,6 +57,7 @@ export default function App() {
   const [articleSlug, setArticleSlug] = useState(() => articleSlugFromPath(window.location.pathname))
   const [pendingTarget, setPendingTarget] = useState(null)
   const [cms, setCms] = useState({ posts: [], categories: [], settings: null, navigation: null, pages: [] })
+  const [cmsLoaded, setCmsLoaded] = useState(false)
 
   // Global Theme State
   const [theme, setTheme] = useState(() => {
@@ -78,14 +79,9 @@ export default function App() {
         navigation: navigationResult.status === 'fulfilled' ? navigationResult.value?.data || navigationResult.value || null : null,
         pages: pagesResult.status === 'fulfilled' ? pagesResult.value?.data || pagesResult.value || [] : [],
       })
+      setCmsLoaded(true)
     })
     return () => { cancelled = true }
-  }, [])
-
-  useEffect(() => {
-    if (window.location.hash === '#hubungi-kami') {
-      window.history.replaceState(null, '', '/hubungi-kami')
-    }
   }, [])
 
   useEffect(() => {
@@ -114,8 +110,6 @@ export default function App() {
     const start = window.scrollY
     const end = element.getBoundingClientRect().top + start - navOffset
 
-    // Since Lenis is handling smooth scrolling globally, we can set the scroll position
-    // and let Lenis interpolate it smoothly.
     window.scrollTo({ top: end })
   }
 
@@ -157,7 +151,6 @@ export default function App() {
       return
     }
 
-    // Kill triggers before route reconciliation; pinned DOM must be cleaned first.
     ScrollTrigger.getAll().forEach((t) => t.kill())
     ScrollTrigger.clearScrollMemory()
     window.history.pushState(null, '', target)
@@ -166,24 +159,80 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
+  const isHomeActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'beranda') || findPageBySlug(cms.pages, 'home'))
+  const isCatalogActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'produk') || findPageBySlug(cms.pages, 'katalog'))
+  const isAboutActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'tentang-kami') || findPageBySlug(cms.pages, 'about'))
+  const isContactActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'hubungi-kami') || findPageBySlug(cms.pages, 'kontak'))
+
   return (
     <ReactLenis root>
-      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} navigation={cms.navigation} settings={cms.settings} />
+      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} navigation={cms.navigation} settings={cms.settings} pages={cms.pages} cmsLoaded={cmsLoaded} />
       <GlobalMotion page={page} />
       <ErrorBoundary key={page}>
         {page === 'home' && (
-          <>
-            <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} />
-            <EcosystemPinnedScroll stages={findBlocksByType(findPageBySlug(cms.pages, 'beranda'), 'ecosystem-stage')} />
-            <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} pageData={findPageBySlug(cms.pages, 'beranda')} posts={cms.posts} />
-            <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
-            <LatestArticle posts={cms.posts} onNavigate={navigate} />
-          </>
+          !isHomeActive ? (
+            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+              <span className="section-badge">Halaman Dinonaktifkan</span>
+              <h2>Halaman Beranda Sedang Disembunyikan</h2>
+              <p style={{ color: 'var(--muted)', maxWidth: '520px' }}>
+                Halaman utama (Beranda) saat ini dinonaktifkan dari panel admin CMS. Silakan kunjungi halaman lain yang sedang aktif:
+              </p>
+              <div style={{ display: 'flex', gap: '12px', marginTop: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {isAboutActive && (
+                  <button className="button-primary" onClick={() => navigate('/tentang-kami')} type="button">Tentang Kami</button>
+                )}
+                {isContactActive && (
+                  <button className="button-secondary" onClick={() => navigate('/hubungi-kami')} type="button">Hubungi Kami</button>
+                )}
+              </div>
+            </section>
+          ) : (
+            <>
+              <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} pageExists={isHomeActive && cmsLoaded} />
+              <EcosystemPinnedScroll stages={findBlocksByType(findPageBySlug(cms.pages, 'beranda'), 'ecosystem-stage')} pageExists={isHomeActive && cmsLoaded} />
+              <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} pageData={findPageBySlug(cms.pages, 'beranda')} posts={cms.posts} pageExists={isHomeActive && cmsLoaded} />
+              <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
+              <LatestArticle posts={cms.posts} onNavigate={navigate} />
+            </>
+          )
         )}
-        {page === 'catalog' && <ProductCatalog posts={cms.posts} categories={cms.categories} />}
+        {page === 'catalog' && (
+          !isCatalogActive ? (
+            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+              <span className="section-badge">Halaman Dinonaktifkan</span>
+              <h2>Halaman Produk Disembunyikan</h2>
+              <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Halaman Katalog Produk saat ini dinonaktifkan oleh administrator dari panel CMS.</p>
+              <button className="button-primary" style={{ marginTop: '8px' }} onClick={() => navigate(isHomeActive ? '#beranda' : '/tentang-kami')} type="button">Kembali ke Halaman Aktif</button>
+            </section>
+          ) : (
+            <ProductCatalog posts={cms.posts} categories={cms.categories} />
+          )
+        )}
         {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
-        {page === 'about' && <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />}
-        {page === 'contact' && <ContactSection onNavigate={navigate} data={cms.settings || {}} pageData={findPageBySlug(cms.pages, 'hubungi-kami')} />}
+        {page === 'about' && (
+          !isAboutActive ? (
+            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+              <span className="section-badge">Halaman Dinonaktifkan</span>
+              <h2>Halaman Tentang Kami Disembunyikan</h2>
+              <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Halaman Tentang Kami saat ini sedang dinonaktifkan dari panel admin CMS.</p>
+              <button className="button-primary" style={{ marginTop: '8px' }} onClick={() => navigate(isHomeActive ? '#beranda' : '/hubungi-kami')} type="button">Kembali ke Halaman Aktif</button>
+            </section>
+          ) : (
+            <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />
+          )
+        )}
+        {page === 'contact' && (
+          !isContactActive ? (
+            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+              <span className="section-badge">Halaman Dinonaktifkan</span>
+              <h2>Halaman Hubungi Kami Disembunyikan</h2>
+              <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Halaman Kontak saat ini sedang dinonaktifkan dari panel admin CMS.</p>
+              <button className="button-primary" style={{ marginTop: '8px' }} onClick={() => navigate(isHomeActive ? '#beranda' : '/tentang-kami')} type="button">Kembali ke Halaman Aktif</button>
+            </section>
+          ) : (
+            <ContactSection onNavigate={navigate} data={cms.settings || {}} pageData={findPageBySlug(cms.pages, 'hubungi-kami')} />
+          )
+        )}
       </ErrorBoundary>
       <Footer onNavigate={navigate} settings={cms.settings} navigation={cms.navigation} />
     </ReactLenis>

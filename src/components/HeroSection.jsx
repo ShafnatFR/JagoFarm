@@ -4,8 +4,12 @@ import dayHero from '../assets/hero-farm-day.png'
 import nightHero from '../assets/hero-farm-night.png'
 import { validImageUrl } from '../lib/cms.js'
 
-export default function HeroSection({ theme, onToggleTheme, data = {} }) {
+export default function HeroSection({ theme, onToggleTheme, data = {}, pageExists = false }) {
   const heroRef = useRef(null);
+
+  if (pageExists && (!data || Object.keys(data).length === 0)) {
+    return null;
+  }
 
   // Normalize CMS data — support both `stats_list` and `stats` arrays
   const statsList = Array.isArray(data.stats_list)

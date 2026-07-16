@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/outfit": "^5.2.8",
     "@gsap/react": "^2.1.2",
+    "@lottiefiles/dotlottie-react": "^0.19.9",
     "@phosphor-icons/react": "^2.1.10",
     "@react-three/drei": "^9.96.4",
     "@react-three/fiber": "^8.15.15",

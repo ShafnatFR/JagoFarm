@@ -14,6 +14,7 @@ import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
 import LatestArticle from './components/LatestArticle.jsx'
 import ArticleDetail from './components/ArticleDetail.jsx'
 import SolutionsSection from './components/SolutionsSection.jsx'
+import UnderConstructionPage from './components/UnderConstructionPage.jsx'
 import { cmsConfigured, getNavigation, getPostCategories, getPosts, getSettings, getPages } from './lib/cms.js'
 import './styles.css'
 
@@ -171,21 +172,7 @@ export default function App() {
       <ErrorBoundary key={page}>
         {page === 'home' && (
           !isHomeActive ? (
-            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-              <span className="section-badge">Halaman Dinonaktifkan</span>
-              <h2>Halaman Beranda Sedang Disembunyikan</h2>
-              <p style={{ color: 'var(--muted)', maxWidth: '520px' }}>
-                Halaman utama (Beranda) saat ini dinonaktifkan dari panel admin CMS. Silakan kunjungi halaman lain yang sedang aktif:
-              </p>
-              <div style={{ display: 'flex', gap: '12px', marginTop: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
-                {isAboutActive && (
-                  <button className="button-primary" onClick={() => navigate('/tentang-kami')} type="button">Tentang Kami</button>
-                )}
-                {isContactActive && (
-                  <button className="button-secondary" onClick={() => navigate('/hubungi-kami')} type="button">Hubungi Kami</button>
-                )}
-              </div>
-            </section>
+            <UnderConstructionPage page="home" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
           ) : (
             <>
               <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} pageExists={isHomeActive && cmsLoaded} />
@@ -198,12 +185,7 @@ export default function App() {
         )}
         {page === 'catalog' && (
           !isCatalogActive ? (
-            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-              <span className="section-badge">Halaman Dinonaktifkan</span>
-              <h2>Halaman Produk Disembunyikan</h2>
-              <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Halaman Katalog Produk saat ini dinonaktifkan oleh administrator dari panel CMS.</p>
-              <button className="button-primary" style={{ marginTop: '8px' }} onClick={() => navigate(isHomeActive ? '#beranda' : '/tentang-kami')} type="button">Kembali ke Halaman Aktif</button>
-            </section>
+            <UnderConstructionPage page="catalog" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
           ) : (
             <ProductCatalog posts={cms.posts} categories={cms.categories} />
           )
@@ -211,24 +193,14 @@ export default function App() {
         {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
         {page === 'about' && (
           !isAboutActive ? (
-            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-              <span className="section-badge">Halaman Dinonaktifkan</span>
-              <h2>Halaman Tentang Kami Disembunyikan</h2>
-              <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Halaman Tentang Kami saat ini sedang dinonaktifkan dari panel admin CMS.</p>
-              <button className="button-primary" style={{ marginTop: '8px' }} onClick={() => navigate(isHomeActive ? '#beranda' : '/hubungi-kami')} type="button">Kembali ke Halaman Aktif</button>
-            </section>
+            <UnderConstructionPage page="about" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
           ) : (
             <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />
           )
         )}
         {page === 'contact' && (
           !isContactActive ? (
-            <section className="page-shell section-shell" style={{ textAlign: 'center', padding: '140px 20px', minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-              <span className="section-badge">Halaman Dinonaktifkan</span>
-              <h2>Halaman Hubungi Kami Disembunyikan</h2>
-              <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Halaman Kontak saat ini sedang dinonaktifkan dari panel admin CMS.</p>
-              <button className="button-primary" style={{ marginTop: '8px' }} onClick={() => navigate(isHomeActive ? '#beranda' : '/tentang-kami')} type="button">Kembali ke Halaman Aktif</button>
-            </section>
+            <UnderConstructionPage page="contact" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
           ) : (
             <ContactSection onNavigate={navigate} data={cms.settings || {}} pageData={findPageBySlug(cms.pages, 'hubungi-kami')} />
           )

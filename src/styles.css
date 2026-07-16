@@ -2547,7 +2547,7 @@ img {
 
 .mini-map-iframe-wrapper {
   width: 100%;
-  height: 150px;
+  height: 180px;
   position: relative;
   background: #0b1f13;
   display: block;
@@ -2559,13 +2559,124 @@ img {
   display: block;
 }
 
+/* Custom Centered Map Point with Green Marker & Radar in Embed */
+.custom-center-pin-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.green-center-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-28px);
+}
+
+.green-pin-bubble {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4ade80 0%, #16a34a 100%);
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 6px 18px rgba(22, 163, 74, 0.7), inset 0 2px 5px rgba(255, 255, 255, 0.5);
+  display: grid;
+  place-items: center;
+  position: relative;
+  z-index: 4;
+}
+
+.green-pin-bubble .pin-green-icon {
+  color: #ffffff;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+.green-pin-pointer {
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 13px solid #16a34a;
+  margin-top: -3px;
+  position: relative;
+  z-index: 3;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.35));
+}
+
+/* Titik Point Hijau Utama tepat di koordinat tengah (50%, 50%) */
+.green-center-dot-core {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.95), 0 2px 6px rgba(0, 0, 0, 0.6);
+  margin-top: -4px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Radar Gelombang Hijau Berdenyut dari Titik Tengah */
+.green-marker-pulse-ring {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+  background: rgba(34, 197, 94, 0.22);
+  animation: greenRadarPulse 2.4s infinite cubic-bezier(0, 0.2, 0.8, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.green-marker-pulse-ring.ring-2 {
+  animation-delay: -1.2s;
+}
+
+@keyframes greenRadarPulse {
+  0% {
+    width: 14px;
+    height: 14px;
+    bottom: 0px;
+    opacity: 1;
+    border-width: 3px;
+  }
+  100% {
+    width: 72px;
+    height: 72px;
+    bottom: -29px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
 /* 2. Main Footer Grid */
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.6fr 0.8fr 0.9fr 0.9fr 1.3fr;
+  grid-template-columns: 1.6fr 0.9fr 0.9fr 0.9fr 1.3fr;
   gap: clamp(24px, 3.5vw, 42px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: clamp(36px, 5vw, 48px);
+}
+
+.footer-map-span {
+  grid-column: 1 / span 2;
+  margin-top: 8px;
+}
+
+.footer-col-span-row {
+  grid-row: 1 / span 2;
 }
 
 .footer-brand-col {
@@ -2733,6 +2844,14 @@ html:not([data-theme='light']) .subject-pill {
   .footer-main-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .footer-map-span {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col-span-row {
+    grid-row: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2746,6 +2865,14 @@ html:not([data-theme='light']) .subject-pill {
 
   .footer-main-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-map-span {
+    grid-column: auto;
+  }
+
+  .footer-col-span-row {
+    grid-row: auto;
   }
 
   .footer-bottom-bar {

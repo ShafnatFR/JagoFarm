@@ -87,7 +87,54 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
           ))}
         </nav>
 
-        <nav className="footer-nav-col" aria-label="Produk footer">
+        {/* Lokasi Embed dipindahkan tepat di bawah Brand Tagline & tabel Navigasi */}
+        <div className="footer-mini-map-card footer-map-span" id="peta-lokasi">
+          <div className="mini-map-badge-header">
+            <div className="mini-map-point-info">
+              <div className="mini-map-pin-circle">
+                <span className="green-pulse-dot"></span>
+                <MapPin size={16} weight="fill" />
+              </div>
+              <span className="mini-map-title">Sukapura, Dayeuhkolot — Pusat Operasional JagoFarm</span>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Sukapura+Dayeuhkolot+Bandung+40257"
+              target="_blank"
+              rel="noreferrer"
+              className="mini-map-external-link"
+              title="Buka Peta di Google Maps"
+            >
+              <Globe size={16} weight="bold" />
+            </a>
+          </div>
+          <div className="mini-map-iframe-wrapper">
+            <iframe
+              title="Peta Lokasi JagoFarm - Sukapura Dayeuhkolot Bandung"
+              src="https://maps.google.com/maps?q=-6.975416,107.633194+(JagoFarm+Corporation,+Sukapura,+Dayeuhkolot,+Bandung)&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="180"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+
+            {/* Titik Point Hijau di Tengah Embed Peta */}
+            <div className="custom-center-pin-overlay" aria-hidden="true">
+              <div className="green-center-marker">
+                <div className="green-marker-pulse-ring ring-1"></div>
+                <div className="green-marker-pulse-ring ring-2"></div>
+                <div className="green-pin-bubble">
+                  <MapPin size={22} weight="fill" className="pin-green-icon" />
+                </div>
+                <div className="green-pin-pointer"></div>
+                <div className="green-center-dot-core" title="Titik Lokasi JagoFarm"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav className="footer-nav-col footer-col-span-row" aria-label="Produk footer">
           <h3>Produk & Solusi</h3>
           {footerProducts.map((item) => {
             const label = typeof item === 'string' ? item : item?.title || item?.name || 'Produk'
@@ -99,7 +146,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
           })}
         </nav>
 
-        <nav className="footer-nav-col" aria-label="Perusahaan footer">
+        <nav className="footer-nav-col footer-col-span-row" aria-label="Perusahaan footer">
           <h3>Perusahaan</h3>
           {defaultCompanyLinks.map((label) => (
             <button onClick={() => onNavigate('/tentang-kami')} type="button" key={label}>
@@ -108,7 +155,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
           ))}
         </nav>
 
-        <div className="footer-contact-col">
+        <div className="footer-contact-col footer-col-span-row">
           <h3>Kontak Resmi</h3>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Sukapura+Dayeuhkolot+Bandung+40257"
@@ -119,42 +166,6 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
             <MapPin size={18} weight="duotone" className="contact-icon" />
             <span>{address}</span>
           </a>
-
-          {/* 1 Kolom Lokasi Embed di bawah tulisan lokasi dengan point hijau & logo */}
-          <div className="footer-mini-map-card" id="peta-lokasi">
-            <div className="mini-map-badge-header">
-              <div className="mini-map-point-info">
-                <div className="mini-map-pin-circle">
-                  <span className="green-pulse-dot"></span>
-                  <MapPin size={16} weight="fill" />
-                </div>
-                <img src={settings?.site_logo || logo} alt="JagoFarm Logo" className="mini-map-logo" />
-                <span className="mini-map-title">Sukapura, Dayeuhkolot</span>
-              </div>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Sukapura+Dayeuhkolot+Bandung+40257"
-                target="_blank"
-                rel="noreferrer"
-                className="mini-map-external-link"
-                title="Buka Peta di Google Maps"
-              >
-                <Globe size={16} weight="bold" />
-              </a>
-            </div>
-            <div className="mini-map-iframe-wrapper">
-              <iframe
-                title="Peta Lokasi 1 Kolom JagoFarm"
-                src="https://maps.google.com/maps?q=Sukapura,+Dayeuhkolot,+Bandung+Regency,+West+Java+40257&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="150"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
-
           <a href={`tel:${phone}`} className="footer-contact-item">
             <PhoneCall size={18} weight="duotone" className="contact-icon" />
             <span>{phone}</span>

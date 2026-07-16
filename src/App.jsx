@@ -38,6 +38,7 @@ const routes = {
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
   '/kontak': 'contact',
+  '/hubungi-kami': 'contact',
 }
 
 export default function App() {

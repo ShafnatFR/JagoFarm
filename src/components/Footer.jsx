@@ -110,7 +110,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
           <div className="mini-map-iframe-wrapper">
             <iframe
               title="Peta Lokasi JagoFarm - Sukapura Dayeuhkolot Bandung"
-              src="https://maps.google.com/maps?q=-6.975416,107.633194+(JagoFarm+Corporation,+Sukapura,+Dayeuhkolot,+Bandung)&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?ll=-6.975416,107.633194&z=16&output=embed"
               width="100%"
               height="180"
               style={{ border: 0 }}

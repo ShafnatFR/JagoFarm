@@ -2670,19 +2670,39 @@ img {
   padding-bottom: clamp(36px, 5vw, 48px);
 }
 
-.footer-map-span {
-  grid-column: 1 / span 2;
-  margin-top: 8px;
-}
-
-.footer-col-span-row {
-  grid-row: 1 / span 2;
-}
-
+/* Explicit column & row locking on desktop to prevent CSS Grid auto-placement reordering */
 .footer-brand-col {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.footer-main-grid > nav:nth-of-type(1) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.footer-map-span {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  margin-top: 8px;
+}
+
+.footer-main-grid > nav:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.footer-main-grid > nav:nth-of-type(3) {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+}
+
+.footer-main-grid > .footer-contact-col {
+  grid-column: 5;
+  grid-row: 1 / span 2;
 }
 
 .footer-brand-logo {
@@ -2845,8 +2865,18 @@ html:not([data-theme='light']) .subject-pill {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .footer-brand-col,
+  .footer-main-grid > nav:nth-of-type(1),
+  .footer-main-grid > nav:nth-of-type(2),
+  .footer-main-grid > nav:nth-of-type(3),
+  .footer-main-grid > .footer-contact-col {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .footer-map-span {
     grid-column: 1 / -1;
+    grid-row: auto;
   }
 
   .footer-col-span-row {

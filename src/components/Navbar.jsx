@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger)
 const links = [
   ['Beranda', '#beranda'],
   ['Solusi', '#solusi'],
-  ['Produk', '/katalog'],
+  ['Produk', '/produk'],
   ['Tentang Kami', '/tentang-kami'],
 ]
 
@@ -81,7 +81,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
     return () => {
       blendTrigger.kill()
       heroTrigger?.kill()
-      sectionObserver?.disconnect()
+      if (sectionObserver && typeof sectionObserver.disconnect === 'function') sectionObserver.disconnect()
       observer?.disconnect()
     }
   }, [page])
@@ -99,7 +99,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
         </button>
         <div className={`nav-links ${open ? 'is-open' : ''}`}>
           {links.map(([label, target]) => (
-            <button className={(target === '#beranda' && page === 'home' && activeSection === 'home') || (target === '#solusi' && page === 'home' && activeSection === 'solutions') || (page === 'catalog' && target === '/katalog') || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
+            <button className={(target === '#beranda' && page === 'home' && activeSection === 'home') || (target === '#solusi' && page === 'home' && activeSection === 'solutions') || (page === 'catalog' && (target === '/produk' || target === '/katalog')) || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
               {label}
             </button>
           ))}

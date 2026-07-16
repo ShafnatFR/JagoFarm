@@ -67,12 +67,16 @@ export default function Footer({ onNavigate }) {
       </nav>
       <nav className="footer-links" aria-label="Produk footer">
         <h3>Produk</h3>
-        {products.map((label) => (
-          <button
-            onClick={() => onNavigate("/katalog")}
-            type="button"
-            key={label}
-          >
+        {productLinks.map((label) => (
+          <button onClick={() => onNavigate('/produk')} type="button" key={label}>
+            {label}
+          </button>
+        ))}
+      </nav>
+      <nav className="footer-links" aria-label="Perusahaan footer">
+        <h3>Perusahaan</h3>
+        {companyLinks.map((label) => (
+          <button onClick={() => onNavigate('/tentang-kami')} type="button" key={label}>
             {label}
           </button>
         ))}

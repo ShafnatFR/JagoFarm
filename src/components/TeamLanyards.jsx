@@ -6,6 +6,7 @@ import { GithubLogo, InstagramLogo, LinkedinLogo } from "@phosphor-icons/react";
 function TeamLanyard({ member, index }) {
   const ref = useRef(null);
   const [active, setActive] = useState(false);
+  const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
@@ -26,6 +27,16 @@ function TeamLanyard({ member, index }) {
     return () => observer.disconnect();
   }, [index]);
 
+  useEffect(() => {
+    if (active) {
+      setLeaving(true);
+      const timer = setTimeout(() => setLeaving(false), 600);
+      return () => clearTimeout(timer);
+    } else {
+      setLeaving(false);
+    }
+  }, [active]);
+
   return (
     <article className="team-lanyard-card motion-item">
       <div className="team-lanyard" ref={ref}>
@@ -44,8 +55,8 @@ function TeamLanyard({ member, index }) {
             ambientIntensity={1.25}
           />
         )}
-        {!active && (
-          <div className="lanyard-placeholder" aria-hidden="true">
+        {(leaving || !active) && (
+          <div className={`lanyard-placeholder ${leaving ? 'is-leaving' : ''}`} aria-hidden="true">
             <div className="lanyard-shimmer" />
           </div>
         )}

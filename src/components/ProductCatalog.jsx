@@ -21,8 +21,8 @@ export default function ProductCatalog() {
   }, [filter, query]);
 
   return (
-    <main className="catalog page-shell motion-section" id="katalog">
-      <header className="catalog-hero">
+    <main className="catalog page-shell" id="katalog">
+      <header className="catalog-hero motion-section">
         <h1 className="motion-item">Produk Jago Farm</h1>
         <p className="motion-item">
           Filter tanaman, hewan, dan perangkat yang lahir dari sistem produksi
@@ -30,9 +30,9 @@ export default function ProductCatalog() {
         </p>
       </header>
 
-      <div className="catalog-toolbar motion-item">
-        <h2>Katalog Produk</h2>
-        <label className="search-box">
+      <div className="catalog-toolbar motion-section">
+        <h2 className="motion-item">Katalog Produk</h2>
+        <label className="search-box motion-item">
           <MagnifyingGlass size={18} weight="bold" />
           <input
             aria-label="Cari produk"

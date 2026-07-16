@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import ecosystemVideo from "../assets/Vid.scrub.mp4";
+import ecosystemVideo from "../assets/jagofarm-ecosystem-scrub-250ms.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,19 +36,6 @@ export default function EcosystemPinnedScroll() {
 
     let trigger;
 
-    const seekToTarget = () => {
-      if (seekFrameRef.current || video.seeking) return;
-      seekFrameRef.current = window.requestAnimationFrame(() => {
-        seekFrameRef.current = 0;
-        if (
-          !video.seeking &&
-          Math.abs(video.currentTime - targetTimeRef.current) > 1 / 120
-        ) {
-          video.currentTime = targetTimeRef.current;
-        }
-      });
-    };
-
     const renderProgress = (progress) => {
       const duration = video.duration || 8;
       const targetTime = Math.min(duration, Math.max(0, progress * duration));
@@ -58,7 +45,14 @@ export default function EcosystemPinnedScroll() {
       );
 
       targetTimeRef.current = targetTime;
-      seekToTarget();
+      if (!seekFrameRef.current) {
+        seekFrameRef.current = window.requestAnimationFrame(() => {
+          seekFrameRef.current = 0;
+          if (Math.abs(video.currentTime - targetTimeRef.current) > 0.025) {
+            video.currentTime = targetTimeRef.current;
+          }
+        });
+      }
       if (nextStage !== activeStageRef.current) {
         activeStageRef.current = nextStage;
         setActiveStage(nextStage);
@@ -77,7 +71,7 @@ export default function EcosystemPinnedScroll() {
         start: "top top",
         end: () => `+=${window.innerHeight * 2.6}`,
         pin: true,
-        scrub: 0.05,
+        scrub: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: ({ progress }) => renderProgress(progress),
@@ -89,14 +83,11 @@ export default function EcosystemPinnedScroll() {
     if (video.readyState >= HTMLMediaElement.HAVE_METADATA) createTrigger();
     else
       video.addEventListener("loadedmetadata", createTrigger, { once: true });
-    video.addEventListener("seeked", seekToTarget);
-
     return () => {
       trigger?.kill();
       if (seekFrameRef.current)
         window.cancelAnimationFrame(seekFrameRef.current);
       video.removeEventListener("loadedmetadata", createTrigger);
-      video.removeEventListener("seeked", seekToTarget);
     };
   }, []);
 

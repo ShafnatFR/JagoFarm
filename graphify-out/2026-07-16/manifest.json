@@ -10,13 +10,13 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1784168381.6284902,
-    "ast_hash": "f814e3ca5263b3aa1343e0717994c927",
+    "mtime": 1784167856.7169752,
+    "ast_hash": "bc8e0f127e12a4532e9c73c9295c7d94",
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
-    "mtime": 1784168381.6424851,
-    "ast_hash": "98df047555d28ba7ae74b3d0bd13401c",
+    "mtime": 1784167292.6404145,
+    "ast_hash": "cbed3b8e2bd6744966540d28352f8ca7",
     "semantic_hash": ""
   },
   "src/components/ContactSection.jsx": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "src/components/Footer.jsx": {
-    "mtime": 1784168381.654497,
-    "ast_hash": "2c6595c61b6368b46c128b967d341092",
+    "mtime": 1784168142.842126,
+    "ast_hash": "bdf383caa0f9f26c185fcad27a1d2ab8",
     "semantic_hash": ""
   },
   "src/components/GlobalMotion.jsx": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
-    "mtime": 1784168381.6344898,
-    "ast_hash": "33a2ea4418b556a2797ff2119f4e5f25",
+    "mtime": 1784167292.645414,
+    "ast_hash": "152f77d519ad0a6473f0d96f0661f042",
     "semantic_hash": ""
   },
   "src/components/ProductCatalog.jsx": {

@@ -7,7 +7,6 @@ import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
 import Footer from './components/Footer.jsx'
 import GlobalMotion from './components/GlobalMotion.jsx'
 import HeroSection from './components/HeroSection.jsx'
-import IntroAnimation from './components/IntroAnimation.jsx'
 import LatestArticle from './components/LatestArticle.jsx'
 import Navbar from './components/Navbar.jsx'
 import ProductCatalog from './components/ProductCatalog.jsx'
@@ -37,10 +36,14 @@ const routes = {
   '/produk': 'catalog',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
+  '/hubungi-kami': 'contact',
 }
 
 export default function App() {
-  const [page, setPage] = useState(() => routes[window.location.pathname] ?? 'home')
+  const [page, setPage] = useState(() => {
+    const path = window.location.hash === '#hubungi-kami' ? '/hubungi-kami' : window.location.pathname
+    return routes[path] ?? 'home'
+  })
   const [pendingTarget, setPendingTarget] = useState(null)
 
   // Global Theme State
@@ -49,6 +52,12 @@ export default function App() {
     if (saved) return saved
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
+
+  useEffect(() => {
+    if (window.location.hash === '#hubungi-kami') {
+      window.history.replaceState(null, '', '/hubungi-kami')
+    }
+  }, [])
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -100,13 +109,12 @@ export default function App() {
   }, [page])
 
   const navigate = (target) => {
-    // Kill all GSAP ScrollTriggers BEFORE React reconciliation
-    // to prevent DOM mismatch from ScrollTrigger's pin-spacer
-    ScrollTrigger.getAll().forEach((t) => t.kill())
-    ScrollTrigger.clearScrollMemory()
+    if (target === '#hubungi-kami') target = '/hubungi-kami'
 
     if (target.startsWith('#')) {
       if (page !== 'home') {
+        ScrollTrigger.getAll().forEach((t) => t.kill())
+        ScrollTrigger.clearScrollMemory()
         window.history.pushState(null, '', `/${target}`)
         setPendingTarget(target)
         setPage('home')
@@ -117,6 +125,9 @@ export default function App() {
       return
     }
 
+    // Kill triggers before route reconciliation; pinned DOM must be cleaned first.
+    ScrollTrigger.getAll().forEach((t) => t.kill())
+    ScrollTrigger.clearScrollMemory()
     window.history.pushState(null, '', target)
     setPage(routes[target] ?? 'home')
     window.scrollTo({ top: 0, behavior: 'instant' })
@@ -124,7 +135,6 @@ export default function App() {
 
   return (
     <ReactLenis root>
-      <IntroAnimation />
       <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
       <GlobalMotion page={page} />
       <ErrorBoundary key={page}>
@@ -135,7 +145,6 @@ export default function App() {
             <SolutionsSection />
             <FeaturedProductsSection />
             <LatestArticle />
-            <ContactSection onNavigate={navigate} />
           </>
         )}
         {page === 'catalog' && <ProductCatalog />}

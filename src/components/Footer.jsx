@@ -38,7 +38,7 @@ function TikTokIcon({ size = 20, className = '' }) {
 
 function extractMapSrc(input) {
   if (!input || typeof input !== 'string') return null
-  const trimmed = input.trim()
+  const trimmed = input.trim().replace(/&amp;/g, '&').replace(/&quot;/g, '"')
   const match = trimmed.match(/src=["']([^"']+)["']/i)
   if (match && match[1]) {
     return match[1]
@@ -50,28 +50,35 @@ function extractMapSrc(input) {
 }
 
 function getDynamicSocials(settings) {
-  const socialIconsMap = {
-    tiktok: TikTokIcon,
-    instagram: InstagramLogo,
-    linkedin: LinkedinLogo,
-    facebook: FacebookLogo,
-    youtube: YoutubeLogo,
-    whatsapp: WhatsappLogo,
-    twitter: Globe,
-    x: Globe,
-  }
+  const socialConfigs = [
+    { keys: ['tiktok'], label: 'TikTok', icon: TikTokIcon },
+    { keys: ['instagram', 'insta', 'ig'], label: 'Instagram', icon: InstagramLogo },
+    { keys: ['linkedin'], label: 'LinkedIn', icon: LinkedinLogo },
+    { keys: ['facebook', 'fb'], label: 'Facebook', icon: FacebookLogo },
+    { keys: ['youtube', 'yt', 'youtu'], label: 'YouTube', icon: YoutubeLogo },
+    { keys: ['whatsapp', 'wa'], label: 'WhatsApp', icon: WhatsappLogo },
+    { keys: ['twitter', 'x.com'], label: 'X / Twitter', icon: Globe },
+  ]
 
-  // Check if CMS provided an array in social_links, socials, or ikon_media_sosial
-  const rawArray = settings?.social_links || settings?.socials || settings?.ikon_media_sosial
+  const rawArray = settings?.social_links || settings?.socials || settings?.ikon_media_sosial || settings?.social_media
   if (Array.isArray(rawArray) && rawArray.length > 0) {
     return rawArray.map((item) => {
-      const label = String(item?.platform || item?.name || item?.label || 'Social')
-      const key = label.toLowerCase()
-      let Icon = LinkedinLogo
-      Object.keys(socialIconsMap).forEach((k) => {
-        if (key.includes(k)) Icon = socialIconsMap[k]
-      })
-      return [label, item.url || item.link || '#', Icon]
+      const url = typeof item === 'string' ? item : (item?.url || item?.link || item?.value || item?.href || '#')
+      const rawLabel = typeof item === 'string' ? '' : String(item?.platform || item?.name || item?.label || item?.type || item?.social || item?.icon || item?.title || item?.id || item?.key || '')
+      const fullText = `${rawLabel} ${url} ${typeof item === 'object' && item ? JSON.stringify(item) : ''}`.toLowerCase()
+
+      let matchedLabel = rawLabel || 'Social'
+      let MatchedIcon = LinkedinLogo
+
+      for (const config of socialConfigs) {
+        if (config.keys.some((k) => fullText.includes(k))) {
+          matchedLabel = (!rawLabel || rawLabel === 'Social' || rawLabel.toLowerCase() === config.label.toLowerCase()) ? config.label : rawLabel
+          MatchedIcon = config.icon
+          break
+        }
+      }
+
+      return [matchedLabel, url, MatchedIcon]
     })
   }
 
@@ -124,7 +131,8 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
   const phone = settings?.phone || settings?.phone_numbers?.[0] || '+62 852-1537-6975'
   const email = settings?.email || settings?.emails?.[0] || 'jagofarm.corporation@gmail.com'
   const address = settings?.alamat_lengkap || settings?.alamat || settings?.full_address || settings?.address || (Array.isArray(settings?.addresses) ? settings.addresses[0] : null) || '2JGM+Q4 Sukapura, Kabupaten Bandung, Jawa Barat, Indonesia'
-  const mapEmbedSrc = extractMapSrc(settings?.lokasi_google_maps || settings?.google_maps_location || settings?.google_maps || settings?.embed_peta || settings?.maps_embed) || "https://maps.google.com/maps?ll=-6.975416,107.633194&z=16&output=embed"
+  const rawMapInput = settings?.lokasi_google_maps || settings?.google_maps_location || settings?.google_maps || settings?.embed_peta || settings?.maps_embed || settings?.google_map || settings?.map_embed_code || settings?.map_url || settings?.map || settings?.lokasi_peta || settings?.embed_maps || settings?.maps_iframe || settings?.iframe_maps || settings?.peta
+  const mapEmbedSrc = extractMapSrc(rawMapInput) || "https://maps.google.com/maps?ll=-6.975416,107.633194&z=16&output=embed"
 
   return (
     <footer className="footer-shell section-shell" id="kontak">

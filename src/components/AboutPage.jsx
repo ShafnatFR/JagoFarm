@@ -25,12 +25,12 @@ export default function AboutPage({ onNavigate, pageData = null }) {
     description: heroBlock.data.sub_headline || defaultHero.description,
   } : defaultHero;
 
-  const aboutStats = heroBlock?.data?.stats?.length > 0
+  const aboutStats = heroBlock?.data && Array.isArray(heroBlock.data.stats)
     ? heroBlock.data.stats.map((s) => ({ value: s.value, label: s.label }))
     : defaultStats;
 
   // Timeline from first features block
-  const storyTimeline = featuresBlocks[0]?.data?.items?.length > 0
+  const storyTimeline = featuresBlocks[0]?.data && Array.isArray(featuresBlocks[0].data.items)
     ? featuresBlocks[0].data.items.map((item) => ({
         year: Array.isArray(item.labels) && item.labels.length > 1 ? item.labels[1] : '',
         title: item.title || '',
@@ -41,7 +41,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
     : defaultTimeline;
 
   // Core values from second features block
-  const coreValues = featuresBlocks[1]?.data?.items?.length > 0
+  const coreValues = featuresBlocks[1]?.data && Array.isArray(featuresBlocks[1].data.items)
     ? featuresBlocks[1].data.items.map((item) => ({
         title: item.title || '',
         description: item.description || '',
@@ -51,7 +51,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
     : defaultValues;
 
   // Gallery
-  const galleryItems = galleryBlock?.data?.images?.length > 0
+  const galleryItems = galleryBlock?.data && Array.isArray(galleryBlock.data.images)
     ? galleryBlock.data.images.map((img) => ({
         title: img.image_title || img.caption || img.alt_text || '',
         category: img.category || '',

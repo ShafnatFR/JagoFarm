@@ -91,7 +91,7 @@ function TeamLanyard({ member, index }) {
 export default function TeamLanyards({ data }) {
   const title = data?.title || "Kepemimpinan & Tim Inti";
   const subtitle = data?.subtitle || "Kolaborasi pemikir agronomi, rekayasawan perangkat lunak, dan praktisi IoT yang mendedikasikan diri untuk merombak masa depan pangan sirkular.";
-  const members = Array.isArray(data?.members) && data.members.length > 0
+  const members = data && Array.isArray(data.members)
     ? data.members.map((m, idx) => ({
         id: m.id || idx,
         name: m.name || '',
@@ -106,6 +106,10 @@ export default function TeamLanyards({ data }) {
         originX: idx % 2 === 0 ? -1.8 : 1.8,
       }))
     : teamMembersDetailed;
+
+  if (members.length === 0) {
+    return null;
+  }
 
   return (
     <section className="team-lanyards-container section-shell motion-section">

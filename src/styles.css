@@ -3407,3 +3407,64 @@ img {
     width: 100%;
   }
 }
+.cms-empty,
+.cms-rich-text,
+.cms-tabs,
+.cms-faq,
+.cms-cta {
+  padding-block: clamp(7rem, 12vw, 11rem) 5rem;
+}
+
+.cms-tab-buttons,
+.cms-cta > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: 1.25rem 0;
+}
+
+.cms-tab-buttons button,
+.cms-cta a,
+.contact-form button {
+  border: 0;
+  border-radius: 999px;
+  padding: .8rem 1.15rem;
+  background: var(--forest);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cms-faq details {
+  border-bottom: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding: 1rem 0;
+}
+
+.cms-cta {
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+}
+
+.cms-cta > :not(.cms-cta-bg) { position: relative; z-index: 1; }
+.cms-cta-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.contact-form {
+  display: grid;
+  gap: .75rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 1rem;
+  padding: .9rem 1rem;
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  color: inherit;
+  font: inherit;
+}
+
+.contact-form textarea { min-height: 8rem; resize: vertical; }
+.contact-form :disabled { cursor: wait; opacity: .65; }

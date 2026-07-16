@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import { animate } from "animejs";
 import dayHero from '../assets/hero-farm-day.png'
 import nightHero from '../assets/hero-farm-night.png'
+import { validImageUrl } from '../lib/cms.js'
 
-export default function HeroSection({ theme, onToggleTheme }) {
+export default function HeroSection({ theme, onToggleTheme, data = {} }) {
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -40,19 +41,19 @@ export default function HeroSection({ theme, onToggleTheme }) {
         ref={heroRef}
       >
         <div className="hero-scene" aria-hidden="true">
-          <img className="hero-photo hero-photo-day" src={dayHero} alt="" />
-          <img className="hero-photo hero-photo-night" src={nightHero} alt="" />
+          <img className="hero-photo hero-photo-day" src={validImageUrl(data.background_image) || dayHero} alt="" referrerPolicy="no-referrer" />
+          <img className="hero-photo hero-photo-night" src={nightHero} alt="" referrerPolicy="no-referrer" />
         </div>
         <div className="hero-shade" aria-hidden="true" />
         <section className="hero-copy" aria-labelledby="hero-title">
-          <span className="hero-eyebrow hero-animate">Sistem pangan terintegrasi</span>
+          <span className="hero-eyebrow hero-animate">{data.eyebrow || 'Sistem pangan terintegrasi'}</span>
           <h1 className="hero-animate motion-item" id="hero-title">
-            Satu farm. Banyak siklus. Nol limbah.
+            {data.headline || 'Satu farm. Banyak siklus. Nol limbah.'}
           </h1>
           <p className="hero-animate motion-item">
-            Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor
-            lapangan menjadi sistem pangan yang terukur dari input sampai panen.
+            {data.sub_headline || 'Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor lapangan menjadi sistem pangan yang terukur dari input sampai panen.'}
           </p>
+          {Array.isArray(data.stats_list) && <div className="hero-metrics">{data.stats_list.map((stat, index) => <article key={index}><strong>{stat?.value || ''}</strong><span>{stat?.label || ''}</span></article>)}</div>}
         </section>
         <button
           className="hero-sky-toggle hero-animate"

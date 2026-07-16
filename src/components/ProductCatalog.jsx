@@ -58,7 +58,7 @@ export default function ProductCatalog() {
       <div className="catalog-grid">
         {products.map((product) => (
           <article className="product-card" key={product.name}>
-            <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} referrerPolicy="no-referrer" />
             <span className="category-badge">{product.category}</span>
             <h3>{product.name}</h3>
             <p>{product.price}</p>

@@ -5,23 +5,23 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1783940407.9234567,
-    "ast_hash": "9996ba8266090cbcb0ef90fb449d9ab4",
+    "mtime": 1784177195.7763822,
+    "ast_hash": "68c7f30c28b67bf08adc8e969af5316d",
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1784167856.7169752,
-    "ast_hash": "bc8e0f127e12a4532e9c73c9295c7d94",
+    "mtime": 1784177127.6105914,
+    "ast_hash": "d959a8a3d0024d401a857d1f91ef2515",
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
-    "mtime": 1784167292.6404145,
-    "ast_hash": "cbed3b8e2bd6744966540d28352f8ca7",
+    "mtime": 1784177070.1166942,
+    "ast_hash": "1a608f17697565dc66f6cbb6dbf3b1af",
     "semantic_hash": ""
   },
   "src/components/ContactSection.jsx": {
-    "mtime": 1784100243.2124076,
-    "ast_hash": "001c9365f949b8925db8c538b28ac1b4",
+    "mtime": 1784177351.503114,
+    "ast_hash": "9d9b1da93cb21f4e06f431dc180f2d9e",
     "semantic_hash": ""
   },
   "src/components/EcosystemPinnedScroll.jsx": {
@@ -30,13 +30,13 @@
     "semantic_hash": ""
   },
   "src/components/FeaturedProductsSection.jsx": {
-    "mtime": 1784091414.6518092,
-    "ast_hash": "519defd75a44e879830d4bebeb8d4ab4",
+    "mtime": 1784177016.5858476,
+    "ast_hash": "3f1ae3d94f5e57e76c83566e7bb12f3e",
     "semantic_hash": ""
   },
   "src/components/Footer.jsx": {
-    "mtime": 1784168142.842126,
-    "ast_hash": "bdf383caa0f9f26c185fcad27a1d2ab8",
+    "mtime": 1784177351.5011215,
+    "ast_hash": "5a1d848e366353496ee48b8374e03698",
     "semantic_hash": ""
   },
   "src/components/GlobalMotion.jsx": {
@@ -45,13 +45,13 @@
     "semantic_hash": ""
   },
   "src/components/HeroSection.jsx": {
-    "mtime": 1784084526.60676,
-    "ast_hash": "c2a24fa20e01d7c9cdc7b5755e8d56df",
+    "mtime": 1784177016.579316,
+    "ast_hash": "d626142a96b4a666f4029aac512b2dce",
     "semantic_hash": ""
   },
   "src/components/IntroAnimation.jsx": {
-    "mtime": 1783652617.9595966,
-    "ast_hash": "35a4ea6c98cc154abf383e324c6e133b",
+    "mtime": 1784177070.1196988,
+    "ast_hash": "33fa624466fd5d0a5b714ce9eaf02137",
     "semantic_hash": ""
   },
   "src/components/Nametag3D.jsx": {
@@ -60,18 +60,18 @@
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
-    "mtime": 1784167292.645414,
-    "ast_hash": "152f77d519ad0a6473f0d96f0661f042",
+    "mtime": 1784177351.499112,
+    "ast_hash": "6346c5410e248da17fd5513e2235bc92",
     "semantic_hash": ""
   },
   "src/components/ProductCatalog.jsx": {
-    "mtime": 1784167292.6484132,
-    "ast_hash": "b7477366c17c38d5b3e47eb0801ff1ee",
+    "mtime": 1784177070.1176934,
+    "ast_hash": "58f3d3e47c1847925cb03d28b9f75e46",
     "semantic_hash": ""
   },
   "src/components/SolutionsSection.jsx": {
-    "mtime": 1783668190.6854422,
-    "ast_hash": "b70d955f3c8bb7ee1f6112f31341dff6",
+    "mtime": 1784177030.8550045,
+    "ast_hash": "7ba76cc9feddcd7743d12da136f22915",
     "semantic_hash": ""
   },
   "src/components/TeamLanyards.jsx": {
@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "src/components/LatestArticle.jsx": {
-    "mtime": 1784084526.6077585,
-    "ast_hash": "fc1104541e816c282846ba27f9b75048",
+    "mtime": 1784177016.588848,
+    "ast_hash": "99854b6f6cdac2819f0175f86d6f7067",
     "semantic_hash": ""
   },
   "PRD_TEMPLATE_FULL.md": {
@@ -297,6 +297,21 @@
   "vercel.json": {
     "mtime": 1784167292.6594124,
     "ast_hash": "abd07d5b81e7d2c7029cc5611e1ec638",
+    "semantic_hash": ""
+  },
+  "src/components/SectionRenderer.jsx": {
+    "mtime": 1784177195.7703843,
+    "ast_hash": "63abe5bea894ec709568f4814381dda9",
+    "semantic_hash": ""
+  },
+  "src/lib/cms.js": {
+    "mtime": 1784177195.768381,
+    "ast_hash": "ab1a6d3480cac42c92fa416f44f2e9b7",
+    "semantic_hash": ""
+  },
+  "src/lib/cms.test.js": {
+    "mtime": 1784177195.7773852,
+    "ast_hash": "caaea43fbb76c714e19966283d728d23",
     "semantic_hash": ""
   }
 }

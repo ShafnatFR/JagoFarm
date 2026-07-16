@@ -13,6 +13,8 @@ import ProductCatalog from './components/ProductCatalog.jsx'
 import SolutionsSection from './components/SolutionsSection.jsx'
 import AboutPage from './components/AboutPage.jsx'
 import ContactSection from './components/ContactSection.jsx'
+import SectionRenderer from './components/SectionRenderer.jsx'
+import { cmsConfigured, getNavigation, getPage, getPosts, getSettings } from './lib/cms.js'
 import './styles.css'
 
 class ErrorBoundary extends Component {
@@ -45,6 +47,7 @@ export default function App() {
     return routes[path] ?? 'home'
   })
   const [pendingTarget, setPendingTarget] = useState(null)
+  const [cms, setCms] = useState({ page: null, posts: [], settings: null, navigation: null })
 
   // Global Theme State
   const [theme, setTheme] = useState(() => {
@@ -52,6 +55,22 @@ export default function App() {
     if (saved) return saved
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
+
+  useEffect(() => {
+    if (!cmsConfigured) return undefined
+    let cancelled = false
+    Promise.allSettled([getPage('home'), getPosts(), getSettings(), getNavigation()]).then((results) => {
+      if (cancelled) return
+      const [pageResult, postsResult, settingsResult, navigationResult] = results
+      setCms({
+        page: pageResult.status === 'fulfilled' ? pageResult.value?.data || null : null,
+        posts: postsResult.status === 'fulfilled' ? postsResult.value?.data || [] : [],
+        settings: settingsResult.status === 'fulfilled' ? settingsResult.value?.data || null : null,
+        navigation: navigationResult.status === 'fulfilled' ? navigationResult.value?.data || null : null,
+      })
+    })
+    return () => { cancelled = true }
+  }, [])
 
   useEffect(() => {
     if (window.location.hash === '#hubungi-kami') {
@@ -135,10 +154,14 @@ export default function App() {
 
   return (
     <ReactLenis root>
-      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
+      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} navigation={cms.navigation} settings={cms.settings} />
       <GlobalMotion page={page} />
       <ErrorBoundary key={page}>
-        {page === 'home' && (
+        {page === 'home' && cmsConfigured ? (
+          cms.page ? (
+          <SectionRenderer blocks={cms.page.content} posts={cms.posts} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
+          ) : <section className="section-shell cms-empty" aria-live="polite">Konten sedang disiapkan.</section>
+        ) : page === 'home' && (
           <>
             <HeroSection theme={theme} onToggleTheme={toggleTheme} />
             <EcosystemPinnedScroll />
@@ -151,7 +174,7 @@ export default function App() {
         {page === 'about' && <AboutPage onNavigate={navigate} />}
         {page === 'contact' && <ContactSection onNavigate={navigate} />}
       </ErrorBoundary>
-      <Footer onNavigate={navigate} />
+      <Footer onNavigate={navigate} settings={cms.settings} navigation={cms.navigation} />
     </ReactLenis>
   )
 }

@@ -1,16 +1,16 @@
 # Graph Report - JagoFarm  (2026-07-16)
 
 ## Corpus Check
-- 24 files · ~571,187 words
+- 27 files · ~572,599 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 224 nodes · 244 edges · 20 communities (17 shown, 3 thin omitted)
+- 246 nodes · 312 edges · 19 communities (16 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a5bdb6d5`
+- Built from commit: `17ffa28a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,7 +26,6 @@
 - gsap
 - @gsap/react
 - lenis
-- lottie-react
 - meshline
 - @phosphor-icons/react
 - react-dom
@@ -37,34 +36,43 @@
 ## God Nodes (most connected - your core abstractions)
 1. `Product Requirements Document (PRD)` - 20 edges
 2. `6.4 API Contract` - 11 edges
-3. `8. Testing Strategy` - 8 edges
-4. `1. Overview` - 7 edges
-5. `6. Technical Architecture` - 7 edges
-6. `7. Coding Standards` - 7 edges
-7. `2. Goals & Success Metrics` - 6 edges
-8. `6.3 Database Schema` - 6 edges
-9. `9. Logging, Monitoring & Error Handling` - 6 edges
-10. `ErrorBoundary` - 5 edges
+3. `validImageUrl()` - 9 edges
+4. `8. Testing Strategy` - 8 edges
+5. `1. Overview` - 7 edges
+6. `6. Technical Architecture` - 7 edges
+7. `7. Coding Standards` - 7 edges
+8. `App()` - 6 edges
+9. `fetchFromCMS()` - 6 edges
+10. `2. Goals & Success Metrics` - 6 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `GenericCards()` --calls--> `validImageUrl()`  [EXTRACTED]
+  src/components/SectionRenderer.jsx → src/lib/cms.js
+- `Cta()` --calls--> `validImageUrl()`  [EXTRACTED]
+  src/components/SectionRenderer.jsx → src/lib/cms.js
+- `App()` --calls--> `getNavigation()`  [EXTRACTED]
+  src/App.jsx → src/lib/cms.js
+- `App()` --calls--> `getPage()`  [EXTRACTED]
+  src/App.jsx → src/lib/cms.js
+- `App()` --calls--> `getPosts()`  [EXTRACTED]
+  src/App.jsx → src/lib/cms.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 3 thin omitted)
+## Communities (19 total, 3 thin omitted)
 
 ### Community 0 - "App.jsx"
-Cohesion: 0.11
-Nodes (15): App(), routes, contacts, ContactSection(), EcosystemPinnedScroll(), storyStages, Footer(), navigation (+7 more)
+Cohesion: 0.09
+Nodes (31): App(), routes, contacts, ContactSection(), EcosystemPinnedScroll(), storyStages, FeaturedProductsSection(), Footer() (+23 more)
 
 ### Community 1 - "content.js"
-Cohesion: 0.17
-Nodes (12): FeaturedProductsSection(), filters, ProductCatalog(), SolutionsSection(), benefits, ecosystemFloaters, ecosystemSteps, featuredProducts (+4 more)
+Cohesion: 0.19
+Nodes (10): filters, ProductCatalog(), SolutionsSection(), benefits, ecosystemFloaters, ecosystemSteps, featuredProducts, hero (+2 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.22
-Nodes (8): name, private, scripts, build, dev, preview, type, version
+Cohesion: 0.20
+Nodes (9): name, private, scripts, build, dev, preview, test, type (+1 more)
 
 ### Community 3 - "Nametag3D.jsx"
 Cohesion: 0.15
@@ -75,8 +83,8 @@ Cohesion: 0.06
 Nodes (33): animejs, @fontsource/outfit, gsap, @gsap/react, lenis, lottie-react, meshline, dependencies (+25 more)
 
 ### Community 5 - "AboutPage.jsx"
-Cohesion: 0.06
-Nodes (30): 10.1 Data Inventory, 10.2 User Rights (UU PDP), 10.3 Data Security Checklist, 10.4 Privacy Policy & Terms of Service, 10. Data Privacy & Compliance, 11.1 Screen List, 11.2 Design References, 11.3 User Flow Utama (+22 more)
+Cohesion: 0.05
+Nodes (38): 10.1 Data Inventory, 10.2 User Rights (UU PDP), 10.3 Data Security Checklist, 10.4 Privacy Policy & Terms of Service, 10. Data Privacy & Compliance, 11.1 Screen List, 11.2 Design References, 11.3 User Flow Utama (+30 more)
 
 ### Community 7 - "@fontsource/outfit"
 Cohesion: 0.09
@@ -89,10 +97,6 @@ Nodes (9): 4.1 Feature Priority (MoSCoW), 4.2 Feature List, 4.3 Functional Requi
 ### Community 10 - "lenis"
 Cohesion: 0.25
 Nodes (8): 2.1 Goals (In Scope), 2.2 Non-Goals (Out of Scope), 2.3 MVP Boundary, 2.4 Product Metrics (Business KPI), 2.5 Technical Metrics (Engineering KPI), 2. Goals & Success Metrics, Yang MASUK MVP (harus selesai sebelum launch):, Yang TIDAK masuk MVP (ditunda ke iterasi berikutnya):
-
-### Community 11 - "lottie-react"
-Cohesion: 0.25
-Nodes (8): 8.1 Testing Pyramid, 8.2 Unit Testing, 8.3 Integration Testing, 8.4 UI / Widget Testing (Flutter), 8.5 Coverage Targets, 8.6 Testing Tools, 8.7 Load & Performance Testing, 8. Testing Strategy
 
 ### Community 12 - "meshline"
 Cohesion: 0.29
@@ -115,24 +119,24 @@ Cohesion: 0.33
 Nodes (6): 9.1 Log Levels, 9.2 Log Format (Structured JSON), 9.3 Yang Wajib Di-log, 9.4 Error Handling Pattern, 9.5 Monitoring & Alerting, 9. Logging, Monitoring & Error Handling
 
 ## Knowledge Gaps
-- **127 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+122 more)
+- **129 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+124 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Product Requirements Document (PRD)` connect `AboutPage.jsx` to `@fontsource/outfit`, `@gsap/react`, `lenis`, `lottie-react`, `meshline`, `@phosphor-icons/react`, `react-dom`, `@react-three/drei`, `9. Logging, Monitoring & Error Handling`?**
-  _High betweenness centrality (0.223) - this node is a cross-community bridge._
+- **Why does `Product Requirements Document (PRD)` connect `AboutPage.jsx` to `@fontsource/outfit`, `@gsap/react`, `lenis`, `meshline`, `@phosphor-icons/react`, `react-dom`, `@react-three/drei`, `9. Logging, Monitoring & Error Handling`?**
+  _High betweenness centrality (0.185) - this node is a cross-community bridge._
 - **Why does `6. Technical Architecture` connect `@fontsource/outfit` to `AboutPage.jsx`?**
-  _High betweenness centrality (0.085) - this node is a cross-community bridge._
+  _High betweenness centrality (0.070) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _127 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _129 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.11231884057971014 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08865248226950355 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
 - **Should `AboutPage.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
 - **Should `@fontsource/outfit` be split into smaller, more focused modules?**
   _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._

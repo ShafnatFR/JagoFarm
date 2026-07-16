@@ -13,7 +13,7 @@ const links = [
   ['Tentang Kami', '/tentang-kami'],
 ]
 
-export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
+export default function Navbar({ page, onNavigate, theme, onToggleTheme, navigation, settings }) {
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const shellRef = useRef(null)
@@ -79,10 +79,10 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
     <header className={`nav-shell ${page === 'home' ? 'is-over-hero' : ''}`} ref={shellRef}>
       <nav className="nav" aria-label="Navigasi utama">
         <button className="brand" onClick={() => go('#beranda')} type="button" aria-label="Jago Farm beranda">
-          <img src={logo} alt="" />
+          <img src={settings?.site_logo || logo} alt={settings?.site_name || 'Jago Farm'} referrerPolicy="no-referrer" />
         </button>
         <div className={`nav-links ${open ? 'is-open' : ''}`}>
-          {links.map(([label, target]) => (
+          {(Array.isArray(navigation) && navigation.length ? navigation.map((item) => [item.title, item.slug === 'home' || item.slug === 'beranda' ? '#beranda' : `/${item.slug}`]) : links).map(([label, target]) => (
             <button className={(target === '#beranda' && page === 'home' && activeSection === 'home') || (target === '#solusi' && page === 'home' && activeSection === 'solutions') || (page === 'catalog' && (target === '/produk' || target === '/katalog')) || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
               {label}
             </button>

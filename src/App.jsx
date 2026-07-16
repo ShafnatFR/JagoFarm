@@ -37,7 +37,6 @@ const routes = {
   '/produk': 'catalog',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
-  '/kontak': 'contact',
 }
 
 export default function App() {
@@ -136,6 +135,7 @@ export default function App() {
             <SolutionsSection />
             <FeaturedProductsSection />
             <LatestArticle />
+            <ContactSection onNavigate={navigate} />
           </>
         )}
         {page === 'catalog' && <ProductCatalog />}

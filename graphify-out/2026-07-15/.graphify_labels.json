@@ -16,5 +16,6 @@
   "14": "react-dom",
   "15": "@react-three/drei",
   "16": "@react-three/fiber",
+  "17": "9. Logging, Monitoring & Error Handling",
   "21": "vite.config.js"
 }

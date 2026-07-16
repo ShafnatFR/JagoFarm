@@ -60,43 +60,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
 
   return (
     <footer className="footer-shell section-shell" id="kontak">
-      {/* 1. Embed Lokasi (Requested Location Map Embed in Footer) */}
-      <div className="footer-map-section" id="peta-lokasi">
-        <div className="map-header-banner">
-          <div className="map-header-left">
-            <div className="map-pin-icon">
-              <MapPin size={24} weight="fill" />
-            </div>
-            <div>
-              <h4>Lokasi Kantor Pusat & Fasilitas Riset JagoFarm</h4>
-              <span>{address}</span>
-            </div>
-          </div>
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=Sukapura+Dayeuhkolot+Bandung+40257"
-            target="_blank"
-            rel="noreferrer"
-            className="button button-secondary map-link-btn"
-          >
-            <Globe size={18} weight="bold" />
-            Buka di Google Maps ↗
-          </a>
-        </div>
-        <div className="map-embed-wrapper">
-          <iframe
-            title="Peta Lokasi JagoFarm - Sukapura Dayeuhkolot Bandung"
-            src="https://maps.google.com/maps?q=Sukapura,+Dayeuhkolot,+Bandung+Regency,+West+Java+40257&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="360"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </div>
-
-      {/* 2. Main Footer Grid */}
+      {/* Main Footer Grid */}
       <div className="footer-main-grid">
         <div className="footer-brand-col">
           <button className="footer-brand-logo" onClick={() => onNavigate('#beranda')} type="button">
@@ -146,10 +110,51 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
 
         <div className="footer-contact-col">
           <h3>Kontak Resmi</h3>
-          <a href="#peta-lokasi" className="footer-contact-item">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Sukapura+Dayeuhkolot+Bandung+40257"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-contact-item"
+          >
             <MapPin size={18} weight="duotone" className="contact-icon" />
             <span>{address}</span>
           </a>
+
+          {/* 1 Kolom Lokasi Embed di bawah tulisan lokasi dengan point hijau & logo */}
+          <div className="footer-mini-map-card" id="peta-lokasi">
+            <div className="mini-map-badge-header">
+              <div className="mini-map-point-info">
+                <div className="mini-map-pin-circle">
+                  <span className="green-pulse-dot"></span>
+                  <MapPin size={16} weight="fill" />
+                </div>
+                <img src={settings?.site_logo || logo} alt="JagoFarm Logo" className="mini-map-logo" />
+                <span className="mini-map-title">Sukapura, Dayeuhkolot</span>
+              </div>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Sukapura+Dayeuhkolot+Bandung+40257"
+                target="_blank"
+                rel="noreferrer"
+                className="mini-map-external-link"
+                title="Buka Peta di Google Maps"
+              >
+                <Globe size={16} weight="bold" />
+              </a>
+            </div>
+            <div className="mini-map-iframe-wrapper">
+              <iframe
+                title="Peta Lokasi 1 Kolom JagoFarm"
+                src="https://maps.google.com/maps?q=Sukapura,+Dayeuhkolot,+Bandung+Regency,+West+Java+40257&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="150"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
           <a href={`tel:${phone}`} className="footer-contact-item">
             <PhoneCall size={18} weight="duotone" className="contact-icon" />
             <span>{phone}</span>

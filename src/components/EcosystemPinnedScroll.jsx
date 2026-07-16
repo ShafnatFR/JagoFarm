@@ -35,6 +35,7 @@ export default function EcosystemPinnedScroll() {
     if (!section || !video) return undefined;
 
     let trigger;
+    let animationFrame = 0;
 
     const renderProgress = (progress) => {
       const duration = video.duration || 8;
@@ -45,18 +46,16 @@ export default function EcosystemPinnedScroll() {
       );
 
       targetTimeRef.current = targetTime;
-      if (!seekFrameRef.current) {
-        seekFrameRef.current = window.requestAnimationFrame(() => {
-          seekFrameRef.current = 0;
-          if (Math.abs(video.currentTime - targetTimeRef.current) > 0.025) {
-            video.currentTime = targetTimeRef.current;
-          }
-        });
-      }
       if (nextStage !== activeStageRef.current) {
         activeStageRef.current = nextStage;
         setActiveStage(nextStage);
       }
+    };
+
+    const smoothVideoSeek = () => {
+      const difference = targetTimeRef.current - video.currentTime;
+      if (Math.abs(difference) > 0.01) video.currentTime += difference * 0.18;
+      animationFrame = window.requestAnimationFrame(smoothVideoSeek);
     };
 
     const createTrigger = () => {
@@ -71,7 +70,7 @@ export default function EcosystemPinnedScroll() {
         start: "top top",
         end: () => `+=${window.innerHeight * 2.6}`,
         pin: true,
-        scrub: true,
+        scrub: 0.35,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: ({ progress }) => renderProgress(progress),
@@ -83,10 +82,12 @@ export default function EcosystemPinnedScroll() {
     if (video.readyState >= HTMLMediaElement.HAVE_METADATA) createTrigger();
     else
       video.addEventListener("loadedmetadata", createTrigger, { once: true });
-
+    animationFrame = window.requestAnimationFrame(smoothVideoSeek);
     return () => {
       trigger?.kill();
-      if (seekFrameRef.current) window.cancelAnimationFrame(seekFrameRef.current);
+      window.cancelAnimationFrame(animationFrame);
+      if (seekFrameRef.current)
+        window.cancelAnimationFrame(seekFrameRef.current);
       video.removeEventListener("loadedmetadata", createTrigger);
     };
   }, []);

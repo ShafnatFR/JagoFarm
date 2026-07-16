@@ -107,7 +107,7 @@ export default function AboutPage({ onNavigate }) {
               key={index}
               style={{ gridColumn: colSpan, gridRow: rowSpan }}
             >
-              <img src={image} alt={title} loading="lazy" decoding="async" />
+              <img src={image} alt={title} referrerPolicy="no-referrer" loading="lazy" decoding="async" />
               <div className="gallery-overlay">
                 <span className="gallery-category">{category}</span>
                 <h3>{title}</h3>
@@ -128,7 +128,7 @@ export default function AboutPage({ onNavigate }) {
             </p>
           </div>
           <div className="cta-actions">
-            <button className="cta-btn-primary" onClick={() => onNavigate('/kontak')} type="button">
+            <button className="cta-btn-primary" onClick={() => onNavigate('/hubungi-kami')} type="button">
               Hubungi Tim Kami
               <ArrowRight size={20} weight="bold" />
             </button>

@@ -1,0 +1,327 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1784001932.7954426,
+    "ast_hash": "c60219da9ff8e14df6990aca650dfdec",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1784177195.7763822,
+    "ast_hash": "68c7f30c28b67bf08adc8e969af5316d",
+    "semantic_hash": ""
+  },
+  "src/App.jsx": {
+    "mtime": 1784190999.4245236,
+    "ast_hash": "b423ece098cd719640357f06f5bace78",
+    "semantic_hash": ""
+  },
+  "src/components/AboutPage.jsx": {
+    "mtime": 1784177070.1166942,
+    "ast_hash": "1a608f17697565dc66f6cbb6dbf3b1af",
+    "semantic_hash": ""
+  },
+  "src/components/ContactSection.jsx": {
+    "mtime": 1784177471.4531665,
+    "ast_hash": "e0dcc282ee37de107a883d76cab5500d",
+    "semantic_hash": ""
+  },
+  "src/components/EcosystemPinnedScroll.jsx": {
+    "mtime": 1784167585.454163,
+    "ast_hash": "3d8b9743e4c547b336ad59accedfd40c",
+    "semantic_hash": ""
+  },
+  "src/components/FeaturedProductsSection.jsx": {
+    "mtime": 1784192422.2417498,
+    "ast_hash": "b648389940a49b2e9e058aa6e64fec13",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.jsx": {
+    "mtime": 1784191017.870319,
+    "ast_hash": "50268acc71e4db22db3ec9ba531300a5",
+    "semantic_hash": ""
+  },
+  "src/components/GlobalMotion.jsx": {
+    "mtime": 1784167292.6434145,
+    "ast_hash": "b839ac4a091de7005b8a5be24df7c12a",
+    "semantic_hash": ""
+  },
+  "src/components/HeroSection.jsx": {
+    "mtime": 1784177434.4630313,
+    "ast_hash": "079447f225cba26ff0d93162b2bbd522",
+    "semantic_hash": ""
+  },
+  "src/components/IntroAnimation.jsx": {
+    "mtime": 1784177070.1196988,
+    "ast_hash": "33fa624466fd5d0a5b714ce9eaf02137",
+    "semantic_hash": ""
+  },
+  "src/components/Nametag3D.jsx": {
+    "mtime": 1784096139.4142563,
+    "ast_hash": "91896cebe6a5df0717e39281042d26cd",
+    "semantic_hash": ""
+  },
+  "src/components/Navbar.jsx": {
+    "mtime": 1784190999.421522,
+    "ast_hash": "00e61e85949395a0fc74b513db805012",
+    "semantic_hash": ""
+  },
+  "src/components/ProductCatalog.jsx": {
+    "mtime": 1784189224.6477396,
+    "ast_hash": "a79f92cbe46c447a575780551dd5a225",
+    "semantic_hash": ""
+  },
+  "src/components/SolutionsSection.jsx": {
+    "mtime": 1784191225.7639902,
+    "ast_hash": "c0b9a9554b7d0a1ed148e3736960a26a",
+    "semantic_hash": ""
+  },
+  "src/components/TeamLanyards.jsx": {
+    "mtime": 1784167292.652413,
+    "ast_hash": "a6b5111a4df4a408e0ca573c81c7800f",
+    "semantic_hash": ""
+  },
+  "src/data/content.js": {
+    "mtime": 1784033483.705348,
+    "ast_hash": "48d6e5cc2d36051801f84b574352d0ff",
+    "semantic_hash": ""
+  },
+  "src/main.jsx": {
+    "mtime": 1783606725.9916205,
+    "ast_hash": "167a83cdd7bb987d9885eda3f4012521",
+    "semantic_hash": ""
+  },
+  "vite.config.js": {
+    "mtime": 1783571250.6382215,
+    "ast_hash": "9bf09b6d97edba4eebf0fe93baaad662",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1784001932.7859228,
+    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1783571250.6326938,
+    "ast_hash": "99358b394c281c90d0f55d670074a7e3",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-feed.webp": {
+    "mtime": 1783606430.6545143,
+    "ast_hash": "1e53b1ba183d893c13cd3ae7cac8c94e",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-fertilizer.webp": {
+    "mtime": 1783606431.4785712,
+    "ast_hash": "3d0fc7eb17aa7a60638db1bdd52d5060",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-maggot.webp": {
+    "mtime": 1783606430.244872,
+    "ast_hash": "640a436876eed15daafa8004bcd8dea1",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-smart.webp": {
+    "mtime": 1783606432.1245804,
+    "ast_hash": "3749306dca70dec326a28545c9e9a854",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-waste.webp": {
+    "mtime": 1783606429.8318548,
+    "ast_hash": "19b72353169b74a89dc4ba4a1e17bc05",
+    "semantic_hash": ""
+  },
+  "src/assets/eco-water.webp": {
+    "mtime": 1783606431.049978,
+    "ast_hash": "b9eef019249b06715985adc3f98461a5",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-ecosystem-sheet.png": {
+    "mtime": 1783671109.5273507,
+    "ast_hash": "78c17bc76484fc5ff8c47496ddcd3a25",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-feed.png": {
+    "mtime": 1783671103.8946958,
+    "ast_hash": "065a3665233bfb1afe5bf5acdfc443db",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-iot.png": {
+    "mtime": 1783671104.1225803,
+    "ast_hash": "dddf4944c2294e31ed0d0582bc66053c",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-leaves.png": {
+    "mtime": 1783671103.453599,
+    "ast_hash": "de790dd6451ff8da87b9316802e082bb",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-maggot.png": {
+    "mtime": 1783671103.7721725,
+    "ast_hash": "52f41b8a81c229a7f4a7b98240f59d7d",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-melon.png": {
+    "mtime": 1783671103.2057865,
+    "ast_hash": "a19d297b1b5c047e0bab10e11dc28c32",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-organic-source.png": {
+    "mtime": 1783670786.4017062,
+    "ast_hash": "9d436db6392feb10f1127e5b66bfb649",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-organic.png": {
+    "mtime": 1783671114.1783614,
+    "ast_hash": "b7a0276bcffdc201bef9a6f566072566",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-tech-source.png": {
+    "mtime": 1783670707.8887954,
+    "ast_hash": "9875e1dae0f4ce2243d14a3cb551fa0a",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-tech.png": {
+    "mtime": 1783671118.5782988,
+    "ast_hash": "fc59bc6c5bd185908e46577d36e7d08f",
+    "semantic_hash": ""
+  },
+  "src/assets/floating-water-sensor.png": {
+    "mtime": 1783671103.6061232,
+    "ast_hash": "2333202b890cc8b01be1e62eae35ddfa",
+    "semantic_hash": ""
+  },
+  "src/assets/hero-ecosystem.webp": {
+    "mtime": 1783606429.5273428,
+    "ast_hash": "1757ce0a28f6bfc592d94e2602f7ca98",
+    "semantic_hash": ""
+  },
+  "src/assets/hero-farm-day.png": {
+    "mtime": 1784014027.19966,
+    "ast_hash": "786ebdf3afe8a42d3a53c54ad8f69f93",
+    "semantic_hash": ""
+  },
+  "src/assets/hero-farm-night.png": {
+    "mtime": 1784014201.4609692,
+    "ast_hash": "de089c074a3b367fb1f2ed0bd135f7cb",
+    "semantic_hash": ""
+  },
+  "src/assets/jagofarm-logo.svg": {
+    "mtime": 1783572112.2286744,
+    "ast_hash": "28838b93a2e4d554ecde867bfabe8d90",
+    "semantic_hash": ""
+  },
+  "src/assets/new-id-card-kolab-shafnat.png": {
+    "mtime": 1783664158.4284625,
+    "ast_hash": "a3e98c965dae95c97aa4144fdc346800",
+    "semantic_hash": ""
+  },
+  "src/assets/new-id-card-kolab.png": {
+    "mtime": 1783656249.686586,
+    "ast_hash": "2ac6fa3600dddee43e0c282bc735d1e2",
+    "semantic_hash": ""
+  },
+  "src/assets/product-catfish.webp": {
+    "mtime": 1783606434.2521217,
+    "ast_hash": "e92b3393ef30fc5c89bedec2390046ee",
+    "semantic_hash": ""
+  },
+  "src/assets/product-eggs.webp": {
+    "mtime": 1783606433.5434058,
+    "ast_hash": "4c5bb21ba49a1c020b45b18aeacf30f9",
+    "semantic_hash": ""
+  },
+  "src/assets/product-greens.webp": {
+    "mtime": 1783606433.1419897,
+    "ast_hash": "8dafae75fb292fd3d53b216375ab21a2",
+    "semantic_hash": ""
+  },
+  "src/assets/product-gurame.webp": {
+    "mtime": 1783606434.5898316,
+    "ast_hash": "6ca294260d36ceca7f15d88c8f31c8d2",
+    "semantic_hash": ""
+  },
+  "src/assets/product-iot.webp": {
+    "mtime": 1783606434.9333103,
+    "ast_hash": "ff068e719b11c908d4c8254824659455",
+    "semantic_hash": ""
+  },
+  "src/assets/product-melon.webp": {
+    "mtime": 1783606432.7751477,
+    "ast_hash": "781374f3b0f8c1c4b681196e6d1224a4",
+    "semantic_hash": ""
+  },
+  "src/assets/product-ornamental.webp": {
+    "mtime": 1783606433.898636,
+    "ast_hash": "45cfcd6f78531ef4c463584dbfe3a927",
+    "semantic_hash": ""
+  },
+  "src/components/LatestArticle.jsx": {
+    "mtime": 1784190587.3275404,
+    "ast_hash": "4f6a8c1ec93b2240dc2a3821121ec235",
+    "semantic_hash": ""
+  },
+  "PRD_TEMPLATE_FULL.md": {
+    "mtime": 1784083329.449253,
+    "ast_hash": "ecb7ab3af9fd30cf670de29bf78bae5c",
+    "semantic_hash": ""
+  },
+  "src/assets/jagofarm-ecosystem.mp4": {
+    "mtime": 1784083550.944566,
+    "ast_hash": "f60fff05d96acd29c82af726e33fbcec",
+    "semantic_hash": ""
+  },
+  "src/assets/jagofarm-ecosystem-scrub.mp4": {
+    "mtime": 1784086203.2616572,
+    "ast_hash": "7d72fa900b29771679fed21645ff7190",
+    "semantic_hash": ""
+  },
+  "src/assets/jagofarm-ecosystem-scrub-250ms.mp4": {
+    "mtime": 1784088606.9967134,
+    "ast_hash": "c266594aae8dbd5ae53c3381f16e4aff",
+    "semantic_hash": ""
+  },
+  "src/data/aboutContent.js": {
+    "mtime": 1784167292.6544123,
+    "ast_hash": "9374b6a702b62be610504c7eb619333b",
+    "semantic_hash": ""
+  },
+  "src/assets/Vid.mp4": {
+    "mtime": 1784101544.4515073,
+    "ast_hash": "a39ec09bdd64a84ad0d893a86d228e49",
+    "semantic_hash": ""
+  },
+  "src/assets/Vid.scrub.mp4": {
+    "mtime": 1784101886.6195269,
+    "ast_hash": "db2e37a36bcc57291dfb1b10a2d9d932",
+    "semantic_hash": ""
+  },
+  "vercel.json": {
+    "mtime": 1784167292.6594124,
+    "ast_hash": "abd07d5b81e7d2c7029cc5611e1ec638",
+    "semantic_hash": ""
+  },
+  "src/components/SectionRenderer.jsx": {
+    "mtime": 1784187763.7474315,
+    "ast_hash": "8853d502858916dac3513ade4f94f642",
+    "semantic_hash": ""
+  },
+  "src/lib/cms.js": {
+    "mtime": 1784189184.974797,
+    "ast_hash": "3096b8ccccf0ad8d646967f7a07e8721",
+    "semantic_hash": ""
+  },
+  "src/lib/cms.test.js": {
+    "mtime": 1784189204.6142707,
+    "ast_hash": "2a0064507fbd019ee82f9978bd575b02",
+    "semantic_hash": ""
+  },
+  "src/components/ArticleDetail.jsx": {
+    "mtime": 1784190587.328542,
+    "ast_hash": "458b36946fa4af4d35f04b2cfe9f3839",
+    "semantic_hash": ""
+  },
+  "src/components/Masonry.jsx": {
+    "mtime": 1784190999.418524,
+    "ast_hash": "19c317a2ec75fbb6db1a4980cd8a4f5d",
+    "semantic_hash": ""
+  }
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { 
   ArrowRight, 
   CalendarCheck, 
@@ -14,12 +15,17 @@ import {
   Sparkle, 
   User 
 } from '@phosphor-icons/react'
+=======
+import { EnvelopeSimple, MapPin, PhoneCall } from '@phosphor-icons/react'
+>>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { submitInquiry } from '../lib/cms.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
+<<<<<<< HEAD
 const subjectOptions = [
   'Konsultasi IoT & Smart Farming',
   'Kemitraan Peternak & Petani',
@@ -45,10 +51,17 @@ const faqItems = [
     question: 'Berapa lama estimasi respons untuk pengajuan proposal atau inquiry?',
     answer: 'Setiap inquiry dan proposal yang masuk melalui formulir kontak atau email resmi kami akan ditinjau oleh tim pengembangan bisnis dan direspons dalam waktu maksimal 24 jam pada hari kerja.'
   }
+=======
+const contacts = [
+  ['WhatsApp', '+62 852-1537-6975', PhoneCall],
+  ['Email', 'jagofarm.corporation@gmail.com', EnvelopeSimple],
+  ['Alamat', '2JGM+M3F, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257', MapPin],
+>>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
 ]
 
-export default function ContactSection({ onNavigate }) {
+export default function ContactSection({ onNavigate, data = {} }) {
   const sectionRef = useRef(null)
+<<<<<<< HEAD
   
   // Form state
   const [formData, setFormData] = useState({
@@ -59,14 +72,44 @@ export default function ContactSection({ onNavigate }) {
   })
   const [formState, setFormState] = useState('idle') // 'idle' | 'sending' | 'submitted'
   const [activeFaq, setActiveFaq] = useState(0)
+=======
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [status, setStatus] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const contactItems = [
+    ...(Array.isArray(data.phone_numbers) ? data.phone_numbers.map((value) => ['Telepon', value, PhoneCall]) : []),
+    ...(Array.isArray(data.emails) ? data.emails.map((value) => ['Email', value, EnvelopeSimple]) : []),
+    ...(Array.isArray(data.addresses) ? data.addresses.map((value) => ['Alamat', value, MapPin]) : []),
+  ]
+  const contactHref = (label, value) => label === 'Email' ? `mailto:${value}` : label === 'Alamat' ? (data.map_location_url || `https://maps.google.com/?q=${encodeURIComponent(value)}`) : `tel:${value}`
+
+  const submit = async (event) => {
+    event.preventDefault()
+    setIsSubmitting(true)
+    setStatus('')
+    try {
+      const result = await submitInquiry(form)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setStatus(`${result?.message || 'Pesan berhasil dikirim.'}${result?.id ? ` ID: ${result.id}` : ''}`)
+    } catch (error) {
+      setStatus(error.status === 429 ? 'Batas pengiriman pesan tercapai. Silakan coba lagi dalam beberapa menit.' : 'Pesan gagal dikirim. Silakan coba lagi.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+>>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
 
   useEffect(() => {
     const root = sectionRef.current
     if (!root) return undefined
 
     const ctx = gsap.context(() => {
+<<<<<<< HEAD
       // Stagger entrance for header & bento cards
       gsap.from('.contact-hero-content > *, .contact-bento-card', {
+=======
+      gsap.from('.contact-copy > *, .contact-card', {
+>>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
         opacity: 0,
         y: 32,
         duration: 0.8,
@@ -79,6 +122,7 @@ export default function ContactSection({ onNavigate }) {
         },
       })
 
+<<<<<<< HEAD
       // Animate form and sidebar cards
       gsap.from('.contact-main-grid > *', {
         opacity: 0,
@@ -92,6 +136,8 @@ export default function ContactSection({ onNavigate }) {
           once: true,
         },
       })
+=======
+>>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
     }, root)
 
     return () => ctx.revert()
@@ -116,6 +162,7 @@ export default function ContactSection({ onNavigate }) {
   }
 
   return (
+<<<<<<< HEAD
     <section className="contact-section page-shell" id="hubungi-kami" ref={sectionRef}>
       {/* 1. Header Hero */}
       <div className="contact-hero-content">
@@ -382,6 +429,36 @@ export default function ContactSection({ onNavigate }) {
             </div>
           </div>
         </div>
+=======
+    <section className="contact-cta section-shell" id="hubungi-kami" ref={sectionRef}>
+      <div className="contact-copy">
+        <span>{data.title || 'Hubungi Kami'}</span>
+        <h2>{data.headline || 'Mari bertumbuh bersama'} <strong>JagoFarm.</strong></h2>
+        <p>
+          Kami terbuka untuk kolaborasi, konsultasi, dan peluang kemitraan
+          ekosistem pangan presisi.
+        </p>
+      </div>
+
+      <div className="contact-grid">
+        {(contactItems.length ? contactItems : contacts).map(([label, value, Icon]) => (
+          <a className="contact-card" href={contactHref(label, value)} target={label === 'Alamat' ? '_blank' : undefined} rel={label === 'Alamat' ? 'noreferrer' : undefined} key={`${label}-${value}`}>
+            <Icon size={22} weight="duotone" />
+            <span>
+              <small>{label}</small>
+              {value}
+            </span>
+          </a>
+        ))}
+        <form className="contact-form" onSubmit={submit}>
+          <input required disabled={isSubmitting} value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} placeholder="Nama" aria-label="Nama" />
+          <input required type="email" disabled={isSubmitting} value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} placeholder="Email" aria-label="Email" />
+          <input disabled={isSubmitting} value={form.subject} onChange={(event) => setForm({ ...form, subject: event.target.value })} placeholder="Subjek" aria-label="Subjek" />
+          <textarea required disabled={isSubmitting} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} placeholder="Pesan" aria-label="Pesan" />
+          <button type="submit" disabled={isSubmitting}>{isSubmitting ? 'Mengirim…' : 'Kirim pesan'}</button>
+          {status && <p role="status">{status}</p>}
+        </form>
+>>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
       </div>
     </section>
   )

@@ -22,41 +22,109 @@ const defaultProductLinks = ['Melon Presisi', 'Sayuran Organik', 'Ikan Air Tawar
 const defaultCompanyLinks = ['Tentang Kami', 'Karir & Magang', 'Mitra Peternak', 'Artikel & Jurnal', 'Kebijakan Privasi']
 
 const socials = [
-  ['Facebook', 'https://www.facebook.com/profile.php?id=61591492453217', FacebookLogo],
-  ['Instagram', 'https://www.instagram.com/jagofarm.corporation/', InstagramLogo],
+  ['TikTok', 'https://www.tiktok.com/@jagofarmcorporati', TikTokIcon],
+  ['Instagram', 'https://www.instagram.com/jagofarm.corporation', InstagramLogo],
+  ['LinkedIn', 'https://www.linkedin.com/company/133385899', LinkedinLogo],
   ['YouTube', 'https://www.youtube.com/@JagoFarm-g6p', YoutubeLogo],
-  ['LinkedIn', 'https://www.linkedin.com/company/jagofarm/posts/?feedView=all', LinkedinLogo],
 ]
 
+function TikTokIcon({ size = 20, className = '' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z" />
+    </svg>
+  )
+}
+
+function extractMapSrc(input) {
+  if (!input || typeof input !== 'string') return null
+  const trimmed = input.trim()
+  const match = trimmed.match(/src=["']([^"']+)["']/i)
+  if (match && match[1]) {
+    return match[1]
+  }
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed
+  }
+  return null
+}
+
+function getDynamicSocials(settings) {
+  const socialIconsMap = {
+    tiktok: TikTokIcon,
+    instagram: InstagramLogo,
+    linkedin: LinkedinLogo,
+    facebook: FacebookLogo,
+    youtube: YoutubeLogo,
+    whatsapp: WhatsappLogo,
+    twitter: Globe,
+    x: Globe,
+  }
+
+  // Check if CMS provided an array in social_links, socials, or ikon_media_sosial
+  const rawArray = settings?.social_links || settings?.socials || settings?.ikon_media_sosial
+  if (Array.isArray(rawArray) && rawArray.length > 0) {
+    return rawArray.map((item) => {
+      const label = String(item?.platform || item?.name || item?.label || 'Social')
+      const key = label.toLowerCase()
+      let Icon = LinkedinLogo
+      Object.keys(socialIconsMap).forEach((k) => {
+        if (key.includes(k)) Icon = socialIconsMap[k]
+      })
+      return [label, item.url || item.link || '#', Icon]
+    })
+  }
+
+  // Check if direct URLs are returned by CMS settings
+  const directSocials = []
+  if (settings?.tiktok_url || settings?.tiktok) directSocials.push(['TikTok', settings.tiktok_url || settings.tiktok, TikTokIcon])
+  if (settings?.instagram_url || settings?.instagram) directSocials.push(['Instagram', settings.instagram_url || settings.instagram, InstagramLogo])
+  if (settings?.linkedin_url || settings?.linkedin) directSocials.push(['LinkedIn', settings.linkedin_url || settings.linkedin, LinkedinLogo])
+  if (settings?.facebook_url || settings?.facebook) directSocials.push(['Facebook', settings.facebook_url || settings.facebook, FacebookLogo])
+  if (settings?.youtube_url || settings?.youtube) directSocials.push(['YouTube', settings.youtube_url || settings.youtube, YoutubeLogo])
+  if (directSocials.length > 0) return directSocials
+
+  return socials
+}
+
 export default function Footer({ onNavigate, settings, navigation: cmsNavigation }) {
-  const footerItems = Array.isArray(cmsNavigation?.value) ? cmsNavigation.value : cmsNavigation
+  // 1. NAVIGASI (KOLOM 1)
+  const rawColumn1 = settings?.navigasi_kolom_1 || settings?.navigation_column_1 || settings?.navigasi || cmsNavigation
+  const footerItems = Array.isArray(rawColumn1?.value) ? rawColumn1.value : rawColumn1
   const footerNavigation = Array.isArray(footerItems) && footerItems.length
     ? footerItems.filter((item) => item.slug !== 'solusi').map((item) => [
-        item.title,
-        item.slug === 'home' || item.slug === 'beranda'
-          ? '#beranda'
-          : item.slug === 'produk' || item.slug === 'katalog' || item.slug === 'porduk'
-          ? '/produk'
-          : item.slug === 'tentang-kami'
-          ? '/tentang-kami'
-          : item.slug === 'kontak' || item.slug === 'hubungi-kami'
-          ? '/kontak'
-          : '#beranda',
+        item.title || item.label || item.name,
+        item.url || (
+          item.slug === 'home' || item.slug === 'beranda' ? '#beranda'
+          : item.slug === 'produk' || item.slug === 'katalog' || item.slug === 'porduk' ? '/produk'
+          : item.slug === 'tentang-kami' ? '/tentang-kami'
+          : item.slug === 'kontak' || item.slug === 'hubungi-kami' ? '/kontak'
+          : '#beranda'
+        ),
       ])
     : defaultLinks
 
-  const socialIcons = { Facebook: FacebookLogo, Instagram: InstagramLogo, YouTube: YoutubeLogo, LinkedIn: LinkedinLogo }
-  const footerSocials = Array.isArray(settings?.social_links)
-    ? settings.social_links.map((item) => [item.platform, item.url, socialIcons[item.platform] || LinkedinLogo])
-    : socials
+  // 2. IKON MEDIA SOSIAL
+  const footerSocials = getDynamicSocials(settings)
 
+  // 3. PRODUK & SOLUSI
   const footerProducts = Array.isArray(settings?.footer_products || settings?.products)
     ? settings.footer_products || settings.products
     : defaultProductLinks
 
+  // 4. LEGAL / PERUSAHAAN (KOLOM 2)
+  const rawColumn2 = settings?.navigasi_kolom_2 || settings?.navigasi_legal || settings?.legal_links || settings?.legal
+  const column2Items = Array.isArray(rawColumn2?.value) ? rawColumn2.value : rawColumn2
+  const footerCompanyLinks = Array.isArray(column2Items) && column2Items.length > 0
+    ? column2Items.map((item) => typeof item === 'string' ? item : item?.title || item?.label || 'Link')
+    : defaultCompanyLinks
+
+  // 5. TEKS FOOTER & KONTAK LENGKAP
+  const footerText = settings?.teks_footer || settings?.deskripsi_singkat || settings?.footer_text || settings?.footer_description || settings?.site_tagline || 'Membangun ekosistem pertanian dan peternakan cerdas berbasis AI & IoT untuk ketahanan pangan masa depan yang berkelanjutan dan sirkular.'
   const phone = settings?.phone || settings?.phone_numbers?.[0] || '+62 852-1537-6975'
   const email = settings?.email || settings?.emails?.[0] || 'jagofarm.corporation@gmail.com'
-  const address = settings?.address || settings?.addresses?.[0] || '2JGM+M3F, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257'
+  const address = settings?.alamat_lengkap || settings?.alamat || settings?.full_address || settings?.address || (Array.isArray(settings?.addresses) ? settings.addresses[0] : null) || '2JGM+Q4 Sukapura, Kabupaten Bandung, Jawa Barat, Indonesia'
+  const mapEmbedSrc = extractMapSrc(settings?.lokasi_google_maps || settings?.google_maps_location || settings?.google_maps || settings?.embed_peta || settings?.maps_embed) || "https://maps.google.com/maps?ll=-6.975416,107.633194&z=16&output=embed"
 
   return (
     <footer className="footer-shell section-shell" id="kontak">
@@ -67,7 +135,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
             <img src={settings?.site_logo || logo} alt={settings?.site_name || 'Jago Farm'} referrerPolicy="no-referrer" />
           </button>
           <p>
-            {settings?.site_tagline || 'Membangun ekosistem pertanian dan peternakan cerdas berbasis AI & IoT untuk ketahanan pangan masa depan yang berkelanjutan dan sirkular.'}
+            {footerText}
           </p>
           <div className="footer-socials" aria-label="Media sosial Jago Farm">
             {footerSocials.map(([label, href, Icon]) => (
@@ -110,7 +178,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
           <div className="mini-map-iframe-wrapper">
             <iframe
               title="Peta Lokasi JagoFarm - Sukapura Dayeuhkolot Bandung"
-              src="https://maps.google.com/maps?ll=-6.975416,107.633194&z=16&output=embed"
+              src={mapEmbedSrc}
               width="100%"
               height="180"
               style={{ border: 0 }}
@@ -148,7 +216,7 @@ export default function Footer({ onNavigate, settings, navigation: cmsNavigation
 
         <nav className="footer-nav-col footer-col-span-row" aria-label="Perusahaan footer">
           <h3>Perusahaan</h3>
-          {defaultCompanyLinks.map((label) => (
+          {footerCompanyLinks.map((label) => (
             <button onClick={() => onNavigate('/tentang-kami')} type="button" key={label}>
               {label}
             </button>

@@ -178,7 +178,7 @@ export default function App() {
         {page === 'catalog' && <ProductCatalog posts={cms.posts} categories={cms.categories} />}
         {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
         {page === 'about' && <AboutPage onNavigate={navigate} />}
-        {page === 'contact' && <ContactSection onNavigate={navigate} />}
+        {page === 'contact' && <ContactSection onNavigate={navigate} data={cms.settings || {}} />}
       </ErrorBoundary>
       <Footer onNavigate={navigate} settings={cms.settings} navigation={cms.navigation} />
     </ReactLenis>

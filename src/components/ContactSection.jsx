@@ -63,9 +63,9 @@ export default function ContactSection({ onNavigate, data = {} }) {
   const [activeFaq, setActiveFaq] = useState(0)
 
   // Computed contact info combining CMS dynamic data with real defaults
-  const phone = Array.isArray(data.phone_numbers) && data.phone_numbers[0] ? data.phone_numbers[0] : '+62 852-1537-6975'
-  const email = Array.isArray(data.emails) && data.emails[0] ? data.emails[0] : 'jagofarm.corporation@gmail.com'
-  const address = Array.isArray(data.addresses) && data.addresses[0] ? data.addresses[0] : '2JGM+M3F, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257'
+  const phone = data?.phone || (Array.isArray(data?.phone_numbers) && data.phone_numbers[0] ? data.phone_numbers[0] : '+62 852-1537-6975')
+  const email = data?.email || (Array.isArray(data?.emails) && data.emails[0] ? data.emails[0] : 'jagofarm.corporation@gmail.com')
+  const address = data?.alamat_lengkap || data?.alamat || data?.full_address || data?.address || (Array.isArray(data?.addresses) && data.addresses[0] ? data.addresses[0] : '2JGM+Q4 Sukapura, Kabupaten Bandung, Jawa Barat, Indonesia')
 
   useEffect(() => {
     const root = sectionRef.current

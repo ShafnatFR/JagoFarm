@@ -38,10 +38,7 @@ const routes = {
   '/produk': 'catalog',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
-<<<<<<< HEAD
   '/kontak': 'contact',
-=======
->>>>>>> 5683a208fbcd256a22c0b946bf1f99fc830ed48a
   '/hubungi-kami': 'contact',
 }
 

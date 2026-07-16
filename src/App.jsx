@@ -36,6 +36,8 @@ class ErrorBoundary extends Component {
 
 const routes = {
   '/': 'home',
+  '/beranda': 'home',
+  '/home': 'home',
   '/produk': 'catalog',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
@@ -160,50 +162,59 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
-  const isHomeActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'beranda') || findPageBySlug(cms.pages, 'home'))
-  const isCatalogActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'produk') || findPageBySlug(cms.pages, 'katalog'))
-  const isAboutActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'tentang-kami') || findPageBySlug(cms.pages, 'about'))
-  const isContactActive = !cmsLoaded || !!(findPageBySlug(cms.pages, 'hubungi-kami') || findPageBySlug(cms.pages, 'kontak'))
+  const isHomeActive = !!(findPageBySlug(cms.pages, 'beranda') || findPageBySlug(cms.pages, 'home'))
+  const isCatalogActive = !!(findPageBySlug(cms.pages, 'produk') || findPageBySlug(cms.pages, 'katalog'))
+  const isAboutActive = !!(findPageBySlug(cms.pages, 'tentang-kami') || findPageBySlug(cms.pages, 'about'))
+  const isContactActive = !!(findPageBySlug(cms.pages, 'hubungi-kami') || findPageBySlug(cms.pages, 'kontak'))
 
   return (
     <ReactLenis root>
       <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} navigation={cms.navigation} settings={cms.settings} pages={cms.pages} cmsLoaded={cmsLoaded} />
       <GlobalMotion page={page} />
       <ErrorBoundary key={page}>
-        {page === 'home' && (
-          !isHomeActive ? (
-            <UnderConstructionPage page="home" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
-          ) : (
-            <>
-              <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} pageExists={isHomeActive && cmsLoaded} />
-              <EcosystemPinnedScroll stages={findBlocksByType(findPageBySlug(cms.pages, 'beranda'), 'ecosystem-stage')} pageExists={isHomeActive && cmsLoaded} />
-              <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} pageData={findPageBySlug(cms.pages, 'beranda')} posts={cms.posts} pageExists={isHomeActive && cmsLoaded} />
-              <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
-              <LatestArticle posts={cms.posts} onNavigate={navigate} />
-            </>
-          )
-        )}
-        {page === 'catalog' && (
-          !isCatalogActive ? (
-            <UnderConstructionPage page="catalog" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
-          ) : (
-            <ProductCatalog posts={cms.posts} categories={cms.categories} />
-          )
-        )}
-        {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
-        {page === 'about' && (
-          !isAboutActive ? (
-            <UnderConstructionPage page="about" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
-          ) : (
-            <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />
-          )
-        )}
-        {page === 'contact' && (
-          !isContactActive ? (
-            <UnderConstructionPage page="contact" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
-          ) : (
-            <ContactSection onNavigate={navigate} data={cms.settings || {}} pageData={findPageBySlug(cms.pages, 'hubungi-kami')} />
-          )
+        {!cmsLoaded ? (
+          <section className="page-shell section-shell" style={{ minHeight: '78vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
+            <div className="motion-spin-slow" style={{ width: '44px', height: '44px', borderRadius: '50%', border: '4px solid var(--leaf-soft)', borderTopColor: 'var(--forest)' }} />
+            <span style={{ fontSize: '0.92rem', color: 'var(--muted)', fontWeight: 600, letterSpacing: '0.01em' }}>Sinkronisasi sistem JagoFarm...</span>
+          </section>
+        ) : (
+          <>
+            {page === 'home' && (
+              !isHomeActive ? (
+                <UnderConstructionPage page="home" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
+              ) : (
+                <>
+                  <HeroSection theme={theme} onToggleTheme={toggleTheme} data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'hero')?.data || cms.settings?.hero} pageExists={isHomeActive && cmsLoaded} />
+                  <EcosystemPinnedScroll stages={findBlocksByType(findPageBySlug(cms.pages, 'beranda'), 'ecosystem-stage')} pageExists={isHomeActive && cmsLoaded} />
+                  <SolutionsSection data={findFirstBlockByType(findPageBySlug(cms.pages, 'beranda'), 'solutions')?.data} pageData={findPageBySlug(cms.pages, 'beranda')} posts={cms.posts} pageExists={isHomeActive && cmsLoaded} />
+                  <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
+                  <LatestArticle posts={cms.posts} onNavigate={navigate} />
+                </>
+              )
+            )}
+            {page === 'catalog' && (
+              !isCatalogActive ? (
+                <UnderConstructionPage page="catalog" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
+              ) : (
+                <ProductCatalog posts={cms.posts} categories={cms.categories} />
+              )
+            )}
+            {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
+            {page === 'about' && (
+              !isAboutActive ? (
+                <UnderConstructionPage page="about" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
+              ) : (
+                <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />
+              )
+            )}
+            {page === 'contact' && (
+              !isContactActive ? (
+                <UnderConstructionPage page="contact" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
+              ) : (
+                <ContactSection onNavigate={navigate} data={cms.settings || {}} pageData={findPageBySlug(cms.pages, 'hubungi-kami')} />
+              )
+            )}
+          </>
         )}
       </ErrorBoundary>
       <Footer onNavigate={navigate} settings={cms.settings} navigation={cms.navigation} />

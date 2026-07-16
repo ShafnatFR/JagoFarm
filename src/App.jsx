@@ -20,7 +20,6 @@ const routes = {
   '/': 'home',
   '/katalog': 'catalog',
   '/tentang-kami': 'about',
-  '/kontak': 'contact',
 }
 
 export default function App() {
@@ -109,11 +108,11 @@ export default function App() {
           <SolutionsSection />
           <FeaturedProductsSection />
           <LatestArticle />
+          <ContactSection onNavigate={navigate} />
         </>
       )}
       {page === 'catalog' && <ProductCatalog />}
       {page === 'about' && <AboutPage onNavigate={navigate} />}
-      {page === 'contact' && <ContactSection onNavigate={navigate} />}
       <Footer onNavigate={navigate} />
     </ReactLenis>
   )

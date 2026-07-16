@@ -1,16 +1,16 @@
 # Graph Report - JagoFarm  (2026-07-15)
 
 ## Corpus Check
-- 22 files · ~569,626 words
+- 23 files · ~570,667 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 211 nodes · 227 edges · 18 communities (17 shown, 1 thin omitted)
+- 217 nodes · 240 edges · 19 communities (18 shown, 1 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `da4b7b8a`
+- Built from commit: `d6586f5d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -32,6 +32,7 @@
 - react-dom
 - @react-three/drei
 - @react-three/fiber
+- 9. Logging, Monitoring & Error Handling
 
 ## God Nodes (most connected - your core abstractions)
 1. `Product Requirements Document (PRD)` - 20 edges
@@ -51,11 +52,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (18 total, 1 thin omitted)
+## Communities (19 total, 1 thin omitted)
 
 ### Community 0 - "App.jsx"
-Cohesion: 0.09
-Nodes (19): App(), routes, AboutPage(), Nametag3D, TeamLanyards, contacts, ContactSection(), EcosystemPinnedScroll() (+11 more)
+Cohesion: 0.10
+Nodes (16): App(), routes, contacts, ContactSection(), EcosystemPinnedScroll(), storyStages, Footer(), navigation (+8 more)
 
 ### Community 1 - "content.js"
 Cohesion: 0.17
@@ -66,16 +67,16 @@ Cohesion: 0.22
 Nodes (8): name, private, scripts, build, dev, preview, type, version
 
 ### Community 3 - "Nametag3D.jsx"
-Cohesion: 0.28
-Nodes (4): Badge(), LanyardCanvas(), makeBandTexture(), members
+Cohesion: 0.15
+Nodes (12): AboutPage(), Nametag3D, TeamLanyards, Badge(), LanyardCanvas(), makeBandTexture(), aboutHeroText, aboutStats (+4 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.06
 Nodes (33): animejs, @fontsource/outfit, gsap, @gsap/react, lenis, lottie-react, meshline, dependencies (+25 more)
 
 ### Community 5 - "AboutPage.jsx"
-Cohesion: 0.06
-Nodes (31): 11.1 Screen List, 11.2 Design References, 11.3 User Flow Utama, 11. UI/UX Requirements, 13.1 Internal Dependencies, 13.2 External Dependencies, 13.3 Library Dependencies, 13. Dependencies (+23 more)
+Cohesion: 0.08
+Nodes (25): 11.1 Screen List, 11.2 Design References, 11.3 User Flow Utama, 11. UI/UX Requirements, 13.1 Internal Dependencies, 13.2 External Dependencies, 13.3 Library Dependencies, 13. Dependencies (+17 more)
 
 ### Community 7 - "@fontsource/outfit"
 Cohesion: 0.17
@@ -117,25 +118,29 @@ Nodes (6): 3.1 Target Users, 3.2 Stakeholders, 3.3 RACI Matrix, 3. User & Stakeh
 Cohesion: 0.40
 Nodes (5): 10.1 Data Inventory, 10.2 User Rights (UU PDP), 10.3 Data Security Checklist, 10.4 Privacy Policy & Terms of Service, 10. Data Privacy & Compliance
 
+### Community 17 - "9. Logging, Monitoring & Error Handling"
+Cohesion: 0.33
+Nodes (6): 9.1 Log Levels, 9.2 Log Format (Structured JSON), 9.3 Yang Wajib Di-log, 9.4 Error Handling Pattern, 9.5 Monitoring & Alerting, 9. Logging, Monitoring & Error Handling
+
 ## Knowledge Gaps
-- **127 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+122 more)
+- **126 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+121 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Product Requirements Document (PRD)` connect `AboutPage.jsx` to `@fontsource/outfit`, `@gsap/react`, `lenis`, `lottie-react`, `meshline`, `@phosphor-icons/react`, `react-dom`, `@react-three/drei`, `@react-three/fiber`?**
-  _High betweenness centrality (0.252) - this node is a cross-community bridge._
+- **Why does `Product Requirements Document (PRD)` connect `AboutPage.jsx` to `@fontsource/outfit`, `@gsap/react`, `lenis`, `lottie-react`, `meshline`, `@phosphor-icons/react`, `react-dom`, `@react-three/drei`, `@react-three/fiber`, `9. Logging, Monitoring & Error Handling`?**
+  _High betweenness centrality (0.238) - this node is a cross-community bridge._
 - **Why does `6. Technical Architecture` connect `@fontsource/outfit` to `gsap`, `AboutPage.jsx`?**
-  _High betweenness centrality (0.096) - this node is a cross-community bridge._
+  _High betweenness centrality (0.090) - this node is a cross-community bridge._
 - **Why does `6.4 API Contract` connect `gsap` to `@fontsource/outfit`?**
-  _High betweenness centrality (0.048) - this node is a cross-community bridge._
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _127 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _126 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0896551724137931 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10461538461538461 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
 - **Should `AboutPage.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0625 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._

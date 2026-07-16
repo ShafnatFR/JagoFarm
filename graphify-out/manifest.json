@@ -10,23 +10,23 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1784096139.4122555,
-    "ast_hash": "77db826d22432a735004298eb2454cb4",
+    "mtime": 1784099287.734599,
+    "ast_hash": "4685784904703a409463819fecb6b665",
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
-    "mtime": 1784096139.4132564,
-    "ast_hash": "13dbd3263002872a29c62579da5b0005",
+    "mtime": 1784099287.74012,
+    "ast_hash": "68b2d3dd8d73f1db8ce6bd2de20b4c3f",
     "semantic_hash": ""
   },
   "src/components/ContactSection.jsx": {
-    "mtime": 1783672607.736693,
-    "ast_hash": "d478b0eb5ffed0cccb383f5548b0e234",
+    "mtime": 1784100243.2124076,
+    "ast_hash": "001c9365f949b8925db8c538b28ac1b4",
     "semantic_hash": ""
   },
   "src/components/EcosystemPinnedScroll.jsx": {
-    "mtime": 1784096217.9123442,
-    "ast_hash": "6fb7b36a968f1f52594e8235a433d5bb",
+    "mtime": 1784103160.338059,
+    "ast_hash": "c7f5cf4f16825afda9c12029d64a70d7",
     "semantic_hash": ""
   },
   "src/components/FeaturedProductsSection.jsx": {
@@ -35,8 +35,8 @@
     "semantic_hash": ""
   },
   "src/components/Footer.jsx": {
-    "mtime": 1783614143.4505005,
-    "ast_hash": "bea6c8666ac5cdc7ade9109770ac38b1",
+    "mtime": 1784100484.3122513,
+    "ast_hash": "8afeef12c9052db9fc8b561b52ac247c",
     "semantic_hash": ""
   },
   "src/components/GlobalMotion.jsx": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
-    "mtime": 1784091605.8732624,
-    "ast_hash": "6f494862e2b7fc588561206c0d1231ee",
+    "mtime": 1784099287.7381158,
+    "ast_hash": "613d3406bf8ff0447a67730bcf041e86",
     "semantic_hash": ""
   },
   "src/components/ProductCatalog.jsx": {
@@ -282,6 +282,16 @@
   "src/data/aboutContent.js": {
     "mtime": 1784096139.416258,
     "ast_hash": "66ec13ed1a782ecd45d6b84ff036b499",
+    "semantic_hash": ""
+  },
+  "src/assets/Vid.mp4": {
+    "mtime": 1784101544.4515073,
+    "ast_hash": "a39ec09bdd64a84ad0d893a86d228e49",
+    "semantic_hash": ""
+  },
+  "src/assets/Vid.scrub.mp4": {
+    "mtime": 1784101886.6195269,
+    "ast_hash": "db2e37a36bcc57291dfb1b10a2d9d932",
     "semantic_hash": ""
   }
 }

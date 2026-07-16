@@ -1,7 +1,7 @@
 # Graph Report - JagoFarm  (2026-07-15)
 
 ## Corpus Check
-- 23 files · ~570,761 words
+- 23 files · ~570,691 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `753abf06`
+- Built from commit: `d6586f5d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -56,7 +56,7 @@
 
 ### Community 0 - "App.jsx"
 Cohesion: 0.10
-Nodes (16): App(), routes, contacts, ContactSection(), EcosystemPinnedScroll(), storyStages, companyLinks, Footer() (+8 more)
+Nodes (16): App(), routes, contacts, ContactSection(), EcosystemPinnedScroll(), storyStages, Footer(), navigation (+8 more)
 
 ### Community 1 - "content.js"
 Cohesion: 0.17

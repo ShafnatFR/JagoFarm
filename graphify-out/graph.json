@@ -491,7 +491,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "src/App.jsx",
-      "source_location": "L26",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "src_app_app",
       "community": 0,
@@ -642,43 +642,43 @@
       "norm_label": "footer.jsx"
     },
     {
-      "label": "links",
+      "label": "navigation",
       "file_type": "code",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L3",
+      "source_location": "L12",
       "_origin": "ast",
-      "id": "src_components_footer_links",
+      "id": "src_components_footer_navigation",
       "community": 0,
       "community_name": "App.jsx",
-      "norm_label": "links"
+      "norm_label": "navigation"
     },
     {
-      "label": "productLinks",
+      "label": "products",
       "file_type": "code",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L9",
+      "source_location": "L19",
       "_origin": "ast",
-      "id": "src_components_footer_productlinks",
+      "id": "src_components_footer_products",
       "community": 0,
       "community_name": "App.jsx",
-      "norm_label": "productlinks"
+      "norm_label": "products"
     },
     {
-      "label": "companyLinks",
+      "label": "socials",
       "file_type": "code",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L10",
+      "source_location": "L21",
       "_origin": "ast",
-      "id": "src_components_footer_companylinks",
+      "id": "src_components_footer_socials",
       "community": 0,
       "community_name": "App.jsx",
-      "norm_label": "companylinks"
+      "norm_label": "socials"
     },
     {
       "label": "Footer()",
       "file_type": "code",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L12",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "src_components_footer_footer",
       "community": 0,
@@ -2822,7 +2822,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/App.jsx",
-      "source_location": "L26",
+      "source_location": "L25",
       "weight": 1.0,
       "source": "src_app",
       "target": "src_app_app",
@@ -3296,17 +3296,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "src_components_footer",
-      "target": "src_components_footer_companylinks",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/Footer.jsx",
-      "source_location": "L12",
+      "source_location": "L40",
       "weight": 1.0,
       "source": "src_components_footer",
       "target": "src_components_footer_footer",
@@ -3316,20 +3306,30 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L3",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "src_components_footer",
-      "target": "src_components_footer_links",
+      "target": "src_components_footer_navigation",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Footer.jsx",
-      "source_location": "L9",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "src_components_footer",
-      "target": "src_components_footer_productlinks",
+      "target": "src_components_footer_products",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/Footer.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_components_footer",
+      "target": "src_components_footer_socials",
       "confidence_score": 1.0
     },
     {
@@ -4855,5 +4855,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "753abf0608c66ea02694e86e9cca6e0e8bf602b8"
+  "built_at_commit": "d6586f5d619f26984ae4d2a4636048b0f9bc8b16"
 }

@@ -59,7 +59,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
     }
 
     let observer = null
-    if (page === 'contact') {
+    if (page === 'home') {
       const contact = document.querySelector('#hubungi-kami')
       if (contact) {
         observer = new IntersectionObserver(
@@ -67,10 +67,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
             shell.classList.toggle('is-contact', entry.isIntersecting)
             shell.classList.toggle('is-contact-merged', entry.intersectionRatio > 0.38)
           },
-          {
-            rootMargin: '-18% 0px -36% 0px',
-            threshold: [0, 0.38],
-          },
+          { rootMargin: '-18% 0px -36% 0px', threshold: [0, 0.38] },
         )
         observer.observe(contact)
       }
@@ -111,7 +108,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
           <button className="theme-toggle" onClick={onToggleTheme} type="button" aria-label="Ganti tema">
             {theme === 'dark' ? <Sun size={20} weight="bold" /> : <Moon size={20} weight="bold" />}
           </button>
-          <button className="nav-contact" onClick={() => go('/kontak')} type="button" aria-label="Hubungi Kami">
+          <button className="nav-contact" onClick={() => go('#hubungi-kami')} type="button" aria-label="Hubungi Kami">
             <PhoneCall size={16} weight="bold" />
           </button>
           <button className="nav-menu" onClick={() => setOpen((value) => !value)} type="button" aria-label="Buka menu">
@@ -119,7 +116,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
           </button>
         </div>
       </nav>
-      <button className="nav-floating-phone" onClick={() => go('/kontak')} type="button" aria-label="Hubungi Jago Farm">
+      <button className="nav-floating-phone" onClick={() => go('#hubungi-kami')} type="button" aria-label="Hubungi Jago Farm">
         <PhoneCall size={25} weight="bold" />
       </button>
     </header>

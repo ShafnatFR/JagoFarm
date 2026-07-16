@@ -11,7 +11,6 @@ import logo from "../assets/jagofarm-logo.svg";
 
 const navigation = [
   ["Beranda", "#beranda"],
-  ["Solusi", "#solusi"],
   ["Produk", "/katalog"],
   ["Tentang Kami", "/tentang-kami"],
   ["Hubungi Kami", "/hubungi-kami"],
@@ -38,14 +37,22 @@ const socials = [
   ],
 ];
 
-export default function Footer({ onNavigate }) {
+export default function Footer({ onNavigate, settings, navigation: cmsNavigation }) {
+  const footerItems = Array.isArray(cmsNavigation?.value) ? cmsNavigation.value : cmsNavigation
+  const footerNavigation = Array.isArray(footerItems) && footerItems.length ? footerItems.filter((item) => item.slug !== 'solusi').map((item) => [item.title, item.slug === 'home' || item.slug === 'beranda' ? '#beranda' : item.slug === 'produk' || item.slug === 'porduk' ? '/produk' : item.slug === 'tentang-kami' ? '/tentang-kami' : '#beranda']) : navigation
+  const socialIcons = { Facebook: FacebookLogo, Instagram: InstagramLogo, YouTube: YoutubeLogo, LinkedIn: LinkedinLogo }
+  const footerSocials = Array.isArray(settings?.social_links) ? settings.social_links.map((item) => [item.platform, item.url, socialIcons[item.platform] || LinkedinLogo]) : socials
+  const footerProducts = Array.isArray(settings?.footer_products || settings?.products) ? settings.footer_products || settings.products : products
+  const phone = settings?.phone || settings?.phone_numbers?.[0] || '+62 852-1537-6975'
+  const email = settings?.email || settings?.emails?.[0] || 'jagofarm.corporation@gmail.com'
+  const address = settings?.address || settings?.addresses?.[0] || '2JGM+M3F, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257'
   return (
     <footer className="footer section-shell" id="footer">
       <div className="footer-brand">
-        <img src={logo} alt="Jago Farm" />
-        <p>Ekosistem pertanian dan peternakan cerdas berbasis AI dan IoT.</p>
+        <img src={settings?.site_logo || logo} alt={settings?.site_name || 'Jago Farm'} referrerPolicy="no-referrer" />
+        <p>{settings?.site_tagline || 'Ekosistem pertanian dan peternakan cerdas berbasis AI dan IoT.'}</p>
         <div className="footer-socials" aria-label="Media sosial Jago Farm">
-          {socials.map(([label, href, Icon]) => (
+          {footerSocials.map(([label, href, Icon]) => (
             <a
               href={href}
               key={label}
@@ -60,7 +67,7 @@ export default function Footer({ onNavigate }) {
       </div>
       <nav className="footer-links" aria-label="Navigasi footer">
         <h3>Navigasi</h3>
-        {navigation.map(([label, target]) => (
+        {footerNavigation.map(([label, target]) => (
           <button onClick={() => onNavigate(target)} type="button" key={label}>
             {label}
           </button>
@@ -68,32 +75,34 @@ export default function Footer({ onNavigate }) {
       </nav>
       <nav className="footer-links" aria-label="Produk footer">
         <h3>Produk</h3>
-        {products.map((label) => (
+        {footerProducts.map((item) => {
+          const label = typeof item === 'string' ? item : item?.title || item?.name || 'Produk'
+          return (
           <button onClick={() => onNavigate('/produk')} type="button" key={label}>
             {label}
           </button>
-        ))}
+          )
+        })}
       </nav>
       <div className="footer-contact">
         <h3>Kontak Kami</h3>
-        <a href="https://wa.me/6285215376975" target="_blank" rel="noreferrer">
+        <a href={settings?.phone || settings?.phone_numbers?.length ? `tel:${phone}` : 'https://wa.me/6285215376975'} target="_blank" rel="noreferrer">
           <PhoneCall size={18} />
-          +62 852-1537-6975
+          {phone}
         </a>
-        <a href="mailto:jagofarm.corporation@gmail.com">
+        <a href={`mailto:${email}`}>
           <EnvelopeSimple size={18} />
-          jagofarm.corporation@gmail.com
+          {email}
         </a>
         <a
-          href="https://maps.google.com/?q=2JGM%2BM3F%2C+Sukapura%2C+Dayeuhkolot%2C+Bandung"
+          href={settings?.map_location_url || 'https://maps.google.com/?q=2JGM%2BM3F%2C+Sukapura%2C+Dayeuhkolot%2C+Bandung'}
           target="_blank"
           rel="noreferrer"
         >
           <MapPin size={18} />
-          2JGM+M3F, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat
-          40257
+          {address}
         </a>
-        <small>© 2026 Jago Farm. Semua hak dilindungi.</small>
+        <small>{settings?.copyright_text || '© 2026 Jago Farm. Semua hak dilindungi.'}</small>
       </div>
     </footer>
   );

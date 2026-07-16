@@ -3,16 +3,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ReactLenis } from 'lenis/react'
 import 'lenis/dist/lenis.css'
 import EcosystemPinnedScroll from './components/EcosystemPinnedScroll.jsx'
-import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
 import Footer from './components/Footer.jsx'
 import GlobalMotion from './components/GlobalMotion.jsx'
 import HeroSection from './components/HeroSection.jsx'
-import LatestArticle from './components/LatestArticle.jsx'
 import Navbar from './components/Navbar.jsx'
 import ProductCatalog from './components/ProductCatalog.jsx'
-import SolutionsSection from './components/SolutionsSection.jsx'
 import AboutPage from './components/AboutPage.jsx'
 import ContactSection from './components/ContactSection.jsx'
+import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
+import LatestArticle from './components/LatestArticle.jsx'
+import ArticleDetail from './components/ArticleDetail.jsx'
+import SolutionsSection from './components/SolutionsSection.jsx'
+import { cmsConfigured, getNavigation, getPostCategories, getPosts, getSettings } from './lib/cms.js'
 import './styles.css'
 
 class ErrorBoundary extends Component {
@@ -39,12 +41,17 @@ const routes = {
   '/hubungi-kami': 'contact',
 }
 
+const resolveRoute = (path) => path.startsWith('/artikel/') ? 'article' : routes[path] ?? 'home'
+const articleSlugFromPath = (path) => path.startsWith('/artikel/') ? decodeURIComponent(path.slice('/artikel/'.length)) : ''
+
 export default function App() {
   const [page, setPage] = useState(() => {
     const path = window.location.hash === '#hubungi-kami' ? '/hubungi-kami' : window.location.pathname
-    return routes[path] ?? 'home'
+    return resolveRoute(path)
   })
+  const [articleSlug, setArticleSlug] = useState(() => articleSlugFromPath(window.location.pathname))
   const [pendingTarget, setPendingTarget] = useState(null)
+  const [cms, setCms] = useState({ posts: [], categories: [], settings: null, navigation: null })
 
   // Global Theme State
   const [theme, setTheme] = useState(() => {
@@ -52,6 +59,22 @@ export default function App() {
     if (saved) return saved
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
+
+  useEffect(() => {
+    if (!cmsConfigured) return undefined
+    let cancelled = false
+    Promise.allSettled([getPosts(), getPostCategories(), getSettings(), getNavigation()]).then((results) => {
+      if (cancelled) return
+      const [postsResult, categoriesResult, settingsResult, navigationResult] = results
+      setCms({
+        posts: postsResult.status === 'fulfilled' ? postsResult.value?.data || postsResult.value || [] : [],
+        categories: categoriesResult.status === 'fulfilled' ? categoriesResult.value?.data || categoriesResult.value || [] : [],
+        settings: settingsResult.status === 'fulfilled' ? settingsResult.value?.data || settingsResult.value || null : null,
+        navigation: navigationResult.status === 'fulfilled' ? navigationResult.value?.data || navigationResult.value || null : null,
+      })
+    })
+    return () => { cancelled = true }
+  }, [])
 
   useEffect(() => {
     if (window.location.hash === '#hubungi-kami') {
@@ -69,7 +92,10 @@ export default function App() {
   }
 
   useEffect(() => {
-    const syncRoute = () => setPage(routes[window.location.pathname] ?? 'home')
+    const syncRoute = () => {
+      setPage(resolveRoute(window.location.pathname))
+      setArticleSlug(articleSlugFromPath(window.location.pathname))
+    }
     window.addEventListener('popstate', syncRoute)
     return () => window.removeEventListener('popstate', syncRoute)
   }, [])
@@ -129,13 +155,14 @@ export default function App() {
     ScrollTrigger.getAll().forEach((t) => t.kill())
     ScrollTrigger.clearScrollMemory()
     window.history.pushState(null, '', target)
-    setPage(routes[target] ?? 'home')
+    setPage(resolveRoute(target))
+    setArticleSlug(articleSlugFromPath(target))
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
   return (
     <ReactLenis root>
-      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} />
+      <Navbar page={page} onNavigate={navigate} theme={theme} onToggleTheme={toggleTheme} navigation={cms.navigation} settings={cms.settings} />
       <GlobalMotion page={page} />
       <ErrorBoundary key={page}>
         {page === 'home' && (
@@ -143,15 +170,16 @@ export default function App() {
             <HeroSection theme={theme} onToggleTheme={toggleTheme} />
             <EcosystemPinnedScroll />
             <SolutionsSection />
-            <FeaturedProductsSection />
-            <LatestArticle />
+            <ErrorBoundary><FeaturedProductsSection posts={cms.posts} /></ErrorBoundary>
+            <LatestArticle posts={cms.posts} onNavigate={navigate} />
           </>
         )}
-        {page === 'catalog' && <ProductCatalog />}
+        {page === 'catalog' && <ProductCatalog posts={cms.posts} categories={cms.categories} />}
+        {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
         {page === 'about' && <AboutPage onNavigate={navigate} />}
         {page === 'contact' && <ContactSection onNavigate={navigate} />}
       </ErrorBoundary>
-      <Footer onNavigate={navigate} />
+      <Footer onNavigate={navigate} settings={cms.settings} navigation={cms.navigation} />
     </ReactLenis>
   )
 }

@@ -43,7 +43,7 @@ export default function IntroAnimation() {
   return (
     <div className="intro" ref={ref} aria-label="Jago Farm loading">
       <span className="intro-line" />
-      <img className="intro-mark" src={logo} alt="Jago Farm" />
+      <img className="intro-mark" src={logo} alt="Jago Farm" referrerPolicy="no-referrer" />
       <span className="intro-line" />
     </div>
   )

@@ -5,23 +5,23 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1783940407.9234567,
-    "ast_hash": "9996ba8266090cbcb0ef90fb449d9ab4",
+    "mtime": 1784177195.7763822,
+    "ast_hash": "68c7f30c28b67bf08adc8e969af5316d",
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1784167856.7169752,
-    "ast_hash": "bc8e0f127e12a4532e9c73c9295c7d94",
+    "mtime": 1784190999.4245236,
+    "ast_hash": "b423ece098cd719640357f06f5bace78",
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
-    "mtime": 1784167292.6404145,
-    "ast_hash": "cbed3b8e2bd6744966540d28352f8ca7",
+    "mtime": 1784177070.1166942,
+    "ast_hash": "1a608f17697565dc66f6cbb6dbf3b1af",
     "semantic_hash": ""
   },
   "src/components/ContactSection.jsx": {
-    "mtime": 1784100243.2124076,
-    "ast_hash": "001c9365f949b8925db8c538b28ac1b4",
+    "mtime": 1784177471.4531665,
+    "ast_hash": "e0dcc282ee37de107a883d76cab5500d",
     "semantic_hash": ""
   },
   "src/components/EcosystemPinnedScroll.jsx": {
@@ -30,13 +30,13 @@
     "semantic_hash": ""
   },
   "src/components/FeaturedProductsSection.jsx": {
-    "mtime": 1784091414.6518092,
-    "ast_hash": "519defd75a44e879830d4bebeb8d4ab4",
+    "mtime": 1784192422.2417498,
+    "ast_hash": "b648389940a49b2e9e058aa6e64fec13",
     "semantic_hash": ""
   },
   "src/components/Footer.jsx": {
-    "mtime": 1784168142.842126,
-    "ast_hash": "bdf383caa0f9f26c185fcad27a1d2ab8",
+    "mtime": 1784191017.870319,
+    "ast_hash": "50268acc71e4db22db3ec9ba531300a5",
     "semantic_hash": ""
   },
   "src/components/GlobalMotion.jsx": {
@@ -45,13 +45,13 @@
     "semantic_hash": ""
   },
   "src/components/HeroSection.jsx": {
-    "mtime": 1784084526.60676,
-    "ast_hash": "c2a24fa20e01d7c9cdc7b5755e8d56df",
+    "mtime": 1784177434.4630313,
+    "ast_hash": "079447f225cba26ff0d93162b2bbd522",
     "semantic_hash": ""
   },
   "src/components/IntroAnimation.jsx": {
-    "mtime": 1783652617.9595966,
-    "ast_hash": "35a4ea6c98cc154abf383e324c6e133b",
+    "mtime": 1784177070.1196988,
+    "ast_hash": "33fa624466fd5d0a5b714ce9eaf02137",
     "semantic_hash": ""
   },
   "src/components/Nametag3D.jsx": {
@@ -60,18 +60,18 @@
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
-    "mtime": 1784167292.645414,
-    "ast_hash": "152f77d519ad0a6473f0d96f0661f042",
+    "mtime": 1784190999.421522,
+    "ast_hash": "00e61e85949395a0fc74b513db805012",
     "semantic_hash": ""
   },
   "src/components/ProductCatalog.jsx": {
-    "mtime": 1784167292.6484132,
-    "ast_hash": "b7477366c17c38d5b3e47eb0801ff1ee",
+    "mtime": 1784189224.6477396,
+    "ast_hash": "a79f92cbe46c447a575780551dd5a225",
     "semantic_hash": ""
   },
   "src/components/SolutionsSection.jsx": {
-    "mtime": 1783668190.6854422,
-    "ast_hash": "b70d955f3c8bb7ee1f6112f31341dff6",
+    "mtime": 1784191225.7639902,
+    "ast_hash": "c0b9a9554b7d0a1ed148e3736960a26a",
     "semantic_hash": ""
   },
   "src/components/TeamLanyards.jsx": {
@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "src/components/LatestArticle.jsx": {
-    "mtime": 1784084526.6077585,
-    "ast_hash": "fc1104541e816c282846ba27f9b75048",
+    "mtime": 1784190587.3275404,
+    "ast_hash": "4f6a8c1ec93b2240dc2a3821121ec235",
     "semantic_hash": ""
   },
   "PRD_TEMPLATE_FULL.md": {
@@ -297,6 +297,31 @@
   "vercel.json": {
     "mtime": 1784167292.6594124,
     "ast_hash": "abd07d5b81e7d2c7029cc5611e1ec638",
+    "semantic_hash": ""
+  },
+  "src/components/SectionRenderer.jsx": {
+    "mtime": 1784187763.7474315,
+    "ast_hash": "8853d502858916dac3513ade4f94f642",
+    "semantic_hash": ""
+  },
+  "src/lib/cms.js": {
+    "mtime": 1784189184.974797,
+    "ast_hash": "3096b8ccccf0ad8d646967f7a07e8721",
+    "semantic_hash": ""
+  },
+  "src/lib/cms.test.js": {
+    "mtime": 1784189204.6142707,
+    "ast_hash": "2a0064507fbd019ee82f9978bd575b02",
+    "semantic_hash": ""
+  },
+  "src/components/ArticleDetail.jsx": {
+    "mtime": 1784190587.328542,
+    "ast_hash": "458b36946fa4af4d35f04b2cfe9f3839",
+    "semantic_hash": ""
+  },
+  "src/components/Masonry.jsx": {
+    "mtime": 1784190999.418524,
+    "ast_hash": "19c317a2ec75fbb6db1a4980cd8a4f5d",
     "semantic_hash": ""
   }
 }

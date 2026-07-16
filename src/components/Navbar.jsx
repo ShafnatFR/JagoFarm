@@ -8,14 +8,14 @@ gsap.registerPlugin(ScrollTrigger)
 
 const links = [
   ['Beranda', '#beranda'],
-  ['Solusi', '#solusi'],
   ['Produk', '/produk'],
   ['Tentang Kami', '/tentang-kami'],
 ]
 
-export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
+const navTarget = (slug) => slug === 'produk' || slug === 'porduk' ? '/produk' : slug === 'tentang-kami' ? '/tentang-kami' : '#beranda'
+
+export default function Navbar({ page, onNavigate, theme, onToggleTheme, navigation, settings }) {
   const [open, setOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
   const shellRef = useRef(null)
 
   useEffect(() => {
@@ -41,23 +41,6 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
       onToggle: ({ isActive }) => shell.classList.toggle('is-on-hero', isActive),
     })
 
-    const sectionObserver = page === 'home' && new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((entry) => entry.isIntersecting)
-        if (visible.some((entry) => entry.target.id === 'solusi')) setActiveSection('solutions')
-        else if (visible.length) setActiveSection('home')
-      },
-      { rootMargin: '-35% 0px -45% 0px', threshold: 0 },
-    )
-    if (sectionObserver) {
-      ['#beranda', '#tentang', '#solusi'].forEach((selector) => {
-        const section = document.querySelector(selector)
-        if (section) sectionObserver.observe(section)
-      })
-    } else {
-      setActiveSection('home')
-    }
-
     shell.classList.remove('is-contact')
     shell.classList.remove('is-contact-merged')
 
@@ -66,7 +49,6 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
     return () => {
       blendTrigger.kill()
       heroTrigger?.kill()
-      if (sectionObserver && typeof sectionObserver.disconnect === 'function') sectionObserver.disconnect()
     }
   }, [page])
 
@@ -79,11 +61,11 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
     <header className={`nav-shell ${page === 'home' ? 'is-over-hero' : ''}`} ref={shellRef}>
       <nav className="nav" aria-label="Navigasi utama">
         <button className="brand" onClick={() => go('#beranda')} type="button" aria-label="Jago Farm beranda">
-          <img src={logo} alt="" />
+          <img src={settings?.site_logo || logo} alt={settings?.site_name || 'Jago Farm'} referrerPolicy="no-referrer" />
         </button>
         <div className={`nav-links ${open ? 'is-open' : ''}`}>
-          {links.map(([label, target]) => (
-            <button className={(target === '#beranda' && page === 'home' && activeSection === 'home') || (target === '#solusi' && page === 'home' && activeSection === 'solutions') || (page === 'catalog' && (target === '/produk' || target === '/katalog')) || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
+          {(Array.isArray(navigation?.value) && navigation.value.length ? navigation.value.filter((item) => item.slug !== 'solusi').map((item) => [item.title, navTarget(item.slug)]) : links).map(([label, target]) => (
+            <button className={(target === '#beranda' && page === 'home') || (page === 'catalog' && (target === '/produk' || target === '/katalog')) || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
               {label}
             </button>
           ))}

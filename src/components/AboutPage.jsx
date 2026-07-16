@@ -128,7 +128,7 @@ export default function AboutPage({ onNavigate }) {
             </p>
           </div>
           <div className="cta-actions">
-            <button className="cta-btn-primary" onClick={() => onNavigate('#hubungi-kami')} type="button">
+            <button className="cta-btn-primary" onClick={() => onNavigate('/hubungi-kami')} type="button">
               Hubungi Tim Kami
               <ArrowRight size={20} weight="bold" />
             </button>

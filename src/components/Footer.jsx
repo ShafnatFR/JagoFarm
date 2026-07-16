@@ -14,6 +14,7 @@ const navigation = [
   ["Solusi", "#solusi"],
   ["Produk", "/katalog"],
   ["Tentang Kami", "/tentang-kami"],
+  ["Hubungi Kami", "/hubungi-kami"],
 ];
 
 const products = ["Melon", "Sayuran", "Ikan", "Ayam Petelur", "Perangkat IoT"];
@@ -67,16 +68,8 @@ export default function Footer({ onNavigate }) {
       </nav>
       <nav className="footer-links" aria-label="Produk footer">
         <h3>Produk</h3>
-        {productLinks.map((label) => (
+        {products.map((label) => (
           <button onClick={() => onNavigate('/produk')} type="button" key={label}>
-            {label}
-          </button>
-        ))}
-      </nav>
-      <nav className="footer-links" aria-label="Perusahaan footer">
-        <h3>Perusahaan</h3>
-        {companyLinks.map((label) => (
-          <button onClick={() => onNavigate('/tentang-kami')} type="button" key={label}>
             {label}
           </button>
         ))}

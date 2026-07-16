@@ -58,23 +58,8 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
       setActiveSection('home')
     }
 
-    let observer = null
-    if (page === 'home') {
-      const contact = document.querySelector('#hubungi-kami')
-      if (contact) {
-        observer = new IntersectionObserver(
-          ([entry]) => {
-            shell.classList.toggle('is-contact', entry.isIntersecting)
-            shell.classList.toggle('is-contact-merged', entry.intersectionRatio > 0.38)
-          },
-          { rootMargin: '-18% 0px -36% 0px', threshold: [0, 0.38] },
-        )
-        observer.observe(contact)
-      }
-    } else {
-      shell.classList.remove('is-contact')
-      shell.classList.remove('is-contact-merged')
-    }
+    shell.classList.remove('is-contact')
+    shell.classList.remove('is-contact-merged')
 
     window.setTimeout(() => ScrollTrigger.refresh(), 120)
 
@@ -82,7 +67,6 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
       blendTrigger.kill()
       heroTrigger?.kill()
       if (sectionObserver && typeof sectionObserver.disconnect === 'function') sectionObserver.disconnect()
-      observer?.disconnect()
     }
   }, [page])
 
@@ -108,7 +92,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
           <button className="theme-toggle" onClick={onToggleTheme} type="button" aria-label="Ganti tema">
             {theme === 'dark' ? <Sun size={20} weight="bold" /> : <Moon size={20} weight="bold" />}
           </button>
-          <button className="nav-contact" onClick={() => go('#hubungi-kami')} type="button" aria-label="Hubungi Kami">
+          <button className="nav-contact" onClick={() => go('/hubungi-kami')} type="button" aria-label="Hubungi Kami">
             <PhoneCall size={16} weight="bold" />
           </button>
           <button className="nav-menu" onClick={() => setOpen((value) => !value)} type="button" aria-label="Buka menu">
@@ -116,7 +100,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme }) {
           </button>
         </div>
       </nav>
-      <button className="nav-floating-phone" onClick={() => go('#hubungi-kami')} type="button" aria-label="Hubungi Jago Farm">
+      <button className="nav-floating-phone" onClick={() => go('/hubungi-kami')} type="button" aria-label="Hubungi Jago Farm">
         <PhoneCall size={25} weight="bold" />
       </button>
     </header>

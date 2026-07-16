@@ -19,9 +19,6 @@ const defaultStages = [
 ];
 
 export default function EcosystemPinnedScroll({ stages: propStages, pageExists = false }) {
-  if (pageExists && (!propStages || propStages.length === 0)) {
-    return null;
-  }
   const storyStages = Array.isArray(propStages) && propStages.length > 0
     ? propStages.map((s) => ({
         headline: s?.data?.headline || s?.headline || '',

@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1784177127.6105914,
-    "ast_hash": "d959a8a3d0024d401a857d1f91ef2515",
+    "mtime": 1784190999.4245236,
+    "ast_hash": "b423ece098cd719640357f06f5bace78",
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
@@ -25,18 +25,18 @@
     "semantic_hash": ""
   },
   "src/components/EcosystemPinnedScroll.jsx": {
-    "mtime": 1784167585.454163,
-    "ast_hash": "3d8b9743e4c547b336ad59accedfd40c",
+    "mtime": 1784192693.0857782,
+    "ast_hash": "c10b081774e2f5fbefdbd2854615bfd7",
     "semantic_hash": ""
   },
   "src/components/FeaturedProductsSection.jsx": {
-    "mtime": 1784177016.5858476,
-    "ast_hash": "3f1ae3d94f5e57e76c83566e7bb12f3e",
+    "mtime": 1784192422.2417498,
+    "ast_hash": "b648389940a49b2e9e058aa6e64fec13",
     "semantic_hash": ""
   },
   "src/components/Footer.jsx": {
-    "mtime": 1784177462.1561115,
-    "ast_hash": "11b523e9e8d970da2731d15ba32911a1",
+    "mtime": 1784191017.870319,
+    "ast_hash": "50268acc71e4db22db3ec9ba531300a5",
     "semantic_hash": ""
   },
   "src/components/GlobalMotion.jsx": {
@@ -60,18 +60,18 @@
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
-    "mtime": 1784177351.499112,
-    "ast_hash": "6346c5410e248da17fd5513e2235bc92",
+    "mtime": 1784192693.079264,
+    "ast_hash": "9c3edfc863ecd4bb58573abf79c48119",
     "semantic_hash": ""
   },
   "src/components/ProductCatalog.jsx": {
-    "mtime": 1784177070.1176934,
-    "ast_hash": "58f3d3e47c1847925cb03d28b9f75e46",
+    "mtime": 1784189224.6477396,
+    "ast_hash": "a79f92cbe46c447a575780551dd5a225",
     "semantic_hash": ""
   },
   "src/components/SolutionsSection.jsx": {
-    "mtime": 1784177030.8550045,
-    "ast_hash": "7ba76cc9feddcd7743d12da136f22915",
+    "mtime": 1784191225.7639902,
+    "ast_hash": "c0b9a9554b7d0a1ed148e3736960a26a",
     "semantic_hash": ""
   },
   "src/components/TeamLanyards.jsx": {
@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "src/components/LatestArticle.jsx": {
-    "mtime": 1784177434.4613817,
-    "ast_hash": "a5659436b62d8f3c94f600aa9da76a8d",
+    "mtime": 1784190587.3275404,
+    "ast_hash": "4f6a8c1ec93b2240dc2a3821121ec235",
     "semantic_hash": ""
   },
   "PRD_TEMPLATE_FULL.md": {
@@ -300,18 +300,28 @@
     "semantic_hash": ""
   },
   "src/components/SectionRenderer.jsx": {
-    "mtime": 1784177195.7703843,
-    "ast_hash": "63abe5bea894ec709568f4814381dda9",
+    "mtime": 1784187763.7474315,
+    "ast_hash": "8853d502858916dac3513ade4f94f642",
     "semantic_hash": ""
   },
   "src/lib/cms.js": {
-    "mtime": 1784177434.4597788,
-    "ast_hash": "aa5c5e38dcc8c92b8719d48ac5aeae8f",
+    "mtime": 1784189184.974797,
+    "ast_hash": "3096b8ccccf0ad8d646967f7a07e8721",
     "semantic_hash": ""
   },
   "src/lib/cms.test.js": {
-    "mtime": 1784177434.4641144,
-    "ast_hash": "61ebb790f743f1b3610ad7533ea3fe0a",
+    "mtime": 1784189204.6142707,
+    "ast_hash": "2a0064507fbd019ee82f9978bd575b02",
+    "semantic_hash": ""
+  },
+  "src/components/ArticleDetail.jsx": {
+    "mtime": 1784190587.328542,
+    "ast_hash": "458b36946fa4af4d35f04b2cfe9f3839",
+    "semantic_hash": ""
+  },
+  "src/components/Masonry.jsx": {
+    "mtime": 1784190999.418524,
+    "ast_hash": "19c317a2ec75fbb6db1a4980cd8a4f5d",
     "semantic_hash": ""
   }
 }

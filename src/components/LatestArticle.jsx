@@ -1,7 +1,7 @@
-import { formatCmsDate, selectPosts } from '../lib/cms.js'
+import { formatCmsDate, postContent, postImage, selectArticlePosts } from '../lib/cms.js'
 
-export default function LatestArticle({ data = {}, posts = [] }) {
-  const items = selectPosts(posts, data)
+export default function LatestArticle({ data = {}, posts = [], onNavigate }) {
+  const items = selectArticlePosts(posts, data)
   return (
     <section className="latest-article section-shell motion-section" id="artikel">
       <div className="article-container">
@@ -10,7 +10,7 @@ export default function LatestArticle({ data = {}, posts = [] }) {
         <p className="article-subtitle motion-item">
           Temukan insight seputar agritech dan perkembangan terbaru startup kami.
         </p>
-        <div className="facebook-embed-card motion-item">{items.length ? items.map((post) => <article key={post.id || post.slug}><h3>{post.title || 'Tanpa judul'}</h3><small>{formatCmsDate(post.published_at || post.created_at)}</small><p>{post.excerpt || ''}</p>{post.featured_image && <img src={post.featured_image} alt="" referrerPolicy="no-referrer" loading="lazy" />}</article>) : <p>Belum ada artikel.</p>}</div>
+        <div className="article-scroller motion-item">{items.length ? items.map((post) => <article className="article-card" key={post.id || post.slug}><button type="button" onClick={() => onNavigate?.(`/artikel/${encodeURIComponent(post.slug)}`)}><div className="article-card-media">{postImage(post) && <img src={postImage(post)} alt="" referrerPolicy="no-referrer" loading="lazy" />}</div><div className="article-card-copy"><small>{formatCmsDate(post.published_at || post.created_at)}</small><h3>{post.title || 'Tanpa judul'}</h3><p>{post.excerpt || postContent(post).excerpt || ''}</p><span>Baca artikel →</span></div></button></article>) : <p>Belum ada artikel.</p>}</div>
       </div>
     </section>
   )

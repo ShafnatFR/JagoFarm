@@ -10,12 +10,13 @@
   "8": "gsap",
   "9": "@gsap/react",
   "10": "lenis",
+  "11": "8. Testing Strategy",
   "12": "meshline",
   "13": "@phosphor-icons/react",
   "14": "react-dom",
   "15": "@react-three/drei",
   "16": "@react-three/fiber",
-  "17": "9. Logging, Monitoring & Error Handling",
+  "17": "SectionRenderer.jsx",
   "18": "IntroAnimation.jsx",
   "21": "vite.config.js"
 }

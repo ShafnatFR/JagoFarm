@@ -1637,7 +1637,6 @@ img {
   background: rgba(12, 94, 54, 0.06);
 }
 
-/* ThemedLottie: warna sudah dikustom via color-mapping ke palet JagoFarm — tidak perlu filter/blend */
 .about-hero-lottie {
   position: relative;
   z-index: 12;
@@ -1649,13 +1648,34 @@ img {
   padding: 10px;
 }
 
-.about-hero-lottie > div {
-  filter: drop-shadow(0 14px 28px rgba(12, 94, 54, 0.14));
-  transition: filter 0.35s ease;
+/* ThemedLottie wrapper — passthrough */
+.themed-lottie {
+  display: contents;
+}
+.themed-lottie dotlottie-wc {
+  display: block;
+  background: transparent !important;
+  transition: filter 0.35s ease, transform 0.35s ease;
 }
 
-[data-theme='dark'] .about-hero-lottie > div {
-  filter: drop-shadow(0 0 36px rgba(137, 207, 112, 0.3));
+/* Light mode: multiply blend + earthy green filter */
+:root .about-hero-lottie,
+[data-theme='light'] .about-hero-lottie {
+  mix-blend-mode: multiply;
+}
+.themed-lottie--light dotlottie-wc,
+:root .themed-lottie dotlottie-wc {
+  filter: hue-rotate(160deg) saturate(0.85) brightness(0.88)
+          drop-shadow(0 14px 28px rgba(12, 94, 54, 0.14));
+}
+
+/* Dark mode: screen blend + glow green filter */
+[data-theme='dark'] .about-hero-lottie {
+  mix-blend-mode: screen;
+}
+[data-theme='dark'] .themed-lottie dotlottie-wc {
+  filter: invert(0.92) hue-rotate(180deg) brightness(1.35)
+          drop-shadow(0 0 36px rgba(137, 207, 112, 0.3));
 }
 
 /* Skeleton placeholder for team lanyard 3D */

@@ -209,7 +209,7 @@ export default function App() {
                 <ProductCatalog posts={cms.posts} categories={cms.categories} />
               )
             )}
-            {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
+            {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} posts={cms.posts} onNavigate={navigate} />}
             {page === 'articles' && <ArticleCatalog posts={cms.posts} categories={cms.categories} onNavigate={navigate} />}
             {page === 'about' && (
               !isAboutActive ? (

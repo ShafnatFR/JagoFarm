@@ -1653,11 +1653,13 @@ img {
 .about-hero-lottie dotlottie-wc {
   transition: filter 0.35s ease, transform 0.35s ease;
   filter: drop-shadow(0 14px 28px rgba(12, 94, 54, 0.16));
+  background: transparent !important;
 }
 
 /* Dalam Tema Gelap ([data-theme='dark']): invert & rotasi hue agar animasi bergaris gelap otomatis beralih menjadi hijau zamrud berkilau (glow) yang kontras dengan latar gelap */
 [data-theme='dark'] .about-hero-lottie dotlottie-wc {
   filter: invert(0.92) hue-rotate(180deg) brightness(1.28) drop-shadow(0 0 32px rgba(137, 207, 112, 0.38));
+  background: transparent !important;
 }
 
 /* Skeleton placeholder for team lanyard 3D */

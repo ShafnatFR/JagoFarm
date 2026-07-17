@@ -87,6 +87,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
           <dotlottie-wc
             src="https://lottie.host/326750a1-bdd7-4851-af58-f920b386d4eb/jRd76tjbwp.json"
             style={{ width: "300px", height: "300px" }}
+            background="transparent"
             autoplay
             loop
           ></dotlottie-wc>

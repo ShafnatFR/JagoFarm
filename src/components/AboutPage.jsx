@@ -7,6 +7,7 @@ import {
   storyTimeline as defaultTimeline,
 } from "../data/aboutContent.js";
 import { ArrowRight, Sparkle } from "@phosphor-icons/react";
+import { ErrorBoundary3D } from "./Nametag2D.jsx";
 const TeamLanyards = lazy(() => import("./TeamLanyards.jsx"));
 
 export default function AboutPage({ onNavigate, pageData = null }) {

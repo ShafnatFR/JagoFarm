@@ -31,8 +31,7 @@ export default function HeroSection({ theme, onToggleTheme, data = {}, pageExist
     });
     const scene = animate(root.querySelector(".hero-scene"), {
       opacity: [0, 1],
-      scale: [0.96, 1],
-      rotateY: [-6, 0],
+      scale: [1.02, 1],
       duration: 1100,
       delay: 180,
       ease: "out(3)",

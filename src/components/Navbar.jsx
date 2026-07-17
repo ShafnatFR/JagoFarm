@@ -38,9 +38,6 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme, navigat
       end: 'bottom bottom',
       onEnter: () => shell.classList.add('is-blended'),
       onLeaveBack: () => shell.classList.remove('is-blended'),
-      onUpdate: (self) => {
-        shell.classList.toggle('is-blended', self.scroll() > 36)
-      },
     })
 
     const hero = document.querySelector('#beranda')

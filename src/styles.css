@@ -159,9 +159,12 @@ img {
   border-radius: 999px;
   background: rgb(251 253 248 / 0.9);
   box-shadow: 0 18px 54px rgb(6 85 46 / 0.1);
-  backdrop-filter: blur(18px);
-  transform: translateX(-50%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateX(-50%) translateZ(0);
   transition: width 320ms ease, height 320ms ease, opacity 260ms ease, background 320ms ease, border-color 320ms ease, box-shadow 320ms ease, transform 320ms ease;
+  contain: layout style;
+  will-change: width, transform;
 }
 
 .nav-shell.is-over-hero:not(.is-blended) {
@@ -169,6 +172,7 @@ img {
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .nav-shell.is-over-hero:not(.is-blended) .brand,
@@ -187,7 +191,7 @@ img {
   border-color: rgb(106 168 79 / 0.22);
   background: rgb(6 34 20 / 0.5);
   box-shadow: 0 18px 64px rgb(0 0 0 / 0.16);
-  transform: translateX(-50%) translateY(2px);
+  transform: translateX(-50%) translateY(2px) translateZ(0);
 }
 
 .nav-shell.is-blended.is-on-hero {
@@ -387,6 +391,9 @@ img {
   z-index: -3;
   background: #0b1a10;
   overflow: hidden;
+  contain: layout style paint;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .hero-scene::after {
@@ -397,7 +404,7 @@ img {
   background: radial-gradient(circle at 83% 24%, rgb(255 203 104 / 0.23), transparent 30%);
   mix-blend-mode: screen;
   pointer-events: none;
-  transition: opacity 1.8s ease, background 1.8s ease;
+  transition: opacity 1.4s ease, background 1.4s ease;
 }
 
 .hero-photo {
@@ -411,15 +418,15 @@ img {
   z-index: 1;
   object-fit: fill;
   object-position: center;
-  transition: opacity 1.8s cubic-bezier(.22, .61, .36, 1), filter 1.8s cubic-bezier(.22, .61, .36, 1);
-  will-change: opacity, filter;
+  transition: opacity 1.4s cubic-bezier(.22, .61, .36, 1);
+  will-change: opacity;
 }
 
-.hero-photo-day { z-index: 2; opacity: 1; filter: saturate(1.04) brightness(1.02); }
-.hero-photo-night { z-index: 1; opacity: 1; filter: saturate(.9) brightness(.72); }
+.hero-photo-day { z-index: 2; opacity: 1; }
+.hero-photo-night { z-index: 1; opacity: 1; }
 
-[data-theme='dark'] .hero-photo-day { opacity: 0; filter: saturate(.9) brightness(.72); }
-[data-theme='dark'] .hero-photo-night { opacity: 1; filter: saturate(.9) brightness(.72); }
+[data-theme='dark'] .hero-photo-day { opacity: 0; }
+[data-theme='dark'] .hero-photo-night { opacity: 1; }
 
 [data-theme='dark'] .hero-scene::after {
   background: radial-gradient(circle at 82% 17%, rgb(131 181 255 / 0.16), transparent 28%);

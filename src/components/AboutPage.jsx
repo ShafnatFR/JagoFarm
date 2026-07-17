@@ -13,11 +13,11 @@ const TeamLanyards = lazy(() => import("./TeamLanyards.jsx"));
 
 export default function AboutPage({ onNavigate, pageData = null }) {
   // Extract CMS blocks
-  const heroBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'hero') : null, [pageData]);
-  const featuresBlocks = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.filter((b) => b?.type === 'features') : [], [pageData]);
-  const galleryBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'gallery') : null, [pageData]);
-  const teamBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'team') : null, [pageData]);
-  const ctaBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.slice().reverse().find((b) => b?.type === 'hero' && b?.data?.cta_buttons?.length) : null, [pageData]);
+  const heroBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'hero' || b?.type === 'hero-section' || b?.type === 'hero_section') : null, [pageData]);
+  const featuresBlocks = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.filter((b) => b?.type === 'features' || b?.type === 'feature' || b?.type === 'timeline' || b?.type === 'values' || b?.type === 'story') : [], [pageData]);
+  const galleryBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'gallery' || b?.type === 'images' || b?.type === 'gallery_section') : null, [pageData]);
+  const teamBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.find((b) => b?.type === 'team' || b?.type === 'team-lanyards' || b?.type === 'members' || b?.type === 'team_section') : null, [pageData]);
+  const ctaBlock = useMemo(() => Array.isArray(pageData?.content) ? pageData.content.slice().reverse().find((b) => (b?.type === 'hero' || b?.type === 'cta') && (b?.data?.cta_buttons?.length || b?.data?.headline)) : null, [pageData]);
 
   // Hero section data
   const aboutHeroText = heroBlock?.data ? {
@@ -25,40 +25,44 @@ export default function AboutPage({ onNavigate, pageData = null }) {
     description: heroBlock.data.sub_headline || defaultHero.description,
   } : defaultHero;
 
-  const aboutStats = heroBlock?.data && Array.isArray(heroBlock.data.stats)
-    ? heroBlock.data.stats.map((s) => ({ value: s.value, label: s.label }))
+  const rawStats = heroBlock?.data ? (Array.isArray(heroBlock.data.stats_list) ? heroBlock.data.stats_list : (Array.isArray(heroBlock.data.stats) ? heroBlock.data.stats : null)) : null;
+  const aboutStats = rawStats && rawStats.length > 0
+    ? rawStats.map((s) => ({ value: s?.value || '', label: s?.label || '' })).filter((s) => s.value || s.label)
     : defaultStats;
 
   // Timeline from first features block
-  const storyTimeline = featuresBlocks[0]?.data && Array.isArray(featuresBlocks[0].data.items)
-    ? featuresBlocks[0].data.items.map((item) => ({
-        year: Array.isArray(item.labels) && item.labels.length > 1 ? item.labels[1] : '',
-        title: item.title || '',
-        description: item.description || '',
-        badge: Array.isArray(item.labels) ? item.labels[0] : '',
-        Icon: Sparkle,
+  const rawTimeline = featuresBlocks[0]?.data ? (Array.isArray(featuresBlocks[0].data.items) ? featuresBlocks[0].data.items : (Array.isArray(featuresBlocks[0].data.items_list) ? featuresBlocks[0].data.items_list : (Array.isArray(featuresBlocks[0].data.timeline) ? featuresBlocks[0].data.timeline : null))) : null;
+  const storyTimeline = rawTimeline && rawTimeline.length > 0
+    ? rawTimeline.map((item, idx) => ({
+        year: Array.isArray(item?.labels) && item.labels.length > 1 ? item.labels[1] : (item?.year || `${2023 + idx}`),
+        title: item?.title || '',
+        description: item?.description || '',
+        badge: Array.isArray(item?.labels) && item.labels.length > 0 ? item.labels[0] : (item?.badge || 'Inovasi'),
+        Icon: item?.Icon || Sparkle,
       }))
     : defaultTimeline;
 
   // Core values from second features block
-  const coreValues = featuresBlocks[1]?.data && Array.isArray(featuresBlocks[1].data.items)
-    ? featuresBlocks[1].data.items.map((item) => ({
-        title: item.title || '',
-        description: item.description || '',
-        Icon: Sparkle,
-        color: '#0c6b3b',
+  const rawValues = featuresBlocks[1]?.data ? (Array.isArray(featuresBlocks[1].data.items) ? featuresBlocks[1].data.items : (Array.isArray(featuresBlocks[1].data.items_list) ? featuresBlocks[1].data.items_list : (Array.isArray(featuresBlocks[1].data.values) ? featuresBlocks[1].data.values : null))) : null;
+  const coreValues = rawValues && rawValues.length > 0
+    ? rawValues.map((item, idx) => ({
+        title: item?.title || '',
+        description: item?.description || '',
+        Icon: item?.Icon || Sparkle,
+        color: ['#0c6b3b', '#06552e', '#6aa84f', '#183728'][idx % 4] || '#0c6b3b',
       }))
     : defaultValues;
 
   // Gallery
-  const galleryItems = galleryBlock?.data && Array.isArray(galleryBlock.data.images)
-    ? galleryBlock.data.images.map((img) => ({
-        title: img.image_title || img.caption || img.alt_text || '',
-        category: img.category || '',
-        image: img.url || '',
+  const rawGallery = galleryBlock?.data ? (Array.isArray(galleryBlock.data.images) ? galleryBlock.data.images : (Array.isArray(galleryBlock.data.images_list) ? galleryBlock.data.images_list : (Array.isArray(galleryBlock.data.items) ? galleryBlock.data.items : null))) : null;
+  const galleryItems = rawGallery && rawGallery.length > 0
+    ? rawGallery.map((img) => ({
+        title: img?.image_title || img?.caption || img?.alt_text || 'Fasilitas JagoFarm',
+        category: img?.category || 'Fasilitas',
+        image: img?.url || img?.image_url || (typeof img === 'string' ? img : ''),
         colSpan: 'span 1',
         rowSpan: 'span 1',
-      }))
+      })).filter((img) => typeof img.image === 'string' && img.image.length > 0)
     : defaultGallery;
 
   // CTA block
@@ -107,7 +111,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
                 {badge && <span className="timeline-badge">{badge}</span>}
               </div>
               <div className="timeline-icon">
-                <Icon size={32} weight="duotone" />
+                {Icon && typeof Icon !== 'string' ? <Icon size={32} weight="duotone" /> : <Sparkle size={32} weight="duotone" />}
               </div>
               <h3>{title}</h3>
               <p>{description}</p>
@@ -128,7 +132,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
           {coreValues.map(({ title, description, Icon, color }) => (
             <article className="value-card motion-item" key={title}>
               <div className="value-icon-wrapper" style={{ background: `${color}1a`, color }}>
-                <Icon size={36} weight="duotone" />
+                {Icon && typeof Icon !== 'string' ? <Icon size={36} weight="duotone" /> : <Sparkle size={36} weight="duotone" />}
               </div>
               <h3>{title}</h3>
               <p>{description}</p>

@@ -22,29 +22,16 @@ import './styles.css'
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props)
-    this.state = { hasError: false, error: null }
+    this.state = { hasError: false }
   }
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error }
+  static getDerivedStateFromError() {
+    return { hasError: true }
   }
   componentDidCatch(error, info) {
     console.error('ErrorBoundary caught:', error, info)
   }
   render() {
-    if (this.state.hasError) {
-      return (
-        <section className="page-shell section-shell" style={{ minHeight: '65vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', textAlign: 'center', padding: '40px 20px' }}>
-          <h2 style={{ fontSize: '1.5rem', color: 'var(--forest)', fontWeight: 700 }}>Mohon Maaf, Terjadi Kendala Render pada Halaman Ini</h2>
-          <p style={{ color: 'var(--muted)', maxWidth: '480px' }}>Data dari CMS atau komponen sedang mengalami penyesuaian struktur. Silakan segarkan halaman atau kembali ke Beranda.</p>
-          <div style={{ background: 'rgba(255,0,0,0.08)', border: '1px solid #ff4d4f', padding: '12px 16px', borderRadius: '8px', color: '#ff4d4f', fontFamily: 'monospace', fontSize: '0.85rem', maxWidth: '640px', overflowX: 'auto', textAlign: 'left' }}>
-            <strong>Error Detail:</strong><br />
-            {this.state.error?.message || String(this.state.error)}
-          </div>
-          <button className="cta-btn-primary" onClick={() => { this.setState({ hasError: false, error: null }); window.location.href = '/#beranda'; }} style={{ padding: '10px 24px', borderRadius: '99px', border: 'none', background: 'var(--forest)', color: '#fff', cursor: 'pointer', fontWeight: 600 }}>Kembali ke Beranda</button>
-        </section>
-      )
-    }
-    return this.props.children
+    return this.state.hasError ? null : this.props.children
   }
 }
 
@@ -228,7 +215,7 @@ export default function App() {
               !isAboutActive ? (
                 <UnderConstructionPage page="about" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />
               ) : (
-                <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami') || findPageBySlug(cms.pages, 'about')} />
+                <AboutPage onNavigate={navigate} pageData={findPageBySlug(cms.pages, 'tentang-kami')} />
               )
             )}
             {page === 'contact' && (

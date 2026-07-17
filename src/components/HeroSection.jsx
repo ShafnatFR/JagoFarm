@@ -47,7 +47,7 @@ export default function HeroSection({ theme, onToggleTheme, data = {}, pageExist
   return (
     <>
       <main
-        className="hero motion-section"
+        className="hero"
         id="beranda"
         ref={heroRef}
       >
@@ -58,10 +58,10 @@ export default function HeroSection({ theme, onToggleTheme, data = {}, pageExist
         <div className="hero-shade" aria-hidden="true" />
         <section className="hero-copy" aria-labelledby="hero-title">
           <span className="hero-eyebrow hero-animate">{data.eyebrow || data.tagline || (Array.isArray(data.labels) && data.labels.length ? data.labels.join(' • ') : 'Sistem pangan terintegrasi')}</span>
-          <h1 className="hero-animate motion-item" id="hero-title">
+          <h1 className="hero-animate" id="hero-title">
             {data.headline || 'Satu farm. Banyak siklus. Nol limbah.'}
           </h1>
-          <p className="hero-animate motion-item">
+          <p className="hero-animate">
             {data.sub_headline || 'Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor lapangan menjadi sistem pangan yang terukur dari input sampai panen.'}
           </p>
           {statsList.length > 0 && <div className="hero-metrics">{statsList.map((stat, index) => <article key={index}><strong>{stat?.value || ''}</strong><span>{stat?.label || ''}</span></article>)}</div>}

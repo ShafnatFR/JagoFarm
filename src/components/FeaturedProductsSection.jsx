@@ -29,7 +29,7 @@ export default function FeaturedProductsSection({ data = DEFAULT_DATA, posts = [
         className="product-gallery motion-item"
         aria-label="Galeri produk unggulan"
       >
-        {products.length ? <Masonry items={masonryItems} animateFrom="bottom" scaleOnHover hoverScale={0.97} blurToFocus /> : <p aria-live="polite">Produk sedang disiapkan.</p>}
+        {products.length ? <Masonry items={masonryItems} animateFrom="bottom" scaleOnHover hoverScale={0.97} blurToFocus={false} /> : <p aria-live="polite">Produk sedang disiapkan.</p>}
       </div>
     </section>
   );

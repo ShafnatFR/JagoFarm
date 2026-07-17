@@ -25,12 +25,10 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
         headline: s?.data?.headline || s?.headline || '',
         side: s?.data?.side || s?.side || (Math.random() > 0.5 ? 'left' : 'right'),
       }))
-    : defaultStages
+    : defaultStages;
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const activeStageRef = useRef(0);
-  const seekFrameRef = useRef(0);
-  const targetTimeRef = useRef(0);
   const [activeStage, setActiveStage] = useState(0);
 
   // Lenis owns scroll interpolation; explicitly forward each Lenis frame to GSAP.
@@ -42,7 +40,6 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
     if (!section || !video) return undefined;
 
     let trigger;
-    let animationFrame = 0;
 
     const renderProgress = (progress) => {
       const duration = video.duration || 8;
@@ -52,17 +49,14 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
         Math.floor(progress * storyStages.length),
       );
 
-      targetTimeRef.current = targetTime;
+      if (!video.seeking && Math.abs(targetTime - video.currentTime) > 0.04) {
+        video.currentTime = targetTime;
+      }
+
       if (nextStage !== activeStageRef.current) {
         activeStageRef.current = nextStage;
         setActiveStage(nextStage);
       }
-    };
-
-    const smoothVideoSeek = () => {
-      const difference = targetTimeRef.current - video.currentTime;
-      if (Math.abs(difference) > 0.01) video.currentTime += difference * 0.18;
-      animationFrame = window.requestAnimationFrame(smoothVideoSeek);
     };
 
     const createTrigger = () => {
@@ -75,9 +69,9 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
       trigger = ScrollTrigger.create({
         trigger: section,
         start: "top top",
-        end: () => `+=${window.innerHeight * 2.6}`,
+        end: () => `+=${window.innerHeight * 2.4}`,
         pin: true,
-        scrub: 0.35,
+        scrub: 0.4,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: ({ progress }) => renderProgress(progress),
@@ -89,12 +83,9 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
     if (video.readyState >= HTMLMediaElement.HAVE_METADATA) createTrigger();
     else
       video.addEventListener("loadedmetadata", createTrigger, { once: true });
-    animationFrame = window.requestAnimationFrame(smoothVideoSeek);
+
     return () => {
       trigger?.kill();
-      window.cancelAnimationFrame(animationFrame);
-      if (seekFrameRef.current)
-        window.cancelAnimationFrame(seekFrameRef.current);
       video.removeEventListener("loadedmetadata", createTrigger);
     };
   }, []);

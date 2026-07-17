@@ -1650,16 +1650,20 @@ img {
 }
 
 /* Dalam Tema Terang (:root / light): blend natural — multiply hilangkan white bg, drop-shadow elegan */
+.about-hero-lottie {
+  mix-blend-mode: multiply;
+}
 .about-hero-lottie dotlottie-wc {
   transition: filter 0.35s ease, transform 0.35s ease;
-  mix-blend-mode: multiply;
   filter: drop-shadow(0 14px 28px rgba(12, 94, 54, 0.16));
   background: transparent !important;
 }
 
 /* Dalam Tema Gelap ([data-theme='dark']): invert + hue-rotate → glow hijau zamrud, screen blend */
-[data-theme='dark'] .about-hero-lottie dotlottie-wc {
+[data-theme='dark'] .about-hero-lottie {
   mix-blend-mode: screen;
+}
+[data-theme='dark'] .about-hero-lottie dotlottie-wc {
   filter: invert(0.92) hue-rotate(180deg) brightness(1.35) drop-shadow(0 0 36px rgba(137, 207, 112, 0.45));
   background: transparent !important;
 }

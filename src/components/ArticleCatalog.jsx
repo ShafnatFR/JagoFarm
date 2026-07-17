@@ -52,10 +52,12 @@ export default function ArticleCatalog({ posts = [], categories = [], onNavigate
           <div className="catalog-splash-outer" />
           <div className="catalog-splash-inner" />
           <div className="catalog-splash-ring" />
+          <div className="catalog-splash-shadow" />
           <div className="catalog-lottie-wrapper">
             <DotLottieReact
               src="https://lottie.host/e244af69-27a2-429b-b143-63617e0adf01/qBouQo2veE.json"
               style={{ width: '100%', height: '100%' }}
+              renderConfig={{ devicePixelRatio: 1.25 }}
               autoplay
               loop
             />

@@ -86,7 +86,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
         <div className="about-hero-lottie motion-item" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
           <dotlottie-wc
             src="https://lottie.host/326750a1-bdd7-4851-af58-f920b386d4eb/jRd76tjbwp.json"
-            style={{ width: "300px", height: "300px" }}
+            style={{ width: "min(420px, 80vw)", height: "min(420px, 80vw)" }}
             background="transparent"
             autoplay
             loop

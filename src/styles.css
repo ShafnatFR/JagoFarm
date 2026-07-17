@@ -1537,9 +1537,9 @@ img {
 }
 
 .about-hero {
-  grid-template-columns: minmax(420px, 0.88fr) minmax(420px, 0.64fr);
-  align-items: start;
-  gap: clamp(38px, 7vw, 120px);
+  grid-template-columns: minmax(420px, 1.15fr) minmax(320px, 0.85fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 60px);
   overflow: visible;
 }
 
@@ -1616,11 +1616,10 @@ img {
 .nametag-3d {
   position: relative;
   z-index: 12;
-  width: clamp(760px, 82vw, 1220px);
-  height: min(92dvh, 860px);
-  min-height: 720px;
-  margin-top: calc(-1 * clamp(142px, 11vw, 188px));
-  margin-left: calc(-1 * clamp(260px, 23vw, 430px));
+  width: 100%;
+  max-width: 440px;
+  height: clamp(460px, 58vh, 540px);
+  margin: -30px auto 0;
   overflow: visible;
   touch-action: none;
 }
@@ -1629,13 +1628,12 @@ img {
 .nametag-skeleton {
   position: relative;
   z-index: 12;
-  width: clamp(760px, 82vw, 1220px);
-  height: min(92dvh, 860px);
-  min-height: 720px;
-  margin-top: calc(-1 * clamp(142px, 11vw, 188px));
-  margin-left: calc(-1 * clamp(260px, 23vw, 430px));
+  width: 100%;
+  max-width: 320px;
+  height: 440px;
+  margin: 20px auto 0;
   overflow: hidden;
-  border-radius: 48px;
+  border-radius: 28px;
   background: rgba(12, 94, 54, 0.06);
 }
 
@@ -1689,9 +1687,10 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: clamp(340px, 45vw, 560px);
-  min-height: 560px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 360px;
+  min-height: 440px;
+  margin: 10px auto 0;
   perspective: 1200px;
 }
 
@@ -1699,7 +1698,7 @@ img {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 400px;
+  min-height: 380px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1710,7 +1709,7 @@ img {
 /* Tali Lanyard 2D yang bergantung */
 .lanyard-strap-2d {
   position: absolute;
-  top: -30px;
+  top: -24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1718,8 +1717,8 @@ img {
 }
 
 .strap-line-2d {
-  width: 26px;
-  height: 110px;
+  width: 24px;
+  height: 90px;
   background: linear-gradient(to bottom, #050605, #1f2822, #0b0f0c);
   border-left: 2px solid rgba(210, 235, 214, 0.28);
   border-right: 2px solid rgba(210, 235, 214, 0.28);
@@ -1727,13 +1726,13 @@ img {
 }
 
 .strap-clip-2d {
-  width: 34px;
-  height: 22px;
+  width: 32px;
+  height: 20px;
   background: linear-gradient(135deg, #444, #222, #555);
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  margin-top: -4px;
+  margin-top: -3px;
   z-index: 2;
 }
 
@@ -1741,11 +1740,11 @@ img {
 .id-card-2d {
   position: relative;
   z-index: 3;
-  width: min(85%, 320px);
-  border-radius: 22px;
+  width: min(88%, 235px); /* Ukuran kompak dan elegan, tidak kebesaran */
+  border-radius: 18px;
   background: var(--surface);
-  padding: 10px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.08);
   transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
   transform-style: preserve-3d;
   cursor: pointer;
@@ -1757,21 +1756,22 @@ img {
 
 @keyframes floatCard2D {
   0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
-  50% { transform: translateY(-10px) rotate(1.5deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
 }
 
 .id-card-inner-2d {
   position: relative;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   background: #0d120f;
 }
 
 .id-card-image-2d {
   width: 100%;
-  height: auto;
+  max-height: 315px;
+  object-fit: contain;
   display: block;
-  border-radius: 16px;
+  border-radius: 14px;
 }
 
 .id-card-glare-2d {

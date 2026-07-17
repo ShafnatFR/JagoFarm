@@ -48,8 +48,8 @@ function TeamLanyard({ member, index }) {
             originX={member.originX}
             originY={4.15}
             lineWidth={0.28}
-            cameraPosition={[0, 0, 15]}
-            fov={28}
+            cameraPosition={[0, 0, 16.5]}
+            fov={25}
             spotIntensity={90}
             fillIntensity={5.0}
             ambientIntensity={1.25}

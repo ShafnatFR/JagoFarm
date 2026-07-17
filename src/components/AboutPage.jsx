@@ -8,6 +8,7 @@ import {
 } from "../data/aboutContent.js";
 import { ArrowRight, Sparkle } from "@phosphor-icons/react";
 import { ErrorBoundary3D } from "./Nametag2D.jsx";
+import ThemedLottie from "./ThemedLottie.jsx";
 const TeamLanyards = lazy(() => import("./TeamLanyards.jsx"));
 
 export default function AboutPage({ onNavigate, pageData = null }) {
@@ -84,13 +85,9 @@ export default function AboutPage({ onNavigate, pageData = null }) {
           </div>
         </div>
         <div className="about-hero-lottie motion-item" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
-          <dotlottie-wc
-            src="https://lottie.host/326750a1-bdd7-4851-af58-f920b386d4eb/jRd76tjbwp.json"
+          <ThemedLottie
             style={{ width: "min(420px, 80vw)", height: "min(420px, 80vw)" }}
-            background="transparent"
-            autoplay
-            loop
-          ></dotlottie-wc>
+          />
         </div>
       </section>
 

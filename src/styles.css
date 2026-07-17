@@ -1644,7 +1644,7 @@ img {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 320px;
+  min-height: 480px;
   padding: 10px;
 }
 
@@ -1658,24 +1658,24 @@ img {
   transition: filter 0.35s ease, transform 0.35s ease;
 }
 
-/* Light mode: multiply blend + earthy green filter */
+/* Light mode: multiply blend + sepia→green chain → earthy forest */
 :root .about-hero-lottie,
 [data-theme='light'] .about-hero-lottie {
   mix-blend-mode: multiply;
 }
 .themed-lottie--light dotlottie-wc,
 :root .themed-lottie dotlottie-wc {
-  filter: hue-rotate(160deg) saturate(0.85) brightness(0.88)
+  filter: sepia(0.55) saturate(2.8) hue-rotate(62deg) brightness(0.92)
           drop-shadow(0 14px 28px rgba(12, 94, 54, 0.14));
 }
 
-/* Dark mode: screen blend + glow green filter */
+/* Dark mode: screen blend + invert→sepia→green glow */
 [data-theme='dark'] .about-hero-lottie {
   mix-blend-mode: screen;
 }
 [data-theme='dark'] .themed-lottie dotlottie-wc {
-  filter: invert(0.92) hue-rotate(180deg) brightness(1.35)
-          drop-shadow(0 0 36px rgba(137, 207, 112, 0.3));
+  filter: invert(0.94) sepia(0.35) saturate(2.4) hue-rotate(72deg) brightness(1.45)
+          drop-shadow(0 0 40px rgba(137, 207, 112, 0.35));
 }
 
 /* Skeleton placeholder for team lanyard 3D */

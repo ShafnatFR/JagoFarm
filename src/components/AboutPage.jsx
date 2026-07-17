@@ -86,7 +86,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
         </div>
         <div className="about-hero-lottie motion-item" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
           <ThemedLottie
-            style={{ width: "min(420px, 80vw)", height: "min(420px, 80vw)" }}
+            style={{ width: "min(600px, 90vw)", height: "min(600px, 90vw)" }}
           />
         </div>
       </section>

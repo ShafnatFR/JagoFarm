@@ -48,13 +48,18 @@ export default function ArticleCatalog({ posts = [], categories = [], onNavigate
             Kumpulan seluruh artikel, cerita perjalanan inovasi agritech, serta wawasan mendalam seputar ekosistem pangan sirkular dari tim JagoFarm.
           </p>
         </div>
-        <div className="article-catalog-hero-icon motion-item" aria-hidden="true" style={{ opacity: 1 }}>
-          <DotLottieReact
-            src="https://lottie.host/e244af69-27a2-429b-b143-63617e0adf01/qBouQo2veE.json"
-            style={{ width: '300px', height: '300px' }}
-            autoplay
-            loop
-          />
+        <div className="article-catalog-hero-icon motion-item" aria-hidden="true">
+          <div className="catalog-splash-outer" />
+          <div className="catalog-splash-inner" />
+          <div className="catalog-splash-ring" />
+          <div className="catalog-lottie-wrapper">
+            <DotLottieReact
+              src="https://lottie.host/e244af69-27a2-429b-b143-63617e0adf01/qBouQo2veE.json"
+              style={{ width: '100%', height: '100%' }}
+              autoplay
+              loop
+            />
+          </div>
         </div>
       </header>
 

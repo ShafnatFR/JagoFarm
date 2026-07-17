@@ -12,7 +12,7 @@ const links = [
   ['Tentang Kami', '/tentang-kami'],
 ]
 
-const navTarget = (slug) => slug === 'produk' || slug === 'porduk' ? '/produk' : slug === 'tentang-kami' ? '/tentang-kami' : '#beranda'
+const navTarget = (slug) => slug === 'produk' || slug === 'porduk' ? '/produk' : slug === 'tentang-kami' ? '/tentang-kami' : slug === 'artikel' || slug === 'berita' ? '/artikel' : '#beranda'
 
 export default function Navbar({ page, onNavigate, theme, onToggleTheme, navigation, settings, pages = [], cmsLoaded = false }) {
   const [open, setOpen] = useState(false)
@@ -24,6 +24,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme, navigat
     if (target === '/produk' || target === '/katalog') return Array.isArray(pages) && pages.some((p) => p?.slug === 'produk' || p?.slug === 'katalog')
     if (target === '/tentang-kami') return Array.isArray(pages) && pages.some((p) => p?.slug === 'tentang-kami' || p?.slug === 'about')
     if (target === '/hubungi-kami') return Array.isArray(pages) && pages.some((p) => p?.slug === 'hubungi-kami' || p?.slug === 'kontak')
+    if (target === '/artikel' || target === '/berita') return true
     return true
   }
 
@@ -76,7 +77,7 @@ export default function Navbar({ page, onNavigate, theme, onToggleTheme, navigat
           {(Array.isArray(navigation?.value) && navigation.value.length ? navigation.value.filter((item) => item.slug !== 'solusi').map((item) => [item.title, navTarget(item.slug)]) : links)
             .filter(([, target]) => isPageActive(target))
             .map(([label, target]) => (
-            <button className={(target === '#beranda' && page === 'home') || (page === 'catalog' && (target === '/produk' || target === '/katalog')) || (page === 'about' && target === '/tentang-kami') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
+            <button className={(target === '#beranda' && page === 'home') || (page === 'catalog' && (target === '/produk' || target === '/katalog')) || (page === 'about' && target === '/tentang-kami') || ((page === 'articles' || page === 'article') && target === '/artikel') ? 'is-active' : ''} key={label} onClick={() => go(target)} type="button">
               {label}
             </button>
           ))}

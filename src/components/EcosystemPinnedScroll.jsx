@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import ecosystemVideo from "../assets/jagofarm-ecosystem-scrub-250ms.mp4";
+import ecosystemVideoWebm from "../assets/jagofarm-ecosystem-720p-light.webm";
+import ecosystemVideoMp4 from "../assets/jagofarm-ecosystem-720p.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -104,12 +105,14 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
         <video
           className="ecosystem-video-media"
           ref={videoRef}
-          src={ecosystemVideo}
           muted
           playsInline
           preload="auto"
           aria-label="Ekosistem JagoFarm dari greenhouse hingga pertanian berbasis IoT"
-        />
+        >
+          <source src={ecosystemVideoWebm} type="video/webm" />
+          <source src={ecosystemVideoMp4} type="video/mp4" />
+        </video>
         <div className="ecosystem-video-copy" aria-live="polite">
           {storyStages.map((stage, index) => (
             <h2

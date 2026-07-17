@@ -11,6 +11,19 @@ export default function LatestArticle({ data = {}, posts = [], onNavigate }) {
           Temukan insight seputar agritech dan perkembangan terbaru startup kami.
         </p>
         <div className="article-scroller motion-item">{items.length ? items.map((post) => <article className="article-card" key={post.id || post.slug}><button type="button" onClick={() => onNavigate?.(`/artikel/${encodeURIComponent(post.slug)}`)}><div className="article-card-media">{postImage(post) && <img src={postImage(post)} alt="" referrerPolicy="no-referrer" loading="lazy" />}</div><div className="article-card-copy"><small>{formatCmsDate(post.published_at || post.created_at)}</small><h3>{post.title || 'Tanpa judul'}</h3><p>{post.excerpt || postContent(post).excerpt || ''}</p><span>Baca artikel →</span></div></button></article>) : <p>Belum ada artikel.</p>}</div>
+        <div className="latest-article-footer motion-item">
+          <a
+            href="/artikel"
+            className="article-view-all-link"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate?.('/artikel');
+            }}
+          >
+            <span>Lihat Artikel Lainnya</span>
+            <span className="arrow">→</span>
+          </a>
+        </div>
       </div>
     </section>
   )

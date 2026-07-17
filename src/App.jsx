@@ -13,6 +13,7 @@ import ContactSection from './components/ContactSection.jsx'
 import FeaturedProductsSection from './components/FeaturedProductsSection.jsx'
 import LatestArticle from './components/LatestArticle.jsx'
 import ArticleDetail from './components/ArticleDetail.jsx'
+import ArticleCatalog from './components/ArticleCatalog.jsx'
 import SolutionsSection from './components/SolutionsSection.jsx'
 import UnderConstructionPage from './components/UnderConstructionPage.jsx'
 import { cmsConfigured, getNavigation, getPostCategories, getPosts, getSettings, getPages } from './lib/cms.js'
@@ -43,9 +44,18 @@ const routes = {
   '/tentang-kami': 'about',
   '/kontak': 'contact',
   '/hubungi-kami': 'contact',
+  '/artikel': 'articles',
+  '/berita': 'articles',
 }
 
-const resolveRoute = (path) => path.startsWith('/artikel/') ? 'article' : routes[path] ?? 'home'
+const resolveRoute = (path) => {
+  if (path === '/artikel' || path === '/artikel/' || path === '/berita' || path === '/berita/') return 'articles'
+  if (path.startsWith('/artikel/')) {
+    const slug = decodeURIComponent(path.slice('/artikel/'.length))
+    return slug ? 'article' : 'articles'
+  }
+  return routes[path] ?? 'home'
+}
 const articleSlugFromPath = (path) => path.startsWith('/artikel/') ? decodeURIComponent(path.slice('/artikel/'.length)) : ''
 
 const findPageBySlug = (pages, slug) => Array.isArray(pages) ? pages.find((p) => p?.slug === slug) : null
@@ -200,6 +210,7 @@ export default function App() {
               )
             )}
             {page === 'article' && <ArticleDetail post={cms.posts.find((item) => item?.slug === articleSlug)} onNavigate={navigate} />}
+            {page === 'articles' && <ArticleCatalog posts={cms.posts} categories={cms.categories} onNavigate={navigate} />}
             {page === 'about' && (
               !isAboutActive ? (
                 <UnderConstructionPage page="about" onNavigate={navigate} pages={cms.pages} cmsLoaded={cmsLoaded} />

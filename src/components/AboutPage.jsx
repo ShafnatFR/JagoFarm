@@ -7,6 +7,7 @@ import {
   storyTimeline as defaultTimeline,
 } from "../data/aboutContent.js";
 import { ArrowRight, Sparkle } from "@phosphor-icons/react";
+import { ErrorBoundary3D, Nametag2DFallback } from "./Nametag2D.jsx";
 
 const Nametag3D = lazy(() => import("./Nametag3D.jsx"));
 const TeamLanyards = lazy(() => import("./TeamLanyards.jsx"));
@@ -84,11 +85,13 @@ export default function AboutPage({ onNavigate, pageData = null }) {
             ))}
           </div>
         </div>
-        <Suspense fallback={<div className="nametag-skeleton" aria-hidden="true">
-          <div className="nametag-shimmer" />
-        </div>}>
-          <Nametag3D />
-        </Suspense>
+        <ErrorBoundary3D fallback={<Nametag2DFallback />}>
+          <Suspense fallback={<div className="nametag-skeleton" aria-hidden="true">
+            <div className="nametag-shimmer" />
+          </div>}>
+            <Nametag3D />
+          </Suspense>
+        </ErrorBoundary3D>
       </section>
 
       {/* 2. Cerita Pendirian & Timeline */}
@@ -138,11 +141,13 @@ export default function AboutPage({ onNavigate, pageData = null }) {
       </section>
 
       {/* 4. Kepemimpinan & Tim Inti (TeamLanyards) */}
-      <Suspense
-        fallback={<section className="team-lanyards-container section-shell" aria-hidden="true" />}
-      >
-        <TeamLanyards data={teamBlock?.data} />
-      </Suspense>
+      <ErrorBoundary3D fallback={<section className="team-lanyards-container section-shell" aria-hidden="true" />}>
+        <Suspense
+          fallback={<section className="team-lanyards-container section-shell" aria-hidden="true" />}
+        >
+          <TeamLanyards data={teamBlock?.data} />
+        </Suspense>
+      </ErrorBoundary3D>
 
       {/* 5. Galeri Di Balik Layar */}
       <section className="about-gallery section-shell motion-section">

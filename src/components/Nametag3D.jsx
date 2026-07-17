@@ -12,6 +12,7 @@ import {
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import cardImageUrl from "../assets/new-id-card-kolab.png";
+import { checkWebGLSupport, ErrorBoundary3D, Nametag2DFallback } from "./Nametag2D.jsx";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
@@ -316,43 +317,90 @@ export function LanyardCanvas({
   spotIntensity = 120.0,
   fillIntensity = 6.0,
   ambientIntensity = 1.25,
+  force2D = false,
 }) {
+  const [canRender3D, setCanRender3D] = useState(() => !force2D && checkWebGLSupport());
+
+  useEffect(() => {
+    if (force2D) {
+      setCanRender3D(false);
+      return;
+    }
+    if (!checkWebGLSupport()) {
+      setCanRender3D(false);
+    }
+  }, [force2D]);
+
+  const isTeamCard = typeof className === "string" && className.includes("team-lanyard");
+
+  // Jika WebGL / animasi 3D tidak didukung / error / force2D, langsung tampilkan mode 2D
+  if (!canRender3D) {
+    return (
+      <Nametag2DFallback
+        imageUrl={imageUrl}
+        className={className}
+        ariaLabel={ariaLabel}
+        isTeam={isTeamCard}
+      />
+    );
+  }
+
   return (
-    <div className={className} aria-label={ariaLabel}>
-      <Canvas
-        camera={{ position: cameraPosition, fov }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      >
-        <ambientLight intensity={ambientIntensity} />
-        <spotLight
-          position={[3.2, 5.8, 6]}
-          angle={0.5}
-          penumbra={0.76}
-          intensity={spotIntensity}
-          color="#edf6e9"
-          castShadow
+    <ErrorBoundary3D
+      fallback={
+        <Nametag2DFallback
+          imageUrl={imageUrl}
+          className={className}
+          ariaLabel={ariaLabel}
+          isTeam={isTeamCard}
         />
-        <pointLight
-          position={[1.4, 0.2, 4.4]}
-          intensity={fillIntensity}
-          color="#ffffff"
-          distance={8}
-          decay={2}
-        />
-        <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-          <Badge
-            imageUrl={imageUrl}
-            originX={originX}
-            originY={originY}
-            lineWidth={lineWidth}
+      }
+    >
+      <div className={className} aria-label={ariaLabel}>
+        <Canvas
+          camera={{ position: cameraPosition, fov }}
+          dpr={[1, 1.5]}
+          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener("webglcontextlost", (e) => {
+              e.preventDefault();
+              setCanRender3D(false);
+            });
+            gl.domElement.addEventListener("webglcontextcreationerror", () => {
+              setCanRender3D(false);
+            });
+          }}
+        >
+          <ambientLight intensity={ambientIntensity} />
+          <spotLight
+            position={[3.2, 5.8, 6]}
+            angle={0.5}
+            penumbra={0.76}
+            intensity={spotIntensity}
+            color="#edf6e9"
+            castShadow
           />
-        </Physics>
-      </Canvas>
-    </div>
+          <pointLight
+            position={[1.4, 0.2, 4.4]}
+            intensity={fillIntensity}
+            color="#ffffff"
+            distance={8}
+            decay={2}
+          />
+          <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+            <Badge
+              imageUrl={imageUrl}
+              originX={originX}
+              originY={originY}
+              lineWidth={lineWidth}
+            />
+          </Physics>
+        </Canvas>
+      </div>
+    </ErrorBoundary3D>
   );
 }
 
-export default function Nametag3D() {
-  return <LanyardCanvas />;
+export default function Nametag3D(props) {
+  return <LanyardCanvas {...props} />;
 }

@@ -1681,6 +1681,122 @@ img {
   display: block;
 }
 
+/* Mode 2D Interaktif Fallback (Jika WebGL / 3D Tidak Bisa) */
+.nametag-2d-fallback {
+  position: relative;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: clamp(340px, 45vw, 560px);
+  min-height: 560px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+.team-lanyard-2d-fallback {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+/* Tali Lanyard 2D yang bergantung */
+.lanyard-strap-2d {
+  position: absolute;
+  top: -30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.strap-line-2d {
+  width: 26px;
+  height: 110px;
+  background: linear-gradient(to bottom, #050605, #1f2822, #0b0f0c);
+  border-left: 2px solid rgba(210, 235, 214, 0.28);
+  border-right: 2px solid rgba(210, 235, 214, 0.28);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.strap-clip-2d {
+  width: 34px;
+  height: 22px;
+  background: linear-gradient(135deg, #444, #222, #555);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  margin-top: -4px;
+  z-index: 2;
+}
+
+/* ID Card 2D dengan ayunan dan tilt interaktif */
+.id-card-2d {
+  position: relative;
+  z-index: 3;
+  width: min(85%, 320px);
+  border-radius: 22px;
+  background: var(--surface);
+  padding: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.id-card-2d.is-floating {
+  animation: floatCard2D 4.5s ease-in-out infinite;
+}
+
+@keyframes floatCard2D {
+  0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+  50% { transform: translateY(-10px) rotate(1.5deg); }
+}
+
+.id-card-inner-2d {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0d120f;
+}
+
+.id-card-image-2d {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+.id-card-glare-2d {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  transition: opacity 0.25s ease;
+}
+
+.fallback-2d-badge {
+  margin-top: 24px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--forest);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .catalog-toolbar {
   display: grid;
   grid-template-columns: auto minmax(280px, 1fr) auto;

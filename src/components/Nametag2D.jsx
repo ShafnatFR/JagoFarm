@@ -1,10 +1,24 @@
 import React, { useRef, useState } from "react";
 import cardImageUrl from "../assets/new-id-card-kolab.png";
 
-// Cek apakah browser & perangkat mendukung WebGL secara penuh
+import PixelCard from "./PixelCard.jsx";
+
+// Cek apakah browser & perangkat mendukung WebGL dan BUKAN di HP/Mobile
 export function checkWebGLSupport() {
   if (typeof window === "undefined") return false;
   try {
+    // 1. Cek apakah perangkat adalah HP / Mobile (lebar layar <= 768px atau user agent HP)
+    const isMobilePhone =
+      window.innerWidth <= 768 ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+    if (isMobilePhone) {
+      // Sesuai permintaan: kondisional untuk hp tidak perlu ditampilkan versi 3dnya
+      return false;
+    }
+
+    // 2. Cek dukungan WebGL di Desktop
     const canvas = document.createElement("canvas");
     const gl =
       window.WebGLRenderingContext &&
@@ -41,84 +55,29 @@ export class ErrorBoundary3D extends React.Component {
   }
 }
 
-// Komponen Mode 2D Interaktif (Tilt, Sway & Glare) yang sangat mulus sebagai fallback 3D
+// Komponen Mode 2D Interaktif menggunakan <PixelCard /> (Tali dihilangkan dan ukuran menyesuaikan gambar)
 export function Nametag2DFallback({
   imageUrl = cardImageUrl,
   className = "nametag-2d-fallback",
   ariaLabel = "ID Card 2D Interaktif Jago Farm",
   isTeam = false,
+  variant = "jago",
 }) {
-  const cardRef = useRef(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0, active: false });
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const deltaX = (e.clientX - centerX) / (rect.width / 2);
-    const deltaY = (e.clientY - centerY) / (rect.height / 2);
-    setTilt({
-      x: deltaY * -13, // Sudut kemiringan vertikal
-      y: deltaX * 13,  // Sudut kemiringan horizontal
-      active: true,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0, active: false });
-  };
-
   return (
     <div
       className={isTeam ? "team-lanyard-2d-fallback" : `nametag-2d-fallback ${className}`}
       aria-label={ariaLabel}
     >
-      {/* Tali Lanyard (Strap) 2D */}
-      <div className="lanyard-strap-2d">
-        <div className="strap-line-2d" />
-        <div className="strap-clip-2d" />
-      </div>
-
-      {/* ID Card 2D dengan efek 3D perspective tilt dan floating animation */}
-      <div
-        ref={cardRef}
-        className={`id-card-2d ${tilt.active ? "is-tilting" : "is-floating"}`}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={
-          tilt.active
-            ? {
-                transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.03, 1.03, 1.03)`,
-              }
-            : {}
-        }
+      <PixelCard
+        variant={variant}
+        className={isTeam ? "team-pixel-wrapper" : "hero-pixel-wrapper"}
       >
-        <div className="id-card-inner-2d">
-          <img
-            src={imageUrl || cardImageUrl}
-            alt="ID Card Jago Farm"
-            className="id-card-image-2d"
-          />
-          <div
-            className="id-card-glare-2d"
-            style={
-              tilt.active
-                ? {
-                    opacity: 0.42,
-                    background: `radial-gradient(circle at ${50 + tilt.y * 3.5}% ${50 - tilt.x * 3.5}%, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0) 65%)`,
-                  }
-                : { opacity: 0 }
-            }
-          />
-        </div>
-      </div>
-
-      {!isTeam && (
-        <div className="fallback-2d-badge">
-          <span>✨ Mode 2D Interaktif (WebGL Fallback)</span>
-        </div>
-      )}
+        <img
+          src={imageUrl || cardImageUrl}
+          alt="ID Card Jago Farm"
+          className="id-card-image-2d"
+        />
+      </PixelCard>
     </div>
   );
 }

@@ -326,9 +326,12 @@ export function LanyardCanvas({
       setCanRender3D(false);
       return;
     }
-    if (!checkWebGLSupport()) {
-      setCanRender3D(false);
-    }
+    const checkSupport = () => {
+      setCanRender3D(checkWebGLSupport());
+    };
+    checkSupport();
+    window.addEventListener("resize", checkSupport);
+    return () => window.removeEventListener("resize", checkSupport);
   }, [force2D]);
 
   const isTeamCard = typeof className === "string" && className.includes("team-lanyard");

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import { MagnifyingGlass, BookOpenText, Sparkle } from '@phosphor-icons/react'
+import { MagnifyingGlass, Sparkle } from '@phosphor-icons/react'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import { formatCmsDate, postContent, postImage, selectArticlePosts } from '../lib/cms.js'
 
 export default function ArticleCatalog({ posts = [], categories = [], onNavigate }) {
@@ -47,8 +48,13 @@ export default function ArticleCatalog({ posts = [], categories = [], onNavigate
             Kumpulan seluruh artikel, cerita perjalanan inovasi agritech, serta wawasan mendalam seputar ekosistem pangan sirkular dari tim JagoFarm.
           </p>
         </div>
-        <div className="article-catalog-hero-icon motion-item" aria-hidden="true">
-          <BookOpenText size={140} weight="duotone" />
+        <div className="article-catalog-hero-icon motion-item" aria-hidden="true" style={{ opacity: 1 }}>
+          <DotLottieReact
+            src="https://lottie.host/e244af69-27a2-429b-b143-63617e0adf01/qBouQo2veE.json"
+            style={{ width: '300px', height: '300px' }}
+            autoplay
+            loop
+          />
         </div>
       </header>
 

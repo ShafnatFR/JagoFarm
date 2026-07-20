@@ -18,5 +18,9 @@
   "16": "@react-three/fiber",
   "17": "SectionRenderer.jsx",
   "18": "IntroAnimation.jsx",
-  "21": "vite.config.js"
+  "19": "Footer.jsx",
+  "20": "Pixel",
+  "21": "vite.config.js",
+  "22": "ErrorBoundary",
+  "23": "Navbar.jsx"
 }

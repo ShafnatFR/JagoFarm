@@ -1,10 +1,15 @@
 import { useEffect, useRef } from "react";
 import { animate } from "animejs";
-import dayHero from '../assets/hero-farm-day.png'
-import nightHero from '../assets/hero-farm-night.png'
-import { validImageUrl } from '../lib/cms.js'
+import dayHero from "../assets/hero-farm-day.png";
+import nightHero from "../assets/hero-farm-night.png";
+import { validImageUrl } from "../lib/cms.js";
 
-export default function HeroSection({ theme, onToggleTheme, data = {}, pageExists = false }) {
+export default function HeroSection({
+  theme,
+  onToggleTheme,
+  data = {},
+  pageExists = false,
+}) {
   const heroRef = useRef(null);
 
   if (pageExists && (!data || Object.keys(data).length === 0)) {
@@ -15,8 +20,12 @@ export default function HeroSection({ theme, onToggleTheme, data = {}, pageExist
   const statsList = Array.isArray(data.stats_list)
     ? data.stats_list
     : Array.isArray(data.stats)
-      ? data.stats.map((s) => (typeof s === 'object' && s !== null ? { value: s.value || '', label: s.label || '' } : { value: '', label: '' }))
-      : []
+      ? data.stats.map((s) =>
+          typeof s === "object" && s !== null
+            ? { value: s.value || "", label: s.label || "" }
+            : { value: "", label: "" },
+        )
+      : [];
 
   useEffect(() => {
     const root = heroRef.current;
@@ -45,32 +54,51 @@ export default function HeroSection({ theme, onToggleTheme, data = {}, pageExist
 
   return (
     <>
-      <main
-        className="hero"
-        id="beranda"
-        ref={heroRef}
-      >
+      <main className="hero" id="beranda" ref={heroRef}>
         <div className="hero-scene" aria-hidden="true">
-          <img className="hero-photo hero-photo-day" src={validImageUrl(data.background_image) || dayHero} alt="" referrerPolicy="no-referrer" />
-          <img className="hero-photo hero-photo-night" src={nightHero} alt="" referrerPolicy="no-referrer" />
+          <img
+            className="hero-photo hero-photo-day"
+            src={validImageUrl(data.background_image) || dayHero}
+            alt=""
+            referrerPolicy="no-referrer"
+          />
+          <img
+            className="hero-photo hero-photo-night"
+            src={nightHero}
+            alt=""
+            referrerPolicy="no-referrer"
+          />
         </div>
         <div className="hero-shade" aria-hidden="true" />
         <section className="hero-copy" aria-labelledby="hero-title">
-          <span className="hero-eyebrow hero-animate">{data.eyebrow || data.tagline || (Array.isArray(data.labels) && data.labels.length ? data.labels.join(' • ') : 'Sistem pangan terintegrasi')}</span>
           <h1 className="hero-animate" id="hero-title">
-            {data.headline || 'Satu farm. Banyak siklus. Nol limbah.'}
+            {data.headline || "Satu farm. Banyak siklus. Nol limbah."}
           </h1>
           <p className="hero-animate">
-            {data.sub_headline || 'Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor lapangan menjadi sistem pangan yang terukur dari input sampai panen.'}
+            {data.sub_headline ||
+              "Jago Farm menghubungkan budidaya ikan, ayam, tanaman, dan sensor lapangan menjadi sistem pangan yang terukur dari input sampai panen."}
           </p>
-          {statsList.length > 0 && <div className="hero-metrics">{statsList.map((stat, index) => <article key={index}><strong>{stat?.value || ''}</strong><span>{stat?.label || ''}</span></article>)}</div>}
+          {statsList.length > 0 && (
+            <div className="hero-metrics">
+              {statsList.map((stat, index) => (
+                <article key={index}>
+                  <strong>{stat?.value || ""}</strong>
+                  <span>{stat?.label || ""}</span>
+                </article>
+              ))}
+            </div>
+          )}
         </section>
         <button
           className="hero-sky-toggle hero-animate"
           type="button"
           onClick={onToggleTheme}
-          aria-label={theme === 'dark' ? 'Aktifkan mode terang' : 'Aktifkan mode malam'}
-          title={theme === 'dark' ? 'Aktifkan mode terang' : 'Aktifkan mode malam'}
+          aria-label={
+            theme === "dark" ? "Aktifkan mode terang" : "Aktifkan mode malam"
+          }
+          title={
+            theme === "dark" ? "Aktifkan mode terang" : "Aktifkan mode malam"
+          }
         />
       </main>
     </>

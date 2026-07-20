@@ -41,6 +41,11 @@ export default function EcosystemPinnedScroll({ stages: propStages, pageExists =
 
     let trigger;
 
+    if (window.matchMedia('(max-width: 899px)').matches) {
+      video.play().catch(() => {});
+      return () => video.pause();
+    }
+
     const renderProgress = (progress) => {
       const duration = video.duration || 8;
       const targetTime = Math.min(duration, Math.max(0, progress * duration));

@@ -1,16 +1,16 @@
-# Graph Report - JagoFarm  (2026-07-16)
+# Graph Report - JagoFarm  (2026-07-20)
 
 ## Corpus Check
-- 29 files · ~573,329 words
+- 36 files · ~618,759 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 261 nodes · 351 edges · 20 communities (18 shown, 2 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 302 nodes · 438 edges · 23 communities (19 shown, 4 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `17ffa28a`
+- Built from commit: `45398d6b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,72 +28,75 @@
 - lenis
 - 8. Testing Strategy
 - meshline
-- @phosphor-icons/react
+- 7. Coding Standards
 - react-dom
 - @react-three/drei
 - @react-three/fiber
 - SectionRenderer.jsx
+- Footer.jsx
+- Pixel
+- ErrorBoundary
 
 ## God Nodes (most connected - your core abstractions)
 1. `Product Requirements Document (PRD)` - 20 edges
-2. `postImage()` - 12 edges
-3. `6.4 API Contract` - 11 edges
-4. `App()` - 8 edges
-5. `validImageUrl()` - 8 edges
-6. `postContent()` - 8 edges
-7. `8. Testing Strategy` - 8 edges
-8. `fetchFromCMS()` - 7 edges
-9. `1. Overview` - 7 edges
-10. `6. Technical Architecture` - 7 edges
+2. `postImage()` - 16 edges
+3. `App()` - 12 edges
+4. `6.4 API Contract` - 11 edges
+5. `fetchFromCMS()` - 10 edges
+6. `postContent()` - 10 edges
+7. `selectArticlePosts()` - 9 edges
+8. `formatCmsDate()` - 9 edges
+9. `ArticleDetail()` - 8 edges
+10. `validImageUrl()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `CommentItem()` --calls--> `formatCmsDate()`  [EXTRACTED]
+  src/components/ArticleDetail.jsx → src/lib/cms.js
 - `GenericCards()` --calls--> `validImageUrl()`  [EXTRACTED]
   src/components/SectionRenderer.jsx → src/lib/cms.js
 - `Cta()` --calls--> `validImageUrl()`  [EXTRACTED]
   src/components/SectionRenderer.jsx → src/lib/cms.js
 - `App()` --calls--> `getNavigation()`  [EXTRACTED]
   src/App.jsx → src/lib/cms.js
-- `App()` --calls--> `getPostCategories()`  [EXTRACTED]
-  src/App.jsx → src/lib/cms.js
-- `App()` --calls--> `getPosts()`  [EXTRACTED]
+- `App()` --calls--> `getPages()`  [EXTRACTED]
   src/App.jsx → src/lib/cms.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (20 total, 2 thin omitted)
+## Communities (23 total, 4 thin omitted)
 
 ### Community 0 - "App.jsx"
-Cohesion: 0.10
-Nodes (24): App(), articleSlugFromPath(), ErrorBoundary, resolveRoute(), routes, contacts, ContactSection(), Footer() (+16 more)
+Cohesion: 0.14
+Nodes (20): App(), articleSlugFromPath(), findBlocksByType(), findFirstBlockByType(), findPageBySlug(), resolveRoute(), routes, GlobalMotion() (+12 more)
 
 ### Community 1 - "content.js"
-Cohesion: 0.47
-Nodes (5): Masonry(), MEDIA_COLUMNS, MEDIA_QUERIES, preloadImages(), useMedia()
+Cohesion: 0.15
+Nodes (25): ArticleCatalog(), ArticleDetail(), CommentItem(), DEFAULT_DATA, FeaturedProductsSection(), LatestArticle(), ProductCatalog(), SolutionsSection() (+17 more)
 
 ### Community 2 - "package.json"
 Cohesion: 0.20
 Nodes (9): name, private, scripts, build, dev, preview, test, type (+1 more)
 
 ### Community 3 - "Nametag3D.jsx"
-Cohesion: 0.15
-Nodes (12): AboutPage(), Nametag3D, TeamLanyards, Badge(), LanyardCanvas(), makeBandTexture(), aboutHeroText, aboutStats (+4 more)
+Cohesion: 0.13
+Nodes (11): checkWebGLSupport(), ErrorBoundary3D, Nametag2DFallback(), LanyardCanvas(), getEffectiveSpeed(), PixelCard(), VARIANTS, MEMBERS (+3 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.06
-Nodes (33): animejs, @fontsource/outfit, gsap, @gsap/react, lenis, lottie-react, meshline, dependencies (+25 more)
+Nodes (35): animejs, @fontsource/outfit, gsap, @gsap/react, lenis, lottie-react, @lottiefiles/dotlottie-react, meshline (+27 more)
 
 ### Community 5 - "AboutPage.jsx"
-Cohesion: 0.05
-Nodes (38): 10.1 Data Inventory, 10.2 User Rights (UU PDP), 10.3 Data Security Checklist, 10.4 Privacy Policy & Terms of Service, 10. Data Privacy & Compliance, 11.1 Screen List, 11.2 Design References, 11.3 User Flow Utama (+30 more)
+Cohesion: 0.04
+Nodes (45): 10.1 Data Inventory, 10.2 User Rights (UU PDP), 10.3 Data Security Checklist, 10.4 Privacy Policy & Terms of Service, 10. Data Privacy & Compliance, 11.1 Screen List, 11.2 Design References, 11.3 User Flow Utama (+37 more)
 
 ### Community 7 - "@fontsource/outfit"
 Cohesion: 0.09
 Nodes (23): 6.1 Tech Stack, 6.2 System Architecture, 6.3 Database Schema, 6.4 API Contract, 6.5 Project Structure, 6.6 Third-Party Integrations, 6. Technical Architecture, API Versioning Strategy (+15 more)
 
 ### Community 8 - "gsap"
-Cohesion: 0.21
-Nodes (6): EcosystemPinnedScroll(), storyStages, HeroSection(), Cta(), GenericCards(), validImageUrl()
+Cohesion: 0.15
+Nodes (10): ContactSection(), faqItems, subjectOptions, defaultStages, EcosystemPinnedScroll(), HeroSection(), Cta(), GenericCards() (+2 more)
 
 ### Community 9 - "@gsap/react"
 Cohesion: 0.22
@@ -104,14 +107,14 @@ Cohesion: 0.25
 Nodes (8): 2.1 Goals (In Scope), 2.2 Non-Goals (Out of Scope), 2.3 MVP Boundary, 2.4 Product Metrics (Business KPI), 2.5 Technical Metrics (Engineering KPI), 2. Goals & Success Metrics, Yang MASUK MVP (harus selesai sebelum launch):, Yang TIDAK masuk MVP (ditunda ke iterasi berikutnya):
 
 ### Community 11 - "8. Testing Strategy"
-Cohesion: 0.15
-Nodes (20): ArticleDetail(), DEFAULT_DATA, FeaturedProductsSection(), LatestArticle(), ProductCatalog(), SolutionsSection(), benefits, ecosystemFloaters (+12 more)
+Cohesion: 0.47
+Nodes (5): Masonry(), MEDIA_COLUMNS, MEDIA_QUERIES, preloadImages(), useMedia()
 
 ### Community 12 - "meshline"
-Cohesion: 0.29
-Nodes (7): 1.1 Problem Statement, 1.2 Proposed Solution, 1.3 Value Proposition, 1.4 Competitive Landscape, 1.5 Monetization Model, 1.6 Assumptions, 1. Overview
+Cohesion: 0.26
+Nodes (9): AboutPage(), TeamLanyards, ThemedLottie(), aboutHeroText, aboutStats, coreValues, galleryItems, storyTimeline (+1 more)
 
-### Community 13 - "@phosphor-icons/react"
+### Community 13 - "7. Coding Standards"
 Cohesion: 0.29
 Nodes (7): 7.1 General Principles, 7.2 Backend Standards (Python / FastAPI), 7.3 Frontend/Mobile Standards (Flutter / Dart), 7.4 API Response Format Standard, 7.5 Git Workflow, 7.6 Linting & Formatting Tools, 7. Coding Standards
 
@@ -127,25 +130,29 @@ Nodes (6): 3.1 Target Users, 3.2 Stakeholders, 3.3 RACI Matrix, 3. User & Stakeh
 Cohesion: 0.33
 Nodes (6): 9.1 Log Levels, 9.2 Log Format (Structured JSON), 9.3 Yang Wajib Di-log, 9.4 Error Handling Pattern, 9.5 Monitoring & Alerting, 9. Logging, Monitoring & Error Handling
 
+### Community 19 - "Footer.jsx"
+Cohesion: 0.31
+Nodes (8): defaultCompanyLinks, defaultLinks, defaultProductLinks, extractMapSrc(), Footer(), getDynamicSocials(), socials, TikTokIcon()
+
 ## Knowledge Gaps
-- **131 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+126 more)
+- **136 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+131 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Product Requirements Document (PRD)` connect `AboutPage.jsx` to `@fontsource/outfit`, `@gsap/react`, `lenis`, `meshline`, `@phosphor-icons/react`, `react-dom`, `@react-three/drei`, `SectionRenderer.jsx`?**
-  _High betweenness centrality (0.164) - this node is a cross-community bridge._
+- **Why does `Product Requirements Document (PRD)` connect `AboutPage.jsx` to `@fontsource/outfit`, `@gsap/react`, `lenis`, `7. Coding Standards`, `react-dom`, `@react-three/drei`, `SectionRenderer.jsx`?**
+  _High betweenness centrality (0.122) - this node is a cross-community bridge._
 - **Why does `6. Technical Architecture` connect `@fontsource/outfit` to `AboutPage.jsx`?**
-  _High betweenness centrality (0.062) - this node is a cross-community bridge._
+  _High betweenness centrality (0.046) - this node is a cross-community bridge._
+- **Why does `ErrorBoundary3D` connect `Nametag3D.jsx` to `meshline`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _131 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _136 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.10084033613445378 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.14333333333333334 - nodes in this community are weakly interconnected._
+- **Should `Nametag3D.jsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.13043478260869565 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
-- **Should `AboutPage.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
-- **Should `@fontsource/outfit` be split into smaller, more focused modules?**
-  _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._

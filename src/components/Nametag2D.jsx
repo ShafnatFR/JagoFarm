@@ -3,22 +3,10 @@ import cardImageUrl from "../assets/new-id-card-kolab.png";
 
 import PixelCard from "./PixelCard.jsx";
 
-// Cek apakah browser & perangkat mendukung WebGL dan BUKAN di HP/Mobile
+// Cek dukungan WebGL; layout mobile ditangani oleh carousel, bukan dimatikan.
 export function checkWebGLSupport() {
   if (typeof window === "undefined") return false;
   try {
-    // 1. Cek apakah perangkat adalah HP / Mobile (lebar layar <= 768px atau user agent HP)
-    const isMobilePhone =
-      window.innerWidth <= 768 ||
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-    if (isMobilePhone) {
-      // Sesuai permintaan: kondisional untuk hp tidak perlu ditampilkan versi 3dnya
-      return false;
-    }
-
-    // 2. Cek dukungan WebGL di Desktop
     const canvas = document.createElement("canvas");
     const gl =
       window.WebGLRenderingContext &&

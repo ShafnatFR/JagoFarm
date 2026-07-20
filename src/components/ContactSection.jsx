@@ -147,10 +147,6 @@ export default function ContactSection({ onNavigate, data = {}, pageData = null 
     <section className="contact-section page-shell" id="hubungi-kami" ref={sectionRef}>
       {/* 1. Header Hero */}
       <div className="contact-hero-content">
-        <span className="section-badge motion-item">
-          <Sparkle size={18} weight="fill" />
-          {data.title || 'Hubungi & Kemitraan JagoFarm'}
-        </span>
         <h2>
           {data.headline || 'Mari Bertumbuh Bersama'} <strong className="highlight-text">JagoFarm.</strong>
         </h2>

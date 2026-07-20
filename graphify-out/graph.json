@@ -648,8 +648,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_aboutpage",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "aboutpage.jsx"
     },
     {
@@ -659,8 +659,8 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_components_aboutpage_teamlanyards",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "teamlanyards"
     },
     {
@@ -670,8 +670,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_components_aboutpage_aboutpage",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "aboutpage()"
     },
     {
@@ -681,8 +681,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_articlecatalog",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "articlecatalog.jsx"
     },
     {
@@ -692,8 +692,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_components_articlecatalog_articlecatalog",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "articlecatalog()"
     },
     {
@@ -703,8 +703,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_articledetail",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "articledetail.jsx"
     },
     {
@@ -714,8 +714,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_articledetail_commentitem",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "commentitem()"
     },
     {
@@ -725,8 +725,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "src_components_articledetail_articledetail",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "articledetail()"
     },
     {
@@ -813,8 +813,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_featuredproductssection",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "featuredproductssection.jsx"
     },
     {
@@ -824,8 +824,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_featuredproductssection_default_data",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "default_data"
     },
     {
@@ -835,8 +835,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_featuredproductssection_featuredproductssection",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "featuredproductssection()"
     },
     {
@@ -1011,8 +1011,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_latestarticle",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "latestarticle.jsx"
     },
     {
@@ -1022,8 +1022,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_components_latestarticle_latestarticle",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "latestarticle()"
     },
     {
@@ -1033,8 +1033,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_masonry",
-      "community": 1,
-      "community_name": "content.js",
+      "community": 11,
+      "community_name": "8. Testing Strategy",
       "norm_label": "masonry.jsx"
     },
     {
@@ -1044,8 +1044,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_components_masonry_media_queries",
-      "community": 1,
-      "community_name": "content.js",
+      "community": 11,
+      "community_name": "8. Testing Strategy",
       "norm_label": "media_queries"
     },
     {
@@ -1055,8 +1055,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_components_masonry_media_columns",
-      "community": 1,
-      "community_name": "content.js",
+      "community": 11,
+      "community_name": "8. Testing Strategy",
       "norm_label": "media_columns"
     },
     {
@@ -1066,8 +1066,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_components_masonry_usemedia",
-      "community": 1,
-      "community_name": "content.js",
+      "community": 11,
+      "community_name": "8. Testing Strategy",
       "norm_label": "usemedia()"
     },
     {
@@ -1077,8 +1077,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_components_masonry_preloadimages",
-      "community": 1,
-      "community_name": "content.js",
+      "community": 11,
+      "community_name": "8. Testing Strategy",
       "norm_label": "preloadimages()"
     },
     {
@@ -1088,8 +1088,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_components_masonry_masonry",
-      "community": 1,
-      "community_name": "content.js",
+      "community": 11,
+      "community_name": "8. Testing Strategy",
       "norm_label": "masonry()"
     },
     {
@@ -1118,7 +1118,7 @@
       "label": "ErrorBoundary3D",
       "file_type": "code",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L33",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "src_components_nametag2d_errorboundary3d",
       "community": 3,
@@ -1129,7 +1129,7 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L34",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "src_components_nametag2d_errorboundary3d_constructor",
       "community": 3,
@@ -1140,7 +1140,7 @@
       "label": ".getDerivedStateFromError()",
       "file_type": "code",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L39",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "src_components_nametag2d_errorboundary3d_getderivedstatefromerror",
       "community": 3,
@@ -1151,7 +1151,7 @@
       "label": ".componentDidCatch()",
       "file_type": "code",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L43",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "src_components_nametag2d_errorboundary3d_componentdidcatch",
       "community": 3,
@@ -1162,7 +1162,7 @@
       "label": ".render()",
       "file_type": "code",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L50",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "src_components_nametag2d_errorboundary3d_render",
       "community": 3,
@@ -1173,7 +1173,7 @@
       "label": "Nametag2DFallback()",
       "file_type": "code",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L59",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "src_components_nametag2d_nametag2dfallback",
       "community": 3,
@@ -1192,21 +1192,10 @@
       "norm_label": "nametag3d.jsx"
     },
     {
-      "label": "makeBandTexture()",
-      "file_type": "code",
-      "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "src_components_nametag3d_makebandtexture",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
-      "norm_label": "makebandtexture()"
-    },
-    {
       "label": "Badge()",
       "file_type": "code",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L65",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "src_components_nametag3d_badge",
       "community": 3,
@@ -1217,7 +1206,7 @@
       "label": "LanyardCanvas()",
       "file_type": "code",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L308",
+      "source_location": "L266",
       "_origin": "ast",
       "id": "src_components_nametag3d_lanyardcanvas",
       "community": 3,
@@ -1228,7 +1217,7 @@
       "label": "Nametag3D()",
       "file_type": "code",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L407",
+      "source_location": "L382",
       "_origin": "ast",
       "id": "src_components_nametag3d_nametag3d",
       "community": 3,
@@ -1242,8 +1231,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_navbar",
-      "community": 23,
-      "community_name": "Navbar.jsx",
+      "community": 0,
+      "community_name": "App.jsx",
       "norm_label": "navbar.jsx"
     },
     {
@@ -1253,8 +1242,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_components_navbar_links",
-      "community": 23,
-      "community_name": "Navbar.jsx",
+      "community": 0,
+      "community_name": "App.jsx",
       "norm_label": "links"
     },
     {
@@ -1264,8 +1253,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_components_navbar_navtarget",
-      "community": 23,
-      "community_name": "Navbar.jsx",
+      "community": 0,
+      "community_name": "App.jsx",
       "norm_label": "navtarget()"
     },
     {
@@ -1275,8 +1264,8 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_components_navbar_navbar",
-      "community": 23,
-      "community_name": "Navbar.jsx",
+      "community": 0,
+      "community_name": "App.jsx",
       "norm_label": "navbar()"
     },
     {
@@ -1407,8 +1396,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_productcatalog",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "productcatalog.jsx"
     },
     {
@@ -1418,8 +1407,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_components_productcatalog_productcatalog",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "productcatalog()"
     },
     {
@@ -1506,8 +1495,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_solutionssection",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "solutionssection.jsx"
     },
     {
@@ -1517,8 +1506,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_components_solutionssection_solutionssection",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "solutionssection()"
     },
     {
@@ -1533,21 +1522,32 @@
       "norm_label": "teamlanyards.jsx"
     },
     {
-      "label": "TeamLanyard()",
+      "label": "MEMBERS",
       "file_type": "code",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L6",
+      "source_location": "L13",
       "_origin": "ast",
-      "id": "src_components_teamlanyards_teamlanyard",
+      "id": "src_components_teamlanyards_members",
       "community": 3,
       "community_name": "Nametag3D.jsx",
-      "norm_label": "teamlanyard()"
+      "norm_label": "members"
+    },
+    {
+      "label": "useCardsPerPage()",
+      "file_type": "code",
+      "source_file": "src/components/TeamLanyards.jsx",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "src_components_teamlanyards_usecardsperpage",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "usecardsperpage()"
     },
     {
       "label": "TeamLanyards()",
       "file_type": "code",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L91",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "src_components_teamlanyards_teamlanyards",
       "community": 3,
@@ -1561,8 +1561,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_components_themedlottie",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "themedlottie.jsx"
     },
     {
@@ -1572,8 +1572,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_components_themedlottie_themedlottie",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "themedlottie()"
     },
     {
@@ -1605,8 +1605,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_data_aboutcontent",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "aboutcontent.js"
     },
     {
@@ -1616,8 +1616,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_data_aboutcontent_aboutherotext",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "aboutherotext"
     },
     {
@@ -1627,8 +1627,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "src_data_aboutcontent_aboutstats",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "aboutstats"
     },
     {
@@ -1638,8 +1638,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_data_aboutcontent_storytimeline",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "storytimeline"
     },
     {
@@ -1649,8 +1649,8 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_data_aboutcontent_corevalues",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "corevalues"
     },
     {
@@ -1660,8 +1660,8 @@
       "source_location": "L101",
       "_origin": "ast",
       "id": "src_data_aboutcontent_teammembersdetailed",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "teammembersdetailed"
     },
     {
@@ -1671,8 +1671,8 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "src_data_aboutcontent_galleryitems",
-      "community": 3,
-      "community_name": "Nametag3D.jsx",
+      "community": 12,
+      "community_name": "meshline",
       "norm_label": "galleryitems"
     },
     {
@@ -1682,8 +1682,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_data_content",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "content.js"
     },
     {
@@ -1693,8 +1693,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "src_data_content_icons",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "icons"
     },
     {
@@ -1704,8 +1704,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "src_data_content_hero",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "hero"
     },
     {
@@ -1715,8 +1715,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "src_data_content_ecosystemsteps",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "ecosystemsteps"
     },
     {
@@ -1726,8 +1726,8 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "src_data_content_benefits",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "benefits"
     },
     {
@@ -1737,8 +1737,8 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "src_data_content_ecosystemfloaters",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "ecosystemfloaters"
     },
     {
@@ -1748,8 +1748,8 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "src_data_content_services",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "services"
     },
     {
@@ -1759,8 +1759,8 @@
       "source_location": "L160",
       "_origin": "ast",
       "id": "src_data_content_featuredproducts",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "featuredproducts"
     },
     {
@@ -1770,8 +1770,8 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "src_data_content_productcatalog",
-      "community": 11,
-      "community_name": "8. Testing Strategy",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "productcatalog"
     },
     {
@@ -1781,8 +1781,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_cms",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "cms.js"
     },
     {
@@ -1792,8 +1792,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "src_lib_cms_baseurl",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "baseurl"
     },
     {
@@ -1891,8 +1891,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_lib_cms_getpostcomments",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "getpostcomments()"
     },
     {
@@ -1913,8 +1913,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "src_lib_cms_submitpostcomment",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "submitpostcomment()"
     },
     {
@@ -1935,8 +1935,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "src_lib_cms_postcontent",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "postcontent()"
     },
     {
@@ -1946,8 +1946,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "src_lib_cms_postimage",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "postimage()"
     },
     {
@@ -1957,8 +1957,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "src_lib_cms_selectposts",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "selectposts()"
     },
     {
@@ -1968,8 +1968,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "src_lib_cms_selectproductposts",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "selectproductposts()"
     },
     {
@@ -1979,8 +1979,8 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_lib_cms_selectarticleposts",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "selectarticleposts()"
     },
     {
@@ -1990,8 +1990,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_lib_cms_formatcmsdate",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "formatcmsdate()"
     },
     {
@@ -2001,9 +2001,42 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_lib_cms_test",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 1,
+      "community_name": "content.js",
       "norm_label": "cms.test.js"
+    },
+    {
+      "label": "teamLanyards.js",
+      "file_type": "code",
+      "source_file": "src/lib/teamLanyards.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_lib_teamlanyards",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "teamlanyards.js"
+    },
+    {
+      "label": "paginate()",
+      "file_type": "code",
+      "source_file": "src/lib/teamLanyards.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_lib_teamlanyards_paginate",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "paginate()"
+    },
+    {
+      "label": "teamLanyards.test.js",
+      "file_type": "code",
+      "source_file": "src/lib/teamLanyards.test.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_lib_teamlanyards_test",
+      "community": 3,
+      "community_name": "Nametag3D.jsx",
+      "norm_label": "teamlanyards.test.js"
     },
     {
       "label": "main.jsx",
@@ -2111,8 +2144,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "prd_template_full_1_overview",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1. overview"
     },
     {
@@ -2122,8 +2155,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "prd_template_full_1_1_problem_statement",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1.1 problem statement"
     },
     {
@@ -2133,8 +2166,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "prd_template_full_1_2_proposed_solution",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1.2 proposed solution"
     },
     {
@@ -2144,8 +2177,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "prd_template_full_1_3_value_proposition",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1.3 value proposition"
     },
     {
@@ -2155,8 +2188,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "prd_template_full_1_4_competitive_landscape",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1.4 competitive landscape"
     },
     {
@@ -2166,8 +2199,8 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "prd_template_full_1_5_monetization_model",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1.5 monetization model"
     },
     {
@@ -2177,8 +2210,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "prd_template_full_1_6_assumptions",
-      "community": 12,
-      "community_name": "meshline",
+      "community": 5,
+      "community_name": "AboutPage.jsx",
       "norm_label": "1.6 assumptions"
     },
     {
@@ -2750,7 +2783,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_coding_standards",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7. coding standards"
     },
     {
@@ -2761,7 +2794,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_1_general_principles",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7.1 general principles"
     },
     {
@@ -2772,7 +2805,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_2_backend_standards_python_fastapi",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7.2 backend standards (python / fastapi)"
     },
     {
@@ -2783,7 +2816,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_3_frontend_mobile_standards_flutter_dart",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7.3 frontend/mobile standards (flutter / dart)"
     },
     {
@@ -2794,7 +2827,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_4_api_response_format_standard",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7.4 api response format standard"
     },
     {
@@ -2805,7 +2838,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_5_git_workflow",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7.5 git workflow"
     },
     {
@@ -2816,7 +2849,7 @@
       "_origin": "ast",
       "id": "prd_template_full_7_6_linting_formatting_tools",
       "community": 13,
-      "community_name": "@phosphor-icons/react",
+      "community_name": "7. Coding Standards",
       "norm_label": "7.6 linting & formatting tools"
     },
     {
@@ -5419,7 +5452,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L33",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "src_components_nametag2d",
       "target": "src_components_nametag2d_errorboundary3d",
@@ -5429,7 +5462,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L59",
+      "source_location": "L47",
       "weight": 1.0,
       "source": "src_components_nametag2d",
       "target": "src_components_nametag2d_nametag2dfallback",
@@ -5462,7 +5495,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag2d",
@@ -5473,7 +5506,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag2d_checkwebglsupport",
@@ -5485,7 +5518,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L322",
+      "source_location": "L283",
       "weight": 1.0,
       "source": "src_components_nametag3d_lanyardcanvas",
       "target": "src_components_nametag2d_checkwebglsupport"
@@ -5494,7 +5527,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L43",
+      "source_location": "L31",
       "weight": 1.0,
       "source": "src_components_nametag2d_errorboundary3d",
       "target": "src_components_nametag2d_errorboundary3d_componentdidcatch",
@@ -5504,7 +5537,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L34",
+      "source_location": "L22",
       "weight": 1.0,
       "source": "src_components_nametag2d_errorboundary3d",
       "target": "src_components_nametag2d_errorboundary3d_constructor",
@@ -5514,7 +5547,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L39",
+      "source_location": "L27",
       "weight": 1.0,
       "source": "src_components_nametag2d_errorboundary3d",
       "target": "src_components_nametag2d_errorboundary3d_getderivedstatefromerror",
@@ -5524,7 +5557,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag2D.jsx",
-      "source_location": "L50",
+      "source_location": "L38",
       "weight": 1.0,
       "source": "src_components_nametag2d_errorboundary3d",
       "target": "src_components_nametag2d_errorboundary3d_render",
@@ -5535,7 +5568,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag2d_errorboundary3d",
@@ -5546,7 +5579,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag2d_nametag2dfallback",
@@ -5556,7 +5589,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L65",
+      "source_location": "L24",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag3d_badge",
@@ -5566,7 +5599,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L308",
+      "source_location": "L266",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag3d_lanyardcanvas",
@@ -5576,17 +5609,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "src_components_nametag3d",
-      "target": "src_components_nametag3d_makebandtexture",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L407",
+      "source_location": "L382",
       "weight": 1.0,
       "source": "src_components_nametag3d",
       "target": "src_components_nametag3d_nametag3d",
@@ -5597,21 +5620,10 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L2",
+      "source_location": "L3",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
       "target": "src_components_nametag3d",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/Nametag3D.jsx",
-      "source_location": "L84",
-      "weight": 1.0,
-      "source": "src_components_nametag3d_badge",
-      "target": "src_components_nametag3d_makebandtexture",
       "confidence_score": 1.0
     },
     {
@@ -5619,7 +5631,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L2",
+      "source_location": "L3",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
       "target": "src_components_nametag3d_lanyardcanvas",
@@ -6092,20 +6104,30 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L6",
+      "source_location": "L13",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
-      "target": "src_components_teamlanyards_teamlanyard",
+      "target": "src_components_teamlanyards_members",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L91",
+      "source_location": "L32",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
       "target": "src_components_teamlanyards_teamlanyards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TeamLanyards.jsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_components_teamlanyards",
+      "target": "src_components_teamlanyards_usecardsperpage",
       "confidence_score": 1.0
     },
     {
@@ -6113,10 +6135,10 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L3",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
-      "target": "src_data_aboutcontent",
+      "target": "src_lib_teamlanyards",
       "confidence_score": 1.0
     },
     {
@@ -6124,11 +6146,33 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/TeamLanyards.jsx",
-      "source_location": "L3",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "src_components_teamlanyards",
-      "target": "src_data_aboutcontent_teammembersdetailed",
+      "target": "src_lib_teamlanyards_paginate",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/TeamLanyards.jsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "src_components_teamlanyards_teamlanyards",
+      "target": "src_components_teamlanyards_usecardsperpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/TeamLanyards.jsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_components_teamlanyards_teamlanyards",
+      "target": "src_lib_teamlanyards_paginate"
     },
     {
       "relation": "contains",
@@ -6698,6 +6742,38 @@
       "weight": 1.0,
       "source": "src_lib_cms_test",
       "target": "src_lib_cms_formatcmsdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/teamLanyards.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_lib_teamlanyards",
+      "target": "src_lib_teamlanyards_paginate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/teamLanyards.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_lib_teamlanyards_test",
+      "target": "src_lib_teamlanyards",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/teamLanyards.test.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_lib_teamlanyards_test",
+      "target": "src_lib_teamlanyards_paginate",
       "confidence_score": 1.0
     },
     {
@@ -7822,5 +7898,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "38146051aef5dc682a2a65da48dbbdd4c52f98da"
+  "built_at_commit": "45398d6b107f24a6b2510c956d650948f828dcd2"
 }

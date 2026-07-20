@@ -12,6 +12,7 @@ import {
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import cardImageUrl from "../assets/new-id-card-kolab.png";
+import defaultBandImage from "../assets/lanyard/lanyard.png";
 import { checkWebGLSupport, ErrorBoundary3D, Nametag2DFallback } from "./Nametag2D.jsx";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
@@ -20,50 +21,10 @@ const CARD_WIDTH = 1.72;
 const CARD_HEIGHT = 2.7;
 const CARD_DEPTH = 0.08;
 
-function makeBandTexture() {
-  const canvas = document.createElement("canvas");
-  canvas.width = 64;
-  canvas.height = 192;
-  const ctx = canvas.getContext("2d");
-
-  const base = ctx.createLinearGradient(0, 0, 64, 0);
-  base.addColorStop(0, "#050605");
-  base.addColorStop(0.14, "#252c27");
-  base.addColorStop(0.5, "#0b0f0c");
-  base.addColorStop(0.86, "#252c27");
-  base.addColorStop(1, "#050605");
-  ctx.fillStyle = base;
-  ctx.fillRect(0, 0, 64, 192);
-
-  ctx.fillStyle = "rgba(255,255,255,0.18)";
-  for (let y = -64; y < 256; y += 13) {
-    ctx.save();
-    ctx.translate(32, y);
-    ctx.rotate(-0.56);
-    ctx.fillRect(-46, -1, 92, 1.5);
-    ctx.restore();
-  }
-
-  ctx.fillStyle = "rgba(255,255,255,0.08)";
-  for (let y = 0; y < 192; y += 6) ctx.fillRect(0, y, 64, 1);
-
-  ctx.fillStyle = "rgba(210, 235, 214, 0.28)";
-  ctx.fillRect(8, 0, 2, 192);
-  ctx.fillRect(54, 0, 2, 192);
-  ctx.fillStyle = "rgba(139, 214, 110, 0.22)";
-  ctx.fillRect(13, 0, 1, 192);
-  ctx.fillRect(50, 0, 1, 192);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set(1, 8);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 16;
-  return texture;
-}
-
 function Badge({
-  imageUrl = cardImageUrl,
+  frontImage = cardImageUrl,
+  backImage = cardImageUrl,
+  bandImage = defaultBandImage,
   originX = 1.15,
   originY = 3.36,
   lineWidth = 0.34,
@@ -80,8 +41,9 @@ function Badge({
   const ang = useMemo(() => new THREE.Vector3(), []);
   const rot = useMemo(() => new THREE.Vector3(), []);
   const dir = useMemo(() => new THREE.Vector3(), []);
-  const cardMap = useTexture(imageUrl);
-  const bandMap = useMemo(() => makeBandTexture(), []);
+  const cardMap = useTexture(frontImage);
+  const backMap = useTexture(backImage);
+  const bandMap = useTexture(bandImage);
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
@@ -121,17 +83,14 @@ function Badge({
   }, [hovered, dragged]);
 
   useEffect(() => {
-    cardMap.colorSpace = THREE.SRGBColorSpace;
-    cardMap.anisotropy = 16;
-    cardMap.needsUpdate = true;
-  }, [cardMap]);
-
-  useEffect(
-    () => () => {
-      bandMap.dispose();
-    },
-    [bandMap],
-  );
+    [cardMap, backMap, bandMap].forEach((map) => {
+      map.colorSpace = THREE.SRGBColorSpace;
+      map.anisotropy = 16;
+      map.needsUpdate = true;
+    });
+    bandMap.wrapS = bandMap.wrapT = THREE.RepeatWrapping;
+    bandMap.repeat.set(-3, 1);
+  }, [backMap, bandMap, cardMap]);
 
   useFrame((state, delta) => {
     if (dragged) {
@@ -260,13 +219,13 @@ function Badge({
                 metalness={0.02}
               />
             </mesh>
-            <mesh position={[0, 0, -CARD_DEPTH / 2 - 0.002]}>
+            <mesh position={[0, 0, -CARD_DEPTH / 2 - 0.002]} rotation={[0, Math.PI, 0]}>
               <planeGeometry args={[CARD_WIDTH - 0.05, CARD_HEIGHT - 0.05]} />
               <meshPhysicalMaterial
-                color="#0b100d"
+                map={backMap}
                 clearcoat={0.55}
-                roughness={0.42}
-                metalness={0.14}
+                roughness={0.32}
+                metalness={0.02}
               />
             </mesh>
             <mesh position={[0, CARD_HEIGHT / 2 + 0.03, 0.06]} castShadow>
@@ -297,7 +256,6 @@ function Badge({
           resolution={[width, height]}
           useMap
           map={bandMap}
-          repeat={[-3, 1]}
           lineWidth={lineWidth}
         />
       </mesh>
@@ -308,6 +266,9 @@ function Badge({
 export function LanyardCanvas({
   className = "nametag-3d",
   imageUrl = cardImageUrl,
+  backImageUrl = cardImageUrl,
+  bandImageUrl = defaultBandImage,
+  items = null,
   ariaLabel = "Model 3D ID card Jago Farm yang bisa ditarik",
   originX = 0.65,
   originY = 3.36,
@@ -320,6 +281,23 @@ export function LanyardCanvas({
   force2D = false,
 }) {
   const [canRender3D, setCanRender3D] = useState(() => !force2D && checkWebGLSupport());
+  const [theme, setTheme] = useState(() => document.documentElement.getAttribute("data-theme") || "light");
+  const sceneItems = Array.isArray(items) && items.length
+    ? items
+    : [{ id: "lanyard", imageUrl, originX, originY, lineWidth }];
+  const isTeamCard = typeof className === "string" && className.includes("team-lanyard");
+  const fallbackContent = sceneItems.length > 1 ? (
+    <div className={`${className} lanyard-2d-grid`} aria-label={ariaLabel}>
+      {sceneItems.map((item) => <img key={item.id} src={item.imageUrl} alt="" decoding="async" />)}
+    </div>
+  ) : (
+    <Nametag2DFallback
+      imageUrl={sceneItems[0].imageUrl}
+      className={className}
+      ariaLabel={ariaLabel}
+      isTeam={isTeamCard}
+    />
+  );
 
   useEffect(() => {
     if (force2D) {
@@ -334,30 +312,22 @@ export function LanyardCanvas({
     return () => window.removeEventListener("resize", checkSupport);
   }, [force2D]);
 
-  const isTeamCard = typeof className === "string" && className.includes("team-lanyard");
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute("data-theme") || "light");
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
 
   // Jika WebGL / animasi 3D tidak didukung / error / force2D, langsung tampilkan mode 2D
   if (!canRender3D) {
-    return (
-      <Nametag2DFallback
-        imageUrl={imageUrl}
-        className={className}
-        ariaLabel={ariaLabel}
-        isTeam={isTeamCard}
-      />
-    );
+    return fallbackContent;
   }
 
   return (
     <ErrorBoundary3D
-      fallback={
-        <Nametag2DFallback
-          imageUrl={imageUrl}
-          className={className}
-          ariaLabel={ariaLabel}
-          isTeam={isTeamCard}
-        />
-      }
+      fallback={fallbackContent}
     >
       <div className={className} aria-label={ariaLabel}>
         <Canvas
@@ -374,29 +344,34 @@ export function LanyardCanvas({
             });
           }}
         >
-          <ambientLight intensity={ambientIntensity} />
+          <ambientLight intensity={theme === "dark" ? ambientIntensity * 0.55 : ambientIntensity} />
           <spotLight
             position={[3.2, 5.8, 6]}
             angle={0.5}
             penumbra={0.76}
-            intensity={spotIntensity}
-            color="#edf6e9"
+            intensity={theme === "dark" ? spotIntensity * 0.55 : spotIntensity}
+            color={theme === "dark" ? "#a9c9ff" : "#edf6e9"}
             castShadow
           />
           <pointLight
             position={[1.4, 0.2, 4.4]}
-            intensity={fillIntensity}
-            color="#ffffff"
+            intensity={theme === "dark" ? fillIntensity * 0.7 : fillIntensity}
+            color={theme === "dark" ? "#89cf70" : "#ffffff"}
             distance={8}
             decay={2}
           />
           <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-            <Badge
-              imageUrl={imageUrl}
-              originX={originX}
-              originY={originY}
-              lineWidth={lineWidth}
-            />
+            {sceneItems.map((item) => (
+              <Badge
+                key={item.id}
+                frontImage={item.imageUrl}
+                backImage={backImageUrl}
+                bandImage={bandImageUrl}
+                originX={item.originX}
+                originY={item.originY ?? originY}
+                lineWidth={item.lineWidth ?? lineWidth}
+              />
+            ))}
           </Physics>
         </Canvas>
       </div>

@@ -34,13 +34,6 @@ export default function AboutPage({ onNavigate, pageData = null }) {
         : null,
     [pageData],
   );
-  const teamBlock = useMemo(
-    () =>
-      Array.isArray(pageData?.content)
-        ? pageData.content.find((b) => b?.type === "team")
-        : null,
-    [pageData],
-  );
   const ctaBlock = useMemo(
     () =>
       Array.isArray(pageData?.content)
@@ -210,7 +203,7 @@ export default function AboutPage({ onNavigate, pageData = null }) {
             />
           }
         >
-          <TeamLanyards data={teamBlock?.data} />
+          <TeamLanyards />
         </Suspense>
       </ErrorBoundary3D>
 

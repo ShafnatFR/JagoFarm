@@ -12,7 +12,7 @@
   "10": "lenis",
   "11": "8. Testing Strategy",
   "12": "meshline",
-  "13": "@phosphor-icons/react",
+  "13": "7. Coding Standards",
   "14": "react-dom",
   "15": "@react-three/drei",
   "16": "@react-three/fiber",
@@ -21,6 +21,5 @@
   "19": "Footer.jsx",
   "20": "Pixel",
   "21": "vite.config.js",
-  "22": "ErrorBoundary",
-  "23": "Navbar.jsx"
+  "22": "ErrorBoundary"
 }

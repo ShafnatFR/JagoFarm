@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1784511971.8320184,
-    "ast_hash": "a538c02a57f912a18e0bba24f7bf9640",
+    "mtime": 1784532827.961231,
+    "ast_hash": "62da0162068b30e5234d791c8b6957ec",
     "semantic_hash": ""
   },
   "src/App.jsx": {
@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "src/components/AboutPage.jsx": {
-    "mtime": 1784516765.2924395,
-    "ast_hash": "04b94e04c399cc2876b7b1626c68180b",
+    "mtime": 1784537552.7831163,
+    "ast_hash": "fcc392579ca3e11c1ceeb68728660e2d",
     "semantic_hash": ""
   },
   "src/components/ContactSection.jsx": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "src/components/Nametag3D.jsx": {
-    "mtime": 1784277051.1977973,
-    "ast_hash": "1312f7feba5af1c0154be5e813a7b2a1",
+    "mtime": 1784533114.1072834,
+    "ast_hash": "279256f9b4708ca5aca4c237f19a266d",
     "semantic_hash": ""
   },
   "src/components/Navbar.jsx": {
@@ -75,8 +75,8 @@
     "semantic_hash": ""
   },
   "src/components/TeamLanyards.jsx": {
-    "mtime": 1784272978.8319285,
-    "ast_hash": "590ac14ffc041ef2de8f6b641edcb8a7",
+    "mtime": 1784537961.582997,
+    "ast_hash": "b814e217327dbf3b3031b5894abecb25",
     "semantic_hash": ""
   },
   "src/data/content.js": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "vite.config.js": {
-    "mtime": 1784272391.0865228,
-    "ast_hash": "3873e8d6382648ab43abb3663a501a61",
+    "mtime": 1784532714.7816043,
+    "ast_hash": "b6bede1cae99e2ebbeb3cc0e6ad413d8",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "src/components/Nametag2D.jsx": {
-    "mtime": 1784277051.1967971,
-    "ast_hash": "20998616c2512272242e11ec4f8da7ae",
+    "mtime": 1784534463.000618,
+    "ast_hash": "a604e61810be2954745e1243e77d758e",
     "semantic_hash": ""
   },
   "src/components/PixelCard.jsx": {
@@ -377,6 +377,46 @@
   "src/assets/jagofarm-ecosystem-scrub-250ms.webm": {
     "mtime": 1784272390.672409,
     "ast_hash": "73bc8f0611ea631f32336e1b47225ad3",
+    "semantic_hash": ""
+  },
+  "src/lib/teamLanyards.js": {
+    "mtime": 1784537534.2526906,
+    "ast_hash": "48b64cac88678872788dfd26aa1ffaba",
+    "semantic_hash": ""
+  },
+  "src/lib/teamLanyards.test.js": {
+    "mtime": 1784537534.2546902,
+    "ast_hash": "e961c8ce2b8fa6cf202bce2c0194c5c7",
+    "semantic_hash": ""
+  },
+  "src/assets/lanyard/card-back.png": {
+    "mtime": 1784530190.1016517,
+    "ast_hash": "bd4bbf53b8353000db0968b79729f22f",
+    "semantic_hash": ""
+  },
+  "src/assets/lanyard/lanyard-kolab-transparent.png": {
+    "mtime": 1784532531.7396703,
+    "ast_hash": "b50335045828b9c00eb5ebb403d7adb2",
+    "semantic_hash": ""
+  },
+  "src/assets/lanyard/member-bayu.png": {
+    "mtime": 1784529395.0560567,
+    "ast_hash": "53a7c357bcd210e91c78cfbf2a7a4591",
+    "semantic_hash": ""
+  },
+  "src/assets/lanyard/member-ega.png": {
+    "mtime": 1784529496.5209124,
+    "ast_hash": "b5ae796b33dcc15987588c0400e3e58e",
+    "semantic_hash": ""
+  },
+  "src/assets/lanyard/member-haykal.png": {
+    "mtime": 1784529480.4572423,
+    "ast_hash": "9cea2275a5598ea66235d2e9d82df01b",
+    "semantic_hash": ""
+  },
+  "src/assets/lanyard/member-shafnat.png": {
+    "mtime": 1784529376.0084453,
+    "ast_hash": "5a9a9d1d88e08a2d4a4d17c8ae6271fe",
     "semantic_hash": ""
   }
 }

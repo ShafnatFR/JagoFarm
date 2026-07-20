@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "node src/lib/cms.test.js",
+    "test": "node src/lib/cms.test.js && node src/lib/teamLanyards.test.js",
     "preview": "vite preview"
   },
   "dependencies": {
